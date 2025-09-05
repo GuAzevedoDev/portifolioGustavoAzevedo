@@ -1,0 +1,10 @@
+/* Global */
+@import "../Estilos/global/global.css";
+
+/* Utilitarios */
+@import "../Estilos/utilitarios/componentes.css";
+@import "../Estilos/utilitarios/tipografia.css";
+@import "../Estilos/utilitarios/cores.css";
+
+/* landingPage */
+@import "../Estilos/utilitarios/header.css";
