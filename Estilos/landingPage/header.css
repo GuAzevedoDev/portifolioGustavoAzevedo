@@ -1,0 +1,107 @@
+header {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header-list {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 50px;
+  font-size: 18px;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header div > svg {
+  max-width: 48px;
+}
+
+.linguagem {
+  display: flex;
+  padding: 4px 10px;
+  gap: 15px;
+  border: 1px solid var(--cor-1);
+  border-radius: 25px;
+  position: relative;
+}
+
+.list-idiomas {
+  display: grid;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  gap: 5px;
+  width: 100%;
+  transition: 0.3s;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.list-idiomas li {
+  background-color: var(--cor-1);
+  border-radius: 25px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.check-idioma {
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0;
+}
+
+.check-idioma:checked ~ .list-idiomas {
+  margin-top: initial;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.active-link,
+.header-item:hover {
+  color: var(--cor-p1);
+}
+
+.active-link,
+.header-item {
+  position: relative;
+  display: flex;
+  transition: 0.3s;
+  justify-content: center;
+}
+
+.active-link::after,
+.header-item::after {
+  content: "";
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--cor-p1);
+  display: block;
+  position: absolute;
+  transition: 0.3s;
+}
+
+.active-link::after,
+.header-item:hover::after {
+  width: 100%;
+}
+

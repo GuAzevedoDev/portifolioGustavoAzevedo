@@ -7,4 +7,5 @@
 @import "../Estilos/utilitarios/cores.css";
 
 /* landingPage */
-@import "../Estilos/utilitarios/header.css";
+@import "../Estilos/landingPage/header.css";
+@import "../Estilos/landingPage/main.css";

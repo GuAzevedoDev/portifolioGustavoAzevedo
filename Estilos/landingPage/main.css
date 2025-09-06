@@ -1,0 +1,97 @@
+main {
+  overflow: hidden;
+  height: 88vh;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+}
+
+.image {
+  max-width: 610px;
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.main-direita {
+  padding: 20px;
+  justify-self: start;
+}
+
+.main-text {
+  justify-self: start;
+  line-height: 1;
+  padding-top: 20vh;
+  margin-bottom: 40px;
+}
+
+.main-text span {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.main-text h2 {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.main-text h1 {
+  font-size: 3.825rem;
+}
+
+.main-text .title-full {
+  font-size: 4.25rem;
+  display: inline-block;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-left: 15px;
+  animation: escrita steps(1) 1s infinite;
+}
+
+.title-full::before {
+  content: "Full-stack";
+  animation: back 10s infinite;
+}
+
+.baixoMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  width: 630px;
+}
+
+.redesMain {
+  display: flex;
+  gap: 20px;
+}
+
+@keyframes escrita {
+  0%,
+  50%,
+  100% {
+    border-right: 2px solid transparent;
+  }
+  25%,
+  75% {
+    border-right: 2px solid var(--cor-p1);
+  }
+}
+
+@keyframes back {
+  0%,
+  20% {
+    content: "Back-end";
+  }
+  41%,
+  60% {
+    content: "Front-end";
+  }
+}
