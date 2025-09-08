@@ -7,6 +7,7 @@ main {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 40px;
+  justify-items: center;
 }
 
 .image {
@@ -53,11 +54,14 @@ main {
   margin-top: 10px;
   margin-left: 15px;
   animation: escrita steps(1) 1s infinite;
+  position: relative;
 }
 
 .title-full::before {
   content: "Full-stack";
   animation: back 10s infinite;
+  height: 100%;
+  background: 100%;
 }
 
 .baixoMain {
@@ -65,12 +69,60 @@ main {
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
-  width: 630px;
+  max-width: 630px;
 }
 
 .redesMain {
   display: flex;
   gap: 20px;
+}
+
+.redesMain img {
+  transition: 0.2s;
+}
+
+.redesMain img:hover {
+  scale: 1.2;
+}
+
+.btn-baixo {
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-baixo svg {
+  max-width: 35px;
+  fill: var(--cor-1);
+  position: absolute;
+  transition: 0.2s;
+  left: 15px;
+  opacity: 0;
+  background: var(--cor-p1);
+  border-radius: 50%;
+  padding: 05px;
+  transform: scale(0);
+  margin-left: -100px;
+}
+
+.btn-baixo:hover {
+  background: var(--cor-1);
+  color: var(--cor-p1);
+  width: 235px;
+  justify-content: end;
+}
+
+.btn-baixo:hover svg {
+  margin-right: 120px;
+  opacity: 1;
+  transform: scale(1);
+  margin-left: 0px;
 }
 
 @keyframes escrita {

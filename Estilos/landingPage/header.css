@@ -22,7 +22,7 @@ header {
   font-size: 18px;
 }
 
-header div {
+header > div {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -33,31 +33,65 @@ header div > svg {
 }
 
 .linguagem {
+  position: relative;
+}
+
+.trigger {
   display: flex;
-  padding: 4px 10px;
-  gap: 15px;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
   border: 1px solid var(--cor-1);
   border-radius: 25px;
-  position: relative;
+  padding: 4px 10px;
+}
+
+.trigger:hover {
+  transform: scale(1.1);
 }
 
 .list-idiomas {
   display: grid;
   position: absolute;
   top: calc(100% + 5px);
-  left: 0;
+  right: 0;
   gap: 5px;
-  width: 100%;
   transition: 0.3s;
-  opacity: 0;
-  transform: scale(0);
+  transform: scaleY(0);
+  transform-origin: top;
+  background-color: var(--cor-1);
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.list-idiomas li {
-  background-color: var(--cor-1);
-  border-radius: 25px;
-  padding: 4px 10px;
-  font-size: 0.85rem;
+.item-idiomas {
+  padding: 0px 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+  padding-right: 13px;
+  cursor: pointer;
+}
+
+.item-idiomas:hover {
+  background: var(--cor-p1);
+  color: var(--cor-1);
+}
+
+.item-idiomas::after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 3px;
+  display: block;
+  background: var(--cor-p1);
+  right: -3px;
 }
 
 .check-idioma {
@@ -72,7 +106,20 @@ header div > svg {
 .check-idioma:checked ~ .list-idiomas {
   margin-top: initial;
   opacity: 1;
-  transform: scale(1);
+  height: initial;
+  transform: scaleY(1);
+}
+
+.check-idioma:checked + .trigger .seta {
+  transform: rotate(180deg); 
+}
+.check-idioma {
+  display: none;
+}
+
+.seta {
+  fill: var(--cor-1);
+  transition: 0.3s;
 }
 
 .active-link,
@@ -105,3 +152,15 @@ header div > svg {
   width: 100%;
 }
 
+#tema {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#tema:hover {
+  scale: 1.1;
+}
+
+body.ligth #tema {
+  transform: rotate(180deg);
+}

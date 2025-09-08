@@ -5,6 +5,13 @@ body {
   --cor-p2: #111111;
 }
 
+body.ligth {
+  --cor-1: #000;
+  --cor-2: #fff;
+  --cor-p1: #4b6bb7;
+  --cor-p2: #fafafa;
+}
+
 .cor-1 {
   color: var(--cor-1);
 }
