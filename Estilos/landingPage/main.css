@@ -1,17 +1,17 @@
 main {
   overflow: hidden;
-  height: 88vh;
 }
 
 .main-content {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 40px;
-  justify-items: center;
+  justify-items: center;  
 }
 
 .image {
   max-width: 610px;
+  height: 88vh;
 }
 
 .image img {
@@ -23,13 +23,13 @@ main {
 .main-direita {
   padding: 20px;
   justify-self: start;
+  display: grid;
 }
 
 .main-text {
   justify-self: start;
   line-height: 1;
   padding-top: 20vh;
-  margin-bottom: 40px;
 }
 
 .main-text span {
@@ -47,8 +47,8 @@ main {
   font-size: 3.825rem;
 }
 
-.main-text .title-full {
-  font-size: 4.25rem;
+.title-full {
+  font-size: 4.1rem;
   display: inline-block;
   letter-spacing: 2px;
   margin-top: 10px;
@@ -124,6 +124,7 @@ main {
   transform: scale(1);
   margin-left: 0px;
 }
+.main-direita{width: 680px;}
 
 @keyframes escrita {
   0%,
@@ -146,4 +147,21 @@ main {
   60% {
     content: "Front-end";
   }
+}
+
+@media(max-width:1150px){
+  .image{height: initial;
+  min-height: 500px;}
+  .main-content{gap:0px}
+  .title-full{font-size: 3rem;}
+  .main-text{padding-top: 120px;}
+  .main-direita{justify-content: center;
+  width: max-content;}
+}
+
+@media(max-width:900px){
+  .main-content{grid-template-columns: 1fr;}
+  .image{height: 300px;
+    }
+  .main-text{padding-top: 20px;}
 }
