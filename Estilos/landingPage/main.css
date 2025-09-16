@@ -69,7 +69,7 @@ main {
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
-  max-width: 630px;
+  width: 630px;
 }
 
 .redesMain {
@@ -157,11 +157,23 @@ main {
   .main-text{padding-top: 120px;}
   .main-direita{justify-content: center;
   width: max-content;}
+  .baixoMain {
+    width: 545px;
+  }
 }
 
 @media(max-width:900px){
   .main-content{grid-template-columns: 1fr;}
   .image{height: 300px;
     }
-  .main-text{padding-top: 20px;}
+  .main-text{padding-top: 20px;
+  }  
+}
+
+@media(max-width:500px){
+  .main-content{grid-template-columns: 1fr;}
+  .image{height: 300px;
+    }
+  .main-text{padding-top: 20px;
+  }  
 }
