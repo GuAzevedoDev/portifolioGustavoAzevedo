@@ -55,6 +55,7 @@ main {
   margin-left: 15px;
   animation: escrita steps(1) 1s infinite;
   position: relative;
+  z-index: -1;
 }
 
 .title-full::before {
@@ -84,7 +85,6 @@ main {
 .redesMain img:hover {
   scale: 1.2;
 }
-
 
 .main-direita {
   width: 680px;
