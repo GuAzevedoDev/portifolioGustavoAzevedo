@@ -10,6 +10,60 @@
   padding: 15px;
   background: var(--cor-p1);
   border-radius: 25px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
+}
+
+.btn-baixo {
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-baixo svg {
+  max-width: 35px;
+  fill: var(--cor-1);
+  position: absolute;
+  transition: 0.2s;
+  left: 15px;
+  opacity: 0;
+  background: var(--cor-p1);
+  border-radius: 50%;
+  padding: 05px;
+  transform: scale(0);
+  margin-left: -100px;
+}
+
+.btn-baixo:hover {
+  background: var(--cor-1);
+  color: var(--cor-p1);
+  width: 235px;
+  justify-content: end;
+}
+
+.btn-baixo:hover svg {
+  margin-right: 120px;
+  opacity: 1;
+  transform: scale(1);
+  margin-left: 0px;
+}
+
+@media (max-width: 500px) {
+  .btn.btn-baixo {
+    width: 170px;
+    height: 45px;
+    font-size: 1rem;
+  }
+  .btn.btn-baixo:hover {
+    width: 200px;
+  }
+  .btn-baixo svg {
+    max-width: 30px;
+  }
 }

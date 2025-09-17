@@ -15,7 +15,26 @@
   font-weight: bold;
 }
 
-@media(max-width:1150px){
-  body .main-text h1{font-size: 2.8rem;}
-.title-full{font-size: 3rem;}
+@media (max-width: 1150px) {
+  body .main-text h1 {
+    font-size: 2.8rem;
+  }
+  .main-text .title-full {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .header-item {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  body .main-text h1 {
+    font-size: 2.2rem;
+  }
+  .main-text .title-full {
+    font-size: 2.4rem;
+  }
 }
