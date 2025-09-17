@@ -14,3 +14,13 @@ let temaMob = document
 function alteraTema() {
   body.classList.toggle("ligth");
 }
+const check = document.getElementById("check-mobile");
+const btn = document.querySelector(".btn-baixo");
+
+check.addEventListener("change", () => {
+  if (check.checked) {
+    btn.style.zIndex = "-1";
+  } else {
+    btn.style.zIndex = "2";
+  }
+});

@@ -58,11 +58,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  inset: 0;
 }
 
-.main-text {
-  z-index: -1;
-}
 
 .linguagem-container.mobile {
   display: flex;
@@ -76,7 +75,7 @@
 .nav-mobile {
   display: grid;
   padding: 20px;
-  width: 100%;
+  width: 80%;
 }
 
 .nav-mobile ul {
