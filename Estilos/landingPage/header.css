@@ -151,17 +151,17 @@ header {
   width: 100%;
 }
 
-#tema {
+#tema,#temaMobile
+{
   transition: 0.3s;
   cursor: pointer;
 }
 
-#tema:hover {
+#tema:hover,#temaMobile:hover {
   scale: 1.1;
 }
 
-
-body.ligth #tema {
+body.ligth #tema,body.ligth #temaMobile {
   transform: rotate(180deg);
 }
 
