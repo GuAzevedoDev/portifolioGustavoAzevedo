@@ -1,6 +1,6 @@
 .projetos-content {
   min-height: 100vh;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .projetos-content > ul {
@@ -8,13 +8,15 @@
   gap: 15px;
   overflow-x: scroll;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 40px;
   anchor-name: --carossel;
   width: 100%;
   position: relative;
 }
 
-.projetos-content > ul::-webkit-scrollbar{display: none;}
+.projetos-content > ul::-webkit-scrollbar {
+  display: none;
+}
 
 .projetos-content > ul::scroll-button(left),
 .projetos-content > ul::scroll-button(right) {
@@ -27,27 +29,43 @@
   height: 50px;
   border-radius: 50%;
   background: var(--cor-p1);
+  margin-top: -80px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+  background: url(../../imagens/projetos/Component\ 3.png) center;
+  transform: rotate(180deg);
+}
+
+.projetos-content > ul::scroll-button(left):disabled {
+  opacity: 0;
+}
+
+.projetos-content > ul::scroll-button(right):disabled {
+  opacity: 0;
 }
 
 .projetos-content > ul::scroll-button(right) {
-  content: "direita";
+  content: "";
+  background: url(../../imagens/projetos/Component\ 3.png) center;
+  background-size: cover;
   position-area: right center;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   translate: -120%;
-}
-
-.projetos-content > ul::scroll-button(right) {
-  content: "direita";
-  right: 20px;
+  transform: rotate(0deg);
 }
 
 .projetos-content > ul li {
-  flex: 0 0 550px;
+  flex: 0 0 600px;
   transition: 0.3s;
 }
 
 .projetos-content > ul li img {
   margin-bottom: 5px;
-  
 }
 
 .descricao-projetos {
@@ -63,6 +81,7 @@
 
 .projetos-content > ul li:hover {
   transform: translateY(20px);
+  opacity: 1;
 }
 
 .descricao-projetos > ul {

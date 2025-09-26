@@ -24,3 +24,11 @@ check.addEventListener("change", () => {
     btn.style.zIndex = "2";
   }
 });
+
+window.addEventListener('wheel', function(event) {
+  if (event.deltaY < 0) {
+      console.log('Rolando para cima com mouse');
+  } else if (event.deltaY > 0) {
+      console.log('Rolando para baixo com mouse');
+  }
+});
