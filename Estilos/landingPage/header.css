@@ -1,17 +1,22 @@
 header {
-  max-width: 1800px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
   position: sticky;
+  background-color: var(--cor-p2);
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
+  z-index: 999;
+  transition: 0.3s;
 }
-
+.desaparece-header {
+  opacity: 0;
+}
 .header-list {
   position: absolute;
   display: flex;
@@ -151,17 +156,19 @@ header {
   width: 100%;
 }
 
-#tema,#temaMobile
-{
+#tema,
+#temaMobile {
   transition: 0.3s;
   cursor: pointer;
 }
 
-#tema:hover,#temaMobile:hover {
+#tema:hover,
+#temaMobile:hover {
   scale: 1.1;
 }
 
-body.ligth #tema,body.ligth #temaMobile {
+body.ligth #tema,
+body.ligth #temaMobile {
   transform: rotate(180deg);
 }
 

@@ -21,14 +21,15 @@ check.addEventListener("change", () => {
   if (check.checked) {
     btn.style.zIndex = "-1";
   } else {
-    btn.style.zIndex = "2";
+    btn.style.zIndex = "2"
   }
 });
-
+const header = document.querySelector("#header");
+const novaLargura = window.innerWidth;
 window.addEventListener('wheel', function(event) {
-  if (event.deltaY < 0) {
-      console.log('Rolando para cima com mouse');
-  } else if (event.deltaY > 0) {
-      console.log('Rolando para baixo com mouse');
+  if (event.deltaY < 0 && novaLargura < 768) {
+    header.classList.remove("desaparece-header")
+  } else if (event.deltaY > 0 && novaLargura < 768) {
+    header.classList.add("desaparece-header")
   }
 });
