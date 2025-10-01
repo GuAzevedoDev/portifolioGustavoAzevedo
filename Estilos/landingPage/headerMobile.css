@@ -7,7 +7,6 @@
   justify-content: space-between;
   width: 100%;
 }
-
 .button-menu {
   display: flex;
   padding: 5px;
@@ -61,7 +60,6 @@
   position: fixed;
   inset: 0;
 }
-
 
 .linguagem-container.mobile {
   display: flex;
