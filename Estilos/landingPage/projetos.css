@@ -3,6 +3,12 @@
   margin-top: 100px;
 }
 
+.descricao-projetos h2 {
+  margin-bottom: 10px;
+}
+
+/* Carrossel */
+
 .projetos-content > ul {
   display: flex;
   gap: 15px;
@@ -13,6 +19,21 @@
   width: 100%;
   position: relative;
 }
+
+.projetos-content > ul li {
+  flex: 0 0 600px;
+  transition: 0.3s;
+}
+
+.projetos-content > ul li img {
+  margin-bottom: 5px;
+  opacity: 0.4;
+}
+
+.projetos-content > ul li.ativo-carrossel img {
+  opacity: 1;
+}
+
 
 .projetos-content > ul::-webkit-scrollbar {
   display: none;
@@ -37,13 +58,6 @@
   transform: rotate(180deg);
 }
 
-.projetos-content > ul::scroll-button(left):disabled {
-  opacity: 0;
-}
-
-.projetos-content > ul::scroll-button(right):disabled {
-  opacity: 0;
-}
 
 .projetos-content > ul::scroll-button(right) {
   content: "";
@@ -59,14 +73,15 @@
   transform: rotate(0deg);
 }
 
-.projetos-content > ul li {
-  flex: 0 0 600px;
-  transition: 0.3s;
+.projetos-content > ul::scroll-button(left):disabled {
+  opacity: 0;
 }
 
-.projetos-content > ul li img {
-  margin-bottom: 5px;
+.projetos-content > ul::scroll-button(right):disabled {
+  opacity: 0;
 }
+
+
 
 .descricao-projetos {
   transition: 0.3s;
@@ -74,12 +89,14 @@
   transform: translateY(-100px);
 }
 
-.projetos-content > ul li:hover .descricao-projetos {
+.projetos-content > ul li:hover .descricao-projetos,
+.projetos-content > ul li.ativo-carrossel .descricao-projetos {
   opacity: 1;
   transform: translateY(0px);
 }
 
-.projetos-content > ul li:hover {
+.projetos-content > ul > li:hover,
+.projetos-content > ul > li.ativo-carrossel{
   transform: translateY(20px);
   opacity: 1;
 }
@@ -98,6 +115,4 @@
   border-radius: 5px;
 }
 
-.descricao-projetos h2 {
-  margin-bottom: 10px;
-}
+
