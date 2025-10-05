@@ -26,9 +26,12 @@ check.addEventListener("change", () => {
 const header = document.querySelector("#header");
 const novaLargura = window.innerWidth;
 window.addEventListener("wheel", function (event) {
-  if (event.deltaY < 0 && novaLargura > 768) {
-    header.classList.remove("desaparece-header");
-  } else if (event.deltaY > 0 && novaLargura > 768) {
-    header.classList.add("desaparece-header");
+
+  if (novaLargura > 768) {
+    if (event.deltaY < 0) {
+      header.classList.remove("desaparece-header");
+    } else if (event.deltaY > 0) {
+      header.classList.add("desaparece-header");
+    }
   }
 });
