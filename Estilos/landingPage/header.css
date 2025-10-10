@@ -4,6 +4,7 @@ header {
   padding: 20px;
   margin: 0 auto;
   transition: all 0.4s ease;
+  z-index: 999;
 }
 
 .header {
@@ -13,15 +14,15 @@ header {
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
-   background: #0a0a0a;
+  background: #0a0a0a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 25px;
   transition: all 0.4s ease;
+  z-index: 999;
 }
 .desaparece-header {
-  max-width: 1700px;
-  transition: 0.3s;
+  transform: scale(0.95);
 }
 .header-list {
   position: absolute;
@@ -56,6 +57,7 @@ header {
   border: 1px solid var(--cor-1);
   border-radius: 25px;
   padding: 4px 10px;
+  z-index: 1000;
 }
 
 .trigger:hover {
@@ -74,6 +76,7 @@ header {
   background-color: var(--cor-1);
   border-radius: 10px;
   padding: 10px;
+  
 }
 
 .item-idiomas {

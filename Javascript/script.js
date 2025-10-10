@@ -14,13 +14,13 @@ check.addEventListener("change", () => {
   btn.style.zIndex = check.checked ? "-1" : "2";
 });
 
-const header = document.querySelector("#header");
+const header = document.getElementById("header");
 
-window.addEventListener("wheel", (event) => {
-  if (window.innerWidth > 768) {
-    if (event.deltaY > 0) {
-      header.classList.add("desaparece-header");
-    }
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 0) {
+    header.classList.add("desaparece-header");
+  } else {
+    header.classList.remove("desaparece-header");
   }
 });
 
@@ -54,6 +54,14 @@ window.addEventListener("load", () => {
     atualizarCarrossel();
   });
 
+  lista.forEach((item, i) => {
+    item.addEventListener("click", () => {
+      index = i;
+      atualizarCarrossel();
+    });
+  });
+
+  // Inicia sem rolar a página
   atualizarCarrossel(false);
 });
 
