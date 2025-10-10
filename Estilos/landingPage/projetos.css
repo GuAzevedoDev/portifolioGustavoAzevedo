@@ -1,5 +1,5 @@
 .projetos-content {
-  min-height: 100vh;
+  min-height: 200vh;
   margin-top: 100px;
 }
 
@@ -56,26 +56,42 @@
   transform: scale(1);
 }
 
-.btn-seta {
-  background: none;
-  border: 2px solid var(--cor-p1);
-  color: var(--cor-p1);
-  font-size: 1.5rem;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+.descricao-projetos {
+  transform: translateY(-90px);
+  opacity: 0;
   transition: 0.3s;
+}
+
+.carrossel li.ativo-carrossel .descricao-projetos {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.btn-seta {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
   position: absolute;
   z-index: 9;
   right: 10px;
   top: 210px;
+  background: var(--cor-p1);
+  color: var(--cor-1);
+  font-weight: 600;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
 }
 .btn-seta:first-child {
   left: 10px;
 }
 
 .btn-seta:hover {
-  background: var(--cor-p1);
-  color: var(--cor-0);
+  transform: scale(1.1);
+  color: var(--cor-1);
 }
+
+
+
+
