@@ -7,12 +7,6 @@ function alteraTema() {
   body.classList.toggle("light");
 }
 
-const check = document.getElementById("check-mobile");
-const btn = document.querySelector(".btn-baixo");
-
-check.addEventListener("change", () => {
-  btn.style.zIndex = check.checked ? "-1" : "2";
-});
 
 const header = document.getElementById("header");
 
