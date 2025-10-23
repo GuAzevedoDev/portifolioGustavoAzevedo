@@ -7,11 +7,12 @@
 }
 
 body {
-  background-color: var(--cor-p2);
+  background: radial-gradient(circle at 30% 20%, #0a0f1c, #030712);
 }
 
 img {
   max-width: 100%;
+  display: block;
 }
 
 a {

@@ -24,6 +24,8 @@
   height: 50px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
 }
 
 .btn-baixo svg {
