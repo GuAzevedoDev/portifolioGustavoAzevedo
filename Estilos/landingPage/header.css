@@ -17,7 +17,7 @@ header {
   border-radius: 40px;
   transition: all 0.4s ease;
   z-index: 999;
-  position: relative;
+
 }
 
 header::before {
@@ -29,10 +29,11 @@ header::before {
   top: -100px;
   left: -150px;
   filter: blur(80px);
-  animation: float 10s ease-in-out infinite alternate;
+  z-index: -1;
 }
 .desaparece-header {
   transform: scaleX(0.95);
+  backdrop-filter: blur(20px);
 }
 .header-list {
   position: absolute;

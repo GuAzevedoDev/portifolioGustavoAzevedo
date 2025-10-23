@@ -8,8 +8,8 @@ function alteraTema() {
 }
 
 
-const header = document.getElementById("header");
-
+const header = document.querySelector(".header");
+if(window.innerWidth>750){
 window.addEventListener("scroll", () => {
   if (window.scrollY > 0) {
     header.classList.add("desaparece-header");
@@ -17,6 +17,7 @@ window.addEventListener("scroll", () => {
     header.classList.remove("desaparece-header");
   }
 });
+}
 
 window.addEventListener("load", () => {
   const lista = document.querySelectorAll(".carrossel li");
