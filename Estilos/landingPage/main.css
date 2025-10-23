@@ -11,7 +11,17 @@ main {
 
 .image {
   max-width: 610px;
-  height: 88vh;
+  height: 82vh;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .image img {
@@ -63,7 +73,11 @@ main {
   animation: back 10s infinite;
   height: 100%;
   background: 100%;
+  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 
 .baixoMain {
   display: flex;
