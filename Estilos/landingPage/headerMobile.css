@@ -43,7 +43,7 @@
 }
 
 .check-mobile:checked ~ .lista-mobile {
-  margin-left: 0;
+  transform: translateX(0px);
 }
 
 .lista-mobile {
@@ -51,7 +51,7 @@
   inset: 0;
   position: fixed;
   z-index: 99;
-  margin-left: 150%;
+  transform: translateX(150%);
   transition: 0.3s;
   display: flex;
   flex-direction: column;

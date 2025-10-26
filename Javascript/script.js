@@ -7,16 +7,15 @@ function alteraTema() {
   body.classList.toggle("light");
 }
 
-
 const header = document.querySelector(".header");
-if(window.innerWidth>750){
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 0) {
-    header.classList.add("desaparece-header");
-  } else {
-    header.classList.remove("desaparece-header");
-  }
-});
+if (window.innerWidth > 750) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+      header.classList.add("desaparece-header");
+    } else {
+      header.classList.remove("desaparece-header");
+    }
+  });
 }
 
 window.addEventListener("load", () => {
@@ -34,7 +33,7 @@ window.addEventListener("load", () => {
       lista[index].scrollIntoView({
         behavior: "smooth",
         inline: "center",
-        block: "nearest"
+        block: "nearest",
       });
     }
   }
@@ -56,7 +55,6 @@ window.addEventListener("load", () => {
     });
   });
 
-  // Inicia sem rolar a página
   atualizarCarrossel(false);
 });
 
