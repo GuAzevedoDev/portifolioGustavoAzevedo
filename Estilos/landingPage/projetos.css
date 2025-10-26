@@ -44,6 +44,29 @@
   opacity: 0.5;
   transform: scale(0.9);
   transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.carrossel li::before {
+  content: "";
+  display: grid;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -80px;
+  right: -80px;
+  background: url(../../imagens/icons/eye-svgrepo-com.svg) no-repeat 20% 78%/25%,
+            linear-gradient(90deg, var(--cor-p1), #00c6ff);
+
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.carrossel li.ativo-carrossel:hover::before {
+  opacity: 1;
 }
 
 .carrossel li img {
@@ -98,29 +121,13 @@
   stroke: aliceblue;
   width: 30px;
 }
-.carrossel li.ativo-carrossel .img-carrosel iframe {
-  z-index: 9;
-}
-
-iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  opacity: 0;
-  transition: 0.3s;
-  z-index: -1;
-  display: none;
-  zoom: 0.48;
-}
 
 .img-carrosel {
   position: relative;
-  background: var(--cor-1);
   border-radius: 10px;
+  z-index: 2;
+  transition: 0.3s;
 }
-
 
 .projects-modal {
   height: 100%;
