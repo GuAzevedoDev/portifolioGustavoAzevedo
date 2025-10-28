@@ -58,3 +58,28 @@ window.addEventListener("load", () => {
   atualizarCarrossel(false);
 });
 
+function AbrirmodalProjetos() {
+  const lista = document.querySelectorAll(".carrossel li");
+  const modal = document.querySelector(".projects-modal");
+  const fechar = document.getElementById("fechar-modal-projetos");
+
+  lista.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      if (item.classList.contains("ativo-carrossel")) {
+        modal.classList.add("ativo-modal");
+      }
+    });
+  });
+
+  fechar.addEventListener("click", () => {
+    modal.classList.remove("ativo-modal");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("ativo-modal");
+    }
+  });
+}
+
+AbrirmodalProjetos();
