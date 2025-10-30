@@ -1,6 +1,31 @@
 .projetos-content {
-  min-height: 100vh;
   margin-top: 100px;
+}
+
+.projetos-bg{position: relative;}
+
+.projetos-bg::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 153, 255, 0.2), transparent 70%);
+  top: -150px;
+  left: -100px;
+  filter: blur(80px);
+  z-index: -2;
+}
+
+.projetos-bg::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 153, 255, 0.2), transparent 70%);
+  bottom: 0px;
+  right:0px;
+  filter: blur(80px);
+  z-index: -2;
 }
 
 .descricao-projetos h2 {
