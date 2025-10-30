@@ -3,6 +3,8 @@ body {
   --cor-2: #000;
   --cor-p1: #4b6bb7;
   --cor-p2: #111111;
+  --gradiente: linear-gradient(90deg, var(--cor-p1), #00c6ff);
+  --fundo: radial-gradient(circle at 30% 20%, #0a0f1c, #030712);
 }
 
 body.light {
@@ -11,7 +13,6 @@ body.light {
   --cor-p1: #4b6bb7;
   --cor-p2: #fafafa;
 }
-
 
 .cor-1 {
   color: var(--cor-1);

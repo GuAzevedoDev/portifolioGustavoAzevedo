@@ -1,0 +1,45 @@
+.about-bg {
+  min-height: 100vh;
+  margin-top: 100px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 50px;
+}
+
+.about-esquerda {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.about-esquerda img {
+  border-radius: 5px;
+}
+
+.about-esquerda::before {
+  content: "";
+  position: absolute;
+  inset: -100px;
+  background: linear-gradient(to right, var(--cor-p1) 50% , transparent);
+  z-index: -1;
+  animation: gira infinite 10s linear;
+}
+
+@keyframes gira{
+  100%{transform: rotate(360deg);}
+}
+
+.about-direita {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px;
+}
+
+.about-direita p {
+  font-size: 1.4rem;
+  color: var(--cor-1);
+}

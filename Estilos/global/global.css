@@ -7,7 +7,7 @@
 }
 
 body {
-  background: radial-gradient(circle at 30% 20%, #0a0f1c, #030712);
+  background: var(--fundo);
 }
 
 
