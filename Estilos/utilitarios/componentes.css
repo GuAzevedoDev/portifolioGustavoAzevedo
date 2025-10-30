@@ -68,4 +68,17 @@
   .btn-baixo svg {
     max-width: 30px;
   }
+  .modal-btn-codigo {
+    font-size: 1rem;
+  }
+  .modal-btn-projeto {
+    font-size: 1rem;
+  }
 }
+
+@media (max-width: 420px) {.modal-btn-codigo {
+    font-size: .7rem;
+  }
+  .modal-btn-projeto {
+    font-size: .7rem;
+  }}

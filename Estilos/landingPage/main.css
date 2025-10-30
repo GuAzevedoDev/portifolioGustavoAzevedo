@@ -39,7 +39,6 @@ main::before {
 }
 
 .main-direita {
-  padding: 20px;
   justify-self: start;
   display: grid;
 }

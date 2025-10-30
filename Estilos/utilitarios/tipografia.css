@@ -15,12 +15,23 @@
   font-weight: bold;
 }
 
+.projects-modal-cima p {
+  font-size: 42px;
+  line-height: 22px;
+}
+
 @media (max-width: 1150px) {
   body .main-text h1 {
     font-size: 2.8rem;
   }
+  .projetos-content h1 {
+    font-size: 3rem;
+  }
   .main-text .title-full {
     font-size: 3rem;
+  }
+  .projects-modal-content>p {
+    font-size: 1rem;
   }
 }
 
@@ -28,9 +39,24 @@
   .header-item {
     font-size: 1rem;
   }
+  .projects-modal-content>p {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 500px) {
+  body .main-text h1 {
+    font-size: 2.4rem;
+  }
+  .main-text .title-full {
+    font-size: 2.6rem;
+  }
+  .projetos-content h1 {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 400px) {
   body .main-text h1 {
     font-size: 2.2rem;
   }
