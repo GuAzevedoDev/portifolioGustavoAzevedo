@@ -12,24 +12,36 @@
 .about-esquerda {
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .about-esquerda img {
-  border-radius: 5px;
+  background-color: var(--cor-1);
+  max-width: 96%;
+  height: 96%;
+  border-radius: 10px;
 }
 
-.about-esquerda::before {
+.about-esquerda::after {
   content: "";
   position: absolute;
-  inset: -100px;
-  background: linear-gradient(to right, var(--cor-p1) 50% , transparent);
+  width: 200%;
+  height: 200%;
+  background-image: conic-gradient(var(--cor-p1) 20deg, transparent 100deg);
   z-index: -1;
-  animation: gira infinite 10s linear;
+  animation: 10s gira linear infinite;
 }
 
-@keyframes gira{
-  100%{transform: rotate(360deg);}
+@keyframes gira {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .about-direita {
