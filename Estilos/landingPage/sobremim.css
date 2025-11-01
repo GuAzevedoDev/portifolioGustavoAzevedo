@@ -1,6 +1,7 @@
 .about-bg {
   min-height: 100vh;
   margin-top: 100px;
+  padding: 0 20px;
 }
 
 .about-bg h1 {
@@ -21,9 +22,6 @@
 
 .about-esquerda img {
   background-color: var(--cor-1);
-  max-width: 96%;
-  height: 96%;
-  border-radius: 10px;
 }
 
 .about-esquerda::after,
@@ -50,16 +48,25 @@
   );
 }
 
-
-
 .about-direita {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  justify-content: center;
 }
 
 .about-direita p {
   font-size: 1.4rem;
   color: var(--cor-1);
   z-index: 1;
+}
+
+.card h1 {
+  z-index: 1;
+  grid-row: 1;
+  grid-column: 1/-1;
+}
+
+.content h1 {
+  grid-row: 1/-1;
 }
