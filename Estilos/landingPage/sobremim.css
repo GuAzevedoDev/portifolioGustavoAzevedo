@@ -3,10 +3,11 @@
   margin-top: 100px;
 }
 
+.about-bg h1 {
+  margin-bottom: 20px;
+}
+
 .about-content {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 50px;
 }
 
 .about-esquerda {
@@ -14,8 +15,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .about-esquerda img {
@@ -25,33 +26,40 @@
   border-radius: 10px;
 }
 
-.about-esquerda::after {
+.about-esquerda::after,
+.about-esquerda::before {
   content: "";
   position: absolute;
   width: 200%;
   height: 200%;
-  background-image: conic-gradient(var(--cor-p1) 20deg, transparent 100deg);
+  background-image: conic-gradient(
+    from 0deg,
+    transparent 75%,
+    var(--cor-p1),
+    transparent 90%
+  );
   z-index: -1;
-  animation: 10s gira linear infinite;
+  animation: 5s gira linear infinite;
+}
+.about-esquerda::before {
+  background-image: conic-gradient(
+    from 180deg,
+    transparent 75%,
+    var(--cor-p1),
+    transparent 90%
+  );
 }
 
-@keyframes gira {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 
 .about-direita {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 80px;
+  gap: 30px;
 }
 
 .about-direita p {
   font-size: 1.4rem;
   color: var(--cor-1);
+  z-index: 1;
 }
