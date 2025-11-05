@@ -101,7 +101,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 34px;
   border-radius: 22px;
@@ -110,8 +110,6 @@
   background: #000;
   transition: all 2s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
-
 
 .card::before {
   content: "";
@@ -123,6 +121,7 @@
   transform-origin: center;
   animation: moving 4.8s linear infinite paused;
   transition: all 0.88s cubic-bezier(0.23, 1, 0.32, 1);
+  background: var(--cor-2);
 }
 
 .card:hover::before {
@@ -137,7 +136,6 @@
     0rem 24px 24px rgba(10, 60, 255, 0.09),
     0rem 55px 33px rgba(10, 60, 255, 0.05),
     0rem 97px 39px rgba(10, 60, 255, 0.01), 0rem 152px 43px rgba(10, 60, 255, 0);
-  scale: 1.005;
   color: #000000;
 }
 

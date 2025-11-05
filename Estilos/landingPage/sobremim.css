@@ -8,8 +8,7 @@
   margin-bottom: 20px;
 }
 
-.about-content {
-}
+
 
 .about-esquerda {
   position: relative;
@@ -22,6 +21,9 @@
 
 .about-esquerda img {
   background-color: var(--cor-1);
+  height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .about-esquerda::after,
