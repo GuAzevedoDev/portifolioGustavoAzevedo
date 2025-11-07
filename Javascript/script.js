@@ -108,7 +108,7 @@ AbrirmodalProjetos();
 document.querySelectorAll(".tag-html").forEach((tag) => {
   tag.addEventListener("mousemove", (e) => {
     const rect = tag.getBoundingClientRect();
-    const x = 100 - ((e.clientX - rect.left) / rect.width) * 100; 
+    const x = 100 - ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     tag.style.setProperty("--x", `${x}%`);
     tag.style.setProperty("--y", `${y}%`);
@@ -120,47 +120,70 @@ document.querySelectorAll(".tag-html").forEach((tag) => {
   });
 });
 
-const apps = document.querySelectorAll('.app');
-const loadingScreen = document.getElementById('loading-screen');
-const skillScreen = document.getElementById('skill-screen');
-const skillIcon = document.getElementById('skill-icon');
-const skillDescription = document.getElementById('skill-description');
-const closeBtn = document.getElementById('close-btn');
+const apps = document.querySelectorAll(".app");
+const loadingScreen = document.getElementById("loading-screen");
+const skillScreen = document.getElementById("skill-screen");
+const skillIcon = document.getElementById("skill-icon");
+const skillDescription = document.getElementById("skill-description");
+const closeBtn = document.getElementById("close-btn");
 
 const skills = {
   HTML: {
-    description: "HTML é a base da web. Estruturo layouts limpos e semânticos, garantindo acessibilidade e SEO eficiente."
+    description:
+      "HTML é a base da web. Estruturo layouts limpos e semânticos, garantindo acessibilidade e SEO eficiente.",
   },
   CSS: {
-    description: "CSS dá vida ao design. Tenho domínio de Flexbox, Grid, animações e temas modernos responsivos."
+    description:
+      "CSS dá vida ao design. Tenho domínio de Flexbox, Grid, animações e temas modernos responsivos.",
   },
   JavaScript: {
-    description: "JS traz interatividade às páginas. Trabalho com manipulação de DOM, eventos, APIs e lógica avançada."
+    description:
+      "JavaScript é uma linguagem de programação leve, interpretada e versátil, usada para tornar páginas da web dinâmicas e interativas.",
+  },
+  csharp: {
+    description:
+      "C# é uma linguagem de programação moderna e orientada a objetos, desenvolvida pela Microsoft como parte da plataforma .NET. É amplamente utilizada para criar diversos tipos de aplicativos, desde os que rodam em dispositivos da Internet das Coisas (IoT) até aplicações web e de jogos, e é conhecida por sua versatilidade e desempenho.",
+  },
+  sql: {
+    description:
+      "MySQL é um sistema de gerenciamento de banco de dados relacional (RDBMS) de código aberto, amplamente utilizado para armazenar e gerenciar dados.",
+  },
+  figma: {
+    description:
+      "Figma é uma ferramenta de design online e colaborativa usada para criar, prototipar e testar designs para websites, aplicativos e outros produtos digitais.",
+  },
+  git: {
+    description:
+      "Git é um sistema de controle de versão distribuído, gratuito e de código aberto, usado para rastrear alterações em arquivos ao longo do tempo, permitindo que múltiplos desenvolvedores trabalhem em um projeto simultaneamente.",
+  },
+  github: {
+    description:
+      "O GitHub é uma plataforma online de hospedagem de código-fonte e uma rede social profissional para desenvolvedores, que utiliza o sistema de controle de versões distribuído Git.",
   }
 };
 
-apps.forEach(app => {
-  app.addEventListener('click', () => {
+apps.forEach((app) => {
+  app.addEventListener("click", () => {
     const skill = app.dataset.skill;
-    const iconSVG = app.querySelector('svg').cloneNode(true);
+    const iconSVG = app.querySelector("svg").cloneNode(true);
 
-    loadingScreen.innerHTML = '';
+    loadingScreen.innerHTML = "";
     loadingScreen.appendChild(iconSVG);
-    loadingScreen.style.display = 'flex';
+    loadingScreen.style.display = "flex";
 
     setTimeout(() => {
-      loadingScreen.style.display = 'none';
-      
-      skillIcon.innerHTML = '';
+      loadingScreen.style.display = "none";
+
+      skillIcon.innerHTML = "";
       skillIcon.appendChild(iconSVG);
       skillDescription.textContent = skills[skill].description;
-      skillScreen.style.display = 'block';
+      skillScreen.style.display = "block";
     }, 1000);
   });
 });
 
-closeBtn.addEventListener('click', () => {
-  skillScreen.style.display = 'none';
+closeBtn.addEventListener("click", () => {
+  skillScreen.style.display = "none";
 });
 
 function atualizarHora() {
@@ -170,19 +193,23 @@ function atualizarHora() {
   let minutos = agora.getMinutes();
 
   // Formata com dois dígitos
-  const horaFormatada = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+  const horaFormatada = `${horas.toString().padStart(2, "0")}:${minutos
+    .toString()
+    .padStart(2, "0")}`;
 
   // Dia da semana e data em português
-  const dias = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  const dias = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
   const diaSemana = dias[agora.getDay()];
-  const dia = agora.getDate().toString().padStart(2, '0');
-  const mes = agora.toLocaleString('pt-BR', { month: 'short' }); // ex: nov
+  const dia = agora.getDate().toString().padStart(2, "0");
+  const mes = agora.toLocaleString("pt-BR", { month: "short" }); // ex: nov
 
-  const dataFormatada = `${diaSemana}, ${dia} ${mes.charAt(0).toUpperCase() + mes.slice(1)}`;
+  const dataFormatada = `${diaSemana}, ${dia} ${
+    mes.charAt(0).toUpperCase() + mes.slice(1)
+  }`;
 
   // Atualiza o HTML
-  document.querySelector('.hour').textContent = horaFormatada;
-  document.querySelector('.day').textContent = dataFormatada;
+  document.querySelector(".hour").textContent = horaFormatada;
+  document.querySelector(".day").textContent = dataFormatada;
 }
 
 // Atualiza ao carregar
