@@ -1,8 +1,8 @@
 .tecnologias-bg {
-  min-height: 100vh;
 }
 
-
-.tecnologias-content{display: flex;
-justify-content: center;
-align-items: center;}
+.tecnologias-content {
+  display: grid;
+  min-height: 100vh;
+  margin-top: 50px;
+}

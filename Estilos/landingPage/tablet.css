@@ -1,4 +1,4 @@
-/* From Uiverse.io by escannord */ 
+/* From Uiverse.io by escannord */
 .cardTablet {
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -7,14 +7,14 @@
 
 .phone {
   /* transform: rotateX(40deg); */
+  margin: 0 auto;
   position: relative;
   perspective: 1000px;
-  width: 150px;
-  height: 254px;
+  width: 100%;
+  height: 750px;
   transform-style: preserve-3d;
   /* transform: rotateX(80deg) rotateY(0deg) rotateZ(30deg); */
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  scale: 2;
   transition: all 1s;
   /* animation: rotate 5s linear infinite; */
 }
@@ -35,59 +35,12 @@
   text-align: center;
   transform: translateY(20px);
   background: radial-gradient(
-      circle,
-      rgb(170, 162, 162),
-      rgb(44, 8, 102) 30%,
-      rgba(26, 78, 189, 0.226) 0%
+      circle at 30% 20%,
+      rgba(37, 99, 235, 0.25) 0%,
+      rgba(109, 40, 217, 0.15) 25%,
+      rgba(13, 17, 23, 1) 70%
     ),
-    radial-gradient(
-      circle at 40px 40px,
-      rgb(233, 228, 228),
-      rgb(41, 35, 49) 30%,
-      rgba(88, 84, 84, 0) 0%
-    ),
-    radial-gradient(
-      circle at 600px 200px,
-      rgb(233, 228, 228),
-      rgb(27, 26, 26) 10%,
-      rgba(88, 84, 84, 0) 0%
-    ),
-    radial-gradient(
-      circle at 800px 100px,
-      rgb(233, 228, 228),
-      #333 10%,
-      rgba(88, 84, 84, 0) 0%
-    ),
-    radial-gradient(
-      circle at 700px 500px,
-      rgb(233, 228, 228),
-      #333 2%,
-      rgba(88, 84, 84, 0.123) 0%
-    ),
-    radial-gradient(
-      circle at 200px 400px,
-      rgb(233, 228, 228),
-      #333 1%,
-      rgba(88, 84, 84, 0) 0%
-    ),
-    radial-gradient(
-      circle at 300px 700px,
-      rgb(233, 228, 228),
-      #333 15%,
-      rgba(88, 84, 84, 0) 0%
-    ),
-    radial-gradient(
-      circle at 650px 400px,
-      rgb(233, 228, 228),
-      #333 10%,
-      rgba(88, 84, 84, 0) 0%
-    ),
-    radial-gradient(
-      circle at 600px 600px,
-      rgb(233, 228, 228),
-      #333 1%,
-      rgba(88, 84, 84, 0.959) 0%
-    );
+    linear-gradient(135deg, #0b0f18 0%, #0f1130 100%);
   position: absolute;
   top: 0;
   left: 0;
@@ -95,25 +48,71 @@
 }
 .front .home {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
 }
 
-.home2 {
+.front .home2 {
   grid-template-rows: repeat(1, 1fr) !important;
+  grid-template-columns: repeat(1, auto);
   margin-bottom: 0.5rem;
+  justify-items: center;
+  padding: 10px;
+  border-radius: 50px;
+  width: 15%;
+  justify-self: center;
+  margin-bottom: 20px;
 }
 
 .front .home .app {
   display: inline-block;
-  width: 15px;
-  height: 15px;
-  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 100px;
+  background-color: rgba(142, 171, 235, 0.25);
   border-radius: 30%;
   text-align: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  background-color: #1b1f2f; /* fundo dos ícones */
+  border-radius: 20%;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 140, 255, 0.15); /* brilho leve inicial */
 }
+
+.front .home .app span {
+  position: absolute;
+  transform: translateY(0px);
+  color: #fff;
+  background: rgba(142, 171, 235, 0.25);
+  padding: 5px 10px;
+  border-radius: 15px;
+  transition: 0.3s;
+  bottom: calc(100% + 10px);
+  transform: scale(0);
+}
+
+.front .home .app:hover span {
+  transform: scale(1);
+  transform-origin: bottom;
+}
+
+.front .home .app:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 140, 255, 0.45); /* brilho azul mais forte no hover */
+  filter: brightness(1.2);
+}
+
+.front .home .app svg {
+  max-width: 75px;
+}
+
 .front .home .app .logo-app {
   width: 70%;
   height: 70%;
@@ -132,31 +131,6 @@
   height: 100% !important;
 }
 
-.search {
-  position: relative;
-  margin-top: 0.2rem;
-  margin-bottom: 1rem;
-}
-
-.logo-google {
-  position: absolute;
-  width: 10px;
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.search-google {
-  width: 100%;
-  border-radius: 20px;
-  padding: 0.3rem;
-  padding-left: 1rem;
-  font-size: 9px;
-  height: 1.5rem;
-  border: none;
-  outline: none;
-}
-
 .date {
   color: white;
   position: relative;
@@ -165,7 +139,9 @@
 }
 
 .date .hour {
-  font-size: large;
+  font-size: 5rem;
+  line-height: 90px;
+  margin-top: 10px;
 }
 
 .date * {
@@ -174,7 +150,7 @@
 
 .date .period,
 .date .day {
-  font-size: 9px;
+  font-size: 1.5rem;
   line-height: 10px;
 }
 
@@ -183,6 +159,8 @@
   width: 30%;
   height: 0;
   border-bottom: 5px dotted rgba(255, 255, 255, 0.651);
+  justify-self: center;
+  margin-bottom: 15px;
 }
 
 .navigation {
@@ -192,8 +170,8 @@
 
 .navigation .btn-tablet {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 .navigation .btn-home {
@@ -220,15 +198,16 @@
   background-color: rgb(24, 23, 24);
   top: 50%;
   left: 50%;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
 }
 
 .head {
   font-size: 6px;
-  position: absolute;
   width: 100%;
   left: 0;
   top: 0;
-  height: 10px;
+  height: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -236,11 +215,12 @@
 .head .h-left {
   color: white;
   margin: 0 2px;
+  font-size: 1rem;
 }
 .head .h-right span {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   margin: 0 1px;
 }
 
@@ -377,19 +357,25 @@
 
 .menu {
   background-color: transparent !important;
+  height: 60px !important;
 }
 
 .logo-menu {
-  width: 100%;
-  height: 100%;
+  width: 60%;
 }
 
-.logo-phone {
-  background-color: #33ff77 !important;
+.modal-html {
+  background: #e44d26;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: none;
 }
 
-.message {
-  /* background-color: blue!important; */
+#html-tablet:checked .modal-html {
 }
 
 @keyframes rotate {
@@ -399,4 +385,100 @@
   100% {
     transform: rotateX(360deg) rotateY(360deg);
   }
+}
+
+#loading-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 13, 25, 0.97);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#loading-screen svg {
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeIn 0.4s forwards, pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Tela da habilidade */
+#skill-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 13, 25, 0.98);
+  color: white;
+  text-align: center;
+  padding: 40px;
+  z-index: 1001;
+  animation: fadeInSkill 0.4s ease-out forwards;
+}
+
+#skill-screen p {
+  font-size: 22px;
+}
+
+@keyframes fadeInSkill {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#skill-icon svg {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+#skill-description {
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+#close-btn {
+  margin-top: 20px;
+  background: #0077ff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#close-btn:hover {
+  background: #3399ff;
 }
