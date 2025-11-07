@@ -1,8 +1,9 @@
 .tecnologias-bg {
+  margin-top: 100px;
 }
 
 .tecnologias-content {
   display: grid;
   min-height: 100vh;
-  margin-top: 50px;
+  margin-top: 20px;
 }
