@@ -96,7 +96,6 @@ function AbrirmodalProjetos() {
     });
   });
 
-  // fecha modal no X
   fechar.addEventListener("click", () => modal.classList.remove("ativo-modal"));
 
   modal.addEventListener("click", (e) => {
@@ -120,3 +119,74 @@ document.querySelectorAll(".tag-html").forEach((tag) => {
     tag.style.opacity = 0.08;
   });
 });
+
+const apps = document.querySelectorAll('.app');
+const loadingScreen = document.getElementById('loading-screen');
+const skillScreen = document.getElementById('skill-screen');
+const skillIcon = document.getElementById('skill-icon');
+const skillDescription = document.getElementById('skill-description');
+const closeBtn = document.getElementById('close-btn');
+
+const skills = {
+  HTML: {
+    description: "HTML é a base da web. Estruturo layouts limpos e semânticos, garantindo acessibilidade e SEO eficiente."
+  },
+  CSS: {
+    description: "CSS dá vida ao design. Tenho domínio de Flexbox, Grid, animações e temas modernos responsivos."
+  },
+  JavaScript: {
+    description: "JS traz interatividade às páginas. Trabalho com manipulação de DOM, eventos, APIs e lógica avançada."
+  }
+};
+
+apps.forEach(app => {
+  app.addEventListener('click', () => {
+    const skill = app.dataset.skill;
+    const iconSVG = app.querySelector('svg').cloneNode(true);
+
+    loadingScreen.innerHTML = '';
+    loadingScreen.appendChild(iconSVG);
+    loadingScreen.style.display = 'flex';
+
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+      
+      skillIcon.innerHTML = '';
+      skillIcon.appendChild(iconSVG);
+      skillDescription.textContent = skills[skill].description;
+      skillScreen.style.display = 'block';
+    }, 1000);
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  skillScreen.style.display = 'none';
+});
+
+function atualizarHora() {
+  const agora = new Date();
+
+  let horas = agora.getHours();
+  let minutos = agora.getMinutes();
+
+  // Formata com dois dígitos
+  const horaFormatada = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+
+  // Dia da semana e data em português
+  const dias = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  const diaSemana = dias[agora.getDay()];
+  const dia = agora.getDate().toString().padStart(2, '0');
+  const mes = agora.toLocaleString('pt-BR', { month: 'short' }); // ex: nov
+
+  const dataFormatada = `${diaSemana}, ${dia} ${mes.charAt(0).toUpperCase() + mes.slice(1)}`;
+
+  // Atualiza o HTML
+  document.querySelector('.hour').textContent = horaFormatada;
+  document.querySelector('.day').textContent = dataFormatada;
+}
+
+// Atualiza ao carregar
+atualizarHora();
+
+// Atualiza a cada 30 segundos
+setInterval(atualizarHora, 30000);
