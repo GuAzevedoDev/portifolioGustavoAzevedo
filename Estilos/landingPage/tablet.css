@@ -350,11 +350,12 @@
 .menu {
   background-color: transparent !important;
   height: 60px !important;
-  width: 100px;
+  
 }
 
 .logo-menu {
   width: 60%;
+  width: 70px;
 }
 
 .modal-html {
