@@ -1,0 +1,99 @@
+.footer-bg {
+  padding: 20px;
+}
+
+.footer-content {
+  background: url(../../imagens/footer/pasta.svg) no-repeat bottom center;
+  background-size: contain;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  position: relative;
+  min-height: 108vh;
+  padding: 20px;
+}
+
+.logo-footer {
+  grid-column: 2/3;
+  background-color: aqua;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  animation: teste linear infinite 10s;
+}
+
+.footer-esquerda {
+  grid-column: 1/2;
+  justify-self: center;
+  align-self: center;
+  justify-items: center;
+  padding-top: 100px;
+  grid-row: 1/-1;
+}
+
+.footer-esquerda > h1 {
+  margin-bottom: 20px;
+}
+
+.footer-esquerda ul {
+  display: grid;
+  justify-items: center;
+}
+
+.footer-centro {
+  grid-column: 2/3;
+  font-family: "Arial", Helvetica, sans-serif;
+  position: relative;
+}
+
+.footer-centro img {
+  width: 55%;
+  margin-bottom: -20px;
+}
+
+.footer-centro h1:nth-child(1) {
+  padding-top: 150px;
+}
+
+.footer-centro div {
+  display: grid;
+  justify-items: center;
+}
+
+.footer-centro h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.footer-centro span {
+  justify-self: right;
+}
+
+.footer-centro .btn-normal {
+  position: absolute;
+  align-self: end;
+}
+
+.footer-direita {
+  grid-column: 3/4;
+  justify-self: center;
+  align-self: center;
+  justify-items: center;
+  padding-top: 100px;
+}
+
+.footer-direita > h1 {
+  margin-bottom: 20px;
+}
+
+.footer-direita ul {
+  display: grid;
+  justify-items: center;
+}
+
+@keyframes teste {
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}

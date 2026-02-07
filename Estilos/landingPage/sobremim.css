@@ -21,10 +21,11 @@
 
 .about-esquerda img {
   background-color: var(--cor-1);
-  height: 500px;
+  height: 100%;
   object-fit: cover;
   border-radius: 15px;
 }
+
 
 .about-esquerda::after,
 .about-esquerda::before {

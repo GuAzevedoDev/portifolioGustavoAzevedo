@@ -48,6 +48,7 @@
 .linguagens-lst {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .linguagens-lst div {
