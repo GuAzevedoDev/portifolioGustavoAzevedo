@@ -20,6 +20,16 @@
   line-height: 22px;
 }
 
+.footer-content a {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.footer-titulo {
+  font-size: 1rem;
+  color: #b4b8b5;
+}
+
 @media (max-width: 1150px) {
   body .main-text h1 {
     font-size: 2.8rem;
@@ -30,7 +40,7 @@
   .main-text .title-full {
     font-size: 3rem;
   }
-  .projects-modal-content>p {
+  .projects-modal-content > p {
     font-size: 1rem;
   }
 }
@@ -39,7 +49,7 @@
   .header-item {
     font-size: 1rem;
   }
-  .projects-modal-content>p {
+  .projects-modal-content > p {
     font-size: 0.8rem;
   }
 }

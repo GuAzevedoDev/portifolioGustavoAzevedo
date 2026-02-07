@@ -36,10 +36,12 @@
 
 .curso-card:hover {
   border: var(--cor-p1) solid 1px;
-  box-shadow: 0rem 6px 13px rgba(10, 60, 255, 0.1),
+  box-shadow:
+    0rem 6px 13px rgba(10, 60, 255, 0.1),
     0rem 24px 24px rgba(10, 60, 255, 0.09),
     0rem 55px 33px rgba(10, 60, 255, 0.05),
-    0rem 97px 39px rgba(10, 60, 255, 0.01), 0rem 152px 43px rgba(10, 60, 255, 0);
+    0rem 97px 39px rgba(10, 60, 255, 0.01),
+    0rem 152px 43px rgba(10, 60, 255, 0);
 }
 
 .curso-card span:first-child {
@@ -75,6 +77,37 @@
   height: 30px;
 }
 
+@media (max-width: 1050px) {
+  .cursos-content {
+    grid-template-columns: 1fr;
+    gap: 100px;
+  }
+  .cursos-content span {
+    display: none;
+  }
+  .experiencia-about::before {
+    height: 3px;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 1200px) {
+  .curso-card {
+    height: 315px;
+    width: 450px;
+  }
+  .curso-card h2 {
+    margin-bottom: 5px;
+  }
+
+  .curso-card ul {
+    margin-top: 5px;
+  }
+}
+
 .dots-container {
   position: absolute;
   left: 50%;
@@ -100,7 +133,7 @@
   background-clip: text;
   transition: opacity 0.3s ease;
   cursor: pointer;
-   transform: rotate(160deg);
+  transform: rotate(160deg);
 }
 
 .tag-html::before {

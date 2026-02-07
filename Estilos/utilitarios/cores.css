@@ -7,13 +7,6 @@ body {
   --fundo: radial-gradient(circle at 30% 20%, #0a0f1c, #030712);
 }
 
-body.light {
-  --cor-1: #000;
-  --cor-2: #fff;
-  --cor-p1: #4b6bb7;
-  --cor-p2: #fafafa;
-}
-
 .cor-1 {
   color: var(--cor-1);
 }

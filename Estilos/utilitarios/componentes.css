@@ -56,6 +56,18 @@
   margin-left: 0px;
 }
 
+.btn-normal {
+  padding: 15px;
+  background: var(--gradiente);
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.btn-normal:hover {
+  background: var(--cor-1);
+  color: var(--cor-p1);
+}
+
 @media (max-width: 500px) {
   .btn.btn-baixo {
     width: 170px;
@@ -101,7 +113,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr ;
   gap: 24px;
   padding: 34px;
   border-radius: 22px;
@@ -132,10 +144,12 @@
 }
 
 .card:hover {
-  box-shadow: 0rem 6px 13px rgba(10, 60, 255, 0.1),
+  box-shadow:
+    0rem 6px 13px rgba(10, 60, 255, 0.1),
     0rem 24px 24px rgba(10, 60, 255, 0.09),
     0rem 55px 33px rgba(10, 60, 255, 0.05),
-    0rem 97px 39px rgba(10, 60, 255, 0.01), 0rem 152px 43px rgba(10, 60, 255, 0);
+    0rem 97px 39px rgba(10, 60, 255, 0.01),
+    0rem 152px 43px rgba(10, 60, 255, 0);
   color: #000000;
 }
 
