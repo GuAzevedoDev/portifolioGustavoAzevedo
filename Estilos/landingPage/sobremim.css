@@ -8,8 +8,15 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 550px) {
+  .about-bg {
+    padding: 0 10px;
+  }
 
-
+  .about-bg h1 {
+    margin-bottom: 5px;
+  }
+}
 .about-esquerda {
   position: relative;
   display: flex;
@@ -25,7 +32,6 @@
   object-fit: cover;
   border-radius: 15px;
 }
-
 
 .about-esquerda::after,
 .about-esquerda::before {
@@ -62,6 +68,12 @@
   font-size: 1.4rem;
   color: var(--cor-1);
   z-index: 1;
+}
+
+@media (max-width: 1050px) {
+  .about-direita p {
+    font-size: 1.2rem;
+  }
 }
 
 .card h1 {

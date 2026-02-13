@@ -6,6 +6,13 @@
   padding-right: 20px;
 }
 
+@media(max-width:550px){
+  .container{
+    padding-left: 10px;
+  padding-right: 10px;
+  }
+}
+
 .btn {
   padding: 15px;
   background: var(--cor-p1);
@@ -113,7 +120,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 34px;
   border-radius: 22px;
@@ -121,6 +128,12 @@
   overflow: hidden;
   background: #000;
   transition: all 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (max-width: 1050px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card::before {

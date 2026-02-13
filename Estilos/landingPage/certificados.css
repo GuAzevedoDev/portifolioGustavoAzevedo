@@ -20,6 +20,7 @@
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   margin-bottom: 100px;
+  position: relative;
 }
 
 .curso-card {
@@ -77,6 +78,19 @@
   height: 30px;
 }
 
+@media (max-width: 1200px) {
+  .curso-card {
+    height: calc(100% + 50px);
+    width: 100%;
+  }
+  .curso-card h2 {
+    margin-bottom: 5px;
+  }
+
+  .curso-card ul {
+    margin-top: 5px;
+  }
+}
 @media (max-width: 1050px) {
   .cursos-content {
     grid-template-columns: 1fr;
@@ -91,22 +105,13 @@
     width: 100%;
     left: 0;
     transform: translateY(-50%);
+    display: none;
+  }
+  .about-content .content{
+    padding: 10px;
   }
 }
 
-@media (max-width: 1200px) {
-  .curso-card {
-    height: 315px;
-    width: 450px;
-  }
-  .curso-card h2 {
-    margin-bottom: 5px;
-  }
-
-  .curso-card ul {
-    margin-top: 5px;
-  }
-}
 
 .dots-container {
   position: absolute;
