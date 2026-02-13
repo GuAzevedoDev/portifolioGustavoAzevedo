@@ -61,6 +61,12 @@
   font-weight: 500;
 }
 
+@media (max-width: 550px) {
+  .curso-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .curso-card ul {
   margin-top: 20px;
 }
@@ -107,11 +113,10 @@
     transform: translateY(-50%);
     display: none;
   }
-  .about-content .content{
+  .about-content .content {
     padding: 10px;
   }
 }
-
 
 .dots-container {
   position: absolute;
