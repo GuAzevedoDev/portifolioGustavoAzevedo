@@ -1,12 +1,5 @@
 const body = document.body;
 
-document.getElementById("tema").addEventListener("click", alteraTema);
-document.getElementById("temaMobile").addEventListener("click", alteraTema);
-
-function alteraTema() {
-  body.classList.toggle("light");
-}
-
 const header = document.querySelector(".header");
 if (window.innerWidth > 750) {
   window.addEventListener("scroll", () => {
@@ -159,7 +152,7 @@ const skills = {
   github: {
     description:
       "O GitHub é uma plataforma online de hospedagem de código-fonte e uma rede social profissional para desenvolvedores, que utiliza o sistema de controle de versões distribuído Git.",
-  }
+  },
 };
 
 apps.forEach((app) => {
@@ -217,3 +210,14 @@ atualizarHora();
 
 // Atualiza a cada 30 segundos
 setInterval(atualizarHora, 30000);
+
+const links = document.querySelectorAll(".nav-mobile .header-item a");
+const menuMobile = document.getElementById("check-mobile");
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    setTimeout(() => {
+      menuMobile.checked = false;
+    }, 300); 
+  });
+});

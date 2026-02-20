@@ -22,8 +22,7 @@
       <nav aria-label="Navegacao-principal">
         <ul class="header-list cor-1">
           <li class="header-item active-link"><a href="#main">Inicio</a></li>
-          <li class="header-item"><a href="#sobremim">Sobre mim</a></li>
-          <li class="header-item"><a href="#cursos">Cursos</a></li>
+          <li class="header-item"><a href="#sobreMim">Sobre mim</a></li>
           <li class="header-item"><a href="#projetos">Projetos</a></li>
           <li class="header-item"><a href="#tecnologias">Tecnologias</a></li>
         </ul>
@@ -44,14 +43,6 @@
             <label class="item-idiomas" for="idioma">Ingles</label>
           </ul>
         </div>
-        <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cor-svg-1" id="temaMobile">
-          <g id="SVGRepo_bgCarrier" stroke-width="0" />
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-          <g id="SVGRepo_iconCarrier">
-            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8V16Z" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4V8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16V20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" />
-          </g>
-        </svg>
       </div>
       <div class="mobile-menu">
         <input type="checkbox" class="check-mobile" id="check-mobile">
@@ -63,14 +54,6 @@
         <div class="lista-mobile">
           <header class="header-mobile">
             <div class="linguagem-container mobile">
-              <svg viewBox="0 0 24 24" fill="fff" xmlns="http://www.w3.org/2000/svg" class="cor-svg-1" id="tema">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8V16Z"></path>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4V8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16V20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"></path>
-                </g>
-              </svg>
               <div class="linguagem">
                 <input type="checkbox" id="idiomaMobile" class="check-idioma">
                 <label for="idiomaMobile" class="trigger">
@@ -89,11 +72,10 @@
           </header>
           <nav class="nav-mobile">
             <ul class="cor-1 paragrafo">
-              <li class="header-item active-link"><a href="#header">Inicio</a></li>
-              <li class="header-item"><a href="#Projetos">Projetos</a></li>
-              <li class="header-item"><a href="#Habilidades">Habilidades</a></li>
-              <li class="header-item"><a href="#Servicos">Servicos</a></li>
-              <li class="header-item"><a href="#Contato">Contato</a></li>
+              <li class="header-item active-link"><a href="#main">Inicio</a></li>
+              <li class="header-item"><a href="#sobreMim">Sobre mim</a></li>
+              <li class="header-item"><a href="#projetos">Projetos</a></li>
+              <li class="header-item"><a href="#tecnologias">Tecnologias</a></li>
             </ul>
           </nav>
           <footer>
@@ -142,7 +124,7 @@
       </div>
     </div>
   </main>
-  <article class="about-bg container">
+  <article class="about-bg container" id="sobreMim">
     <div class="about-content  card">
       <div class="content">
         <h1 class="title cor-1 ">sobre mim<span class="cor-p1">.</span></h1>
@@ -154,7 +136,7 @@
           <p>Desde então, venho me dedicando cada vez mais a essa área, sempre em busca de aprender e evoluir. Atualmente, além do Cotemig, estou realizando o curso da Origamid, que tem me ajudado a aprofundar minhas habilidades em desenvolvimento web.</p>
           <p>Sou apaixonado por tecnologia, curioso por novas soluções e acredito que o aprendizado contínuo é o caminho para crescer como desenvolvedor.</p>
         </div>
-        <div class="experiencia-about">
+        <div class="experiencia-about" id="cursos">
           <h1 class="title cor-1 ">cursos<span class="cor-p1">.</span></h1>
           <div class="cursos-content">
             <div class="esquerda-cursos">
@@ -329,7 +311,7 @@
     </div>
   </article>
 
-  <article class="tecnologias-bg">
+  <article class="tecnologias-bg" id="tecnologias">
     <h1 class="title cor-1 container">Tecnologias<span class="cor-p1">.</span></h1>
     <div class="tecnologias-content container">
       <div class="cardTablet">
@@ -568,7 +550,7 @@
     </div>
     </div>
   </footer> -->
-  
+
 </body>
 
 </html>

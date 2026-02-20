@@ -3,10 +3,11 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 html {
   scroll-behavior: smooth !important;
-  scroll-padding-top:150px
+  scroll-padding-top: 150px;
 }
 
 body {
