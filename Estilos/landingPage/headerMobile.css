@@ -6,6 +6,7 @@
   margin: initial;
   justify-content: space-between;
   width: 100%;
+  padding-top: 30px;
 }
 .button-menu {
   display: flex;

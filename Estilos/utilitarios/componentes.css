@@ -6,10 +6,10 @@
   padding-right: 20px;
 }
 
-@media(max-width:550px){
-  .container{
+@media (max-width: 550px) {
+  .container {
     padding-left: 10px;
-  padding-right: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -185,12 +185,19 @@
 }
 
 .dot {
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   margin-right: 10px;
   border-radius: 10px;
   background-color: #b3d4fc;
   animation: pulse 1.5s infinite ease-in-out;
+}
+
+@media (max-width: 700px) {
+  .dot {
+    height: 15px;
+    width: 15px;
+  }
 }
 
 .dot:last-child {
