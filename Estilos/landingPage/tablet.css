@@ -22,7 +22,7 @@
   }
 }
 
-.cardTablet:hover .phone {
+.cardTablet:hover .phone,.cardTablet.active .phone {
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
 }
 .front {

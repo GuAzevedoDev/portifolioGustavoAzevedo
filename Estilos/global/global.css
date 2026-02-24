@@ -5,6 +5,7 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
+
 html {
   scroll-behavior: smooth !important;
   scroll-padding-top: 150px;
