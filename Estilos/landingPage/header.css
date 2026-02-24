@@ -88,6 +88,13 @@ body::before {
   padding: 10px;
 }
 
+@media (max-width: 750px) {
+  .list-idiomas {
+    left: 0;
+    right: initial;
+  }
+}
+
 .item-idiomas {
   padding: 0px 10px;
   font-size: 1rem;
@@ -114,7 +121,7 @@ body::before {
   width: 3px;
   display: block;
   background: var(--cor-p1);
-  right: -3px;
+  right: 0px;
 }
 
 .check-idioma {

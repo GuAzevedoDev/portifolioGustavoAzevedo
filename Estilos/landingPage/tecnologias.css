@@ -1,9 +1,34 @@
 .tecnologias-bg {
   margin-top: 100px;
   margin-bottom: 100px;
+  position: relative;
 }
 
 .tecnologias-content {
   display: grid;
   margin-top: 20px;
+}
+
+.tecnologias-bg::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 153, 255, 0.2), transparent 70%);
+  top: -150px;
+  left: -100px;
+  filter: blur(80px);
+  z-index: -2;
+}
+
+.tecnologias-bg::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 153, 255, 0.2), transparent 70%);
+  bottom: 0px;
+  right: 0px;
+  filter: blur(80px);
+  z-index: -2;
 }

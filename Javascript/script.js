@@ -214,10 +214,59 @@ setInterval(atualizarHora, 30000);
 const links = document.querySelectorAll(".nav-mobile .header-item a");
 const menuMobile = document.getElementById("check-mobile");
 
-links.forEach(link => {
+links.forEach((link) => {
   link.addEventListener("click", () => {
     setTimeout(() => {
       menuMobile.checked = false;
-    }, 300); 
+    }, 300);
   });
 });
+
+const cardTablet = document.querySelector(".cardTablet");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        cardTablet.classList.add("active");
+      } else {
+        cardTablet.classList.remove("active");
+      }
+    });
+  },
+  {
+    threshold: 0.4,
+  },
+);
+
+if (window.innerWidth <= 768) {
+  observer.observe(cardTablet);
+}
+
+
+
+function initScrollSpy() {
+  const navLinks = document.querySelectorAll(".header-item");
+
+  const sections = Array.from(navLinks)
+    .map(link => document.querySelector(link.querySelector("a").getAttribute("href")))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          const href = link.querySelector("a").getAttribute("href");
+          link.classList.toggle("active-link", href === `#${entry.target.id}`);
+        });
+      }
+    });
+  }, {
+    rootMargin: "-100px 0px -40% 0px",
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+}
+
+document.addEventListener("DOMContentLoaded", initScrollSpy);
