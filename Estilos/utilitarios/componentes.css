@@ -286,7 +286,7 @@
 }
 
 @media (max-width: 768px) {
-  .rubiks-cub {
+  .rubiks-cube {
     animation: none;
   }
 }
