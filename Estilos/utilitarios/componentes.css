@@ -286,6 +286,12 @@
   animation: my-rotateCube 5s infinite linear;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .rubiks-cub {
+    animation: none;
+  }
+}
+
 .my-loader .face-cube {
   position: absolute;
   display: flex;

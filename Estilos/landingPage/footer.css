@@ -61,7 +61,7 @@
   }
 }
 
-.footer-content picture > img {
+.footer-content>picture > img {
   position: absolute;
   max-width: 100%;
   object-fit: cover;
@@ -153,11 +153,7 @@ source {
   color: #eaf1ff;
 }
 
-@media (max-width: 550px) {
-  .title-footer {
-    margin-bottom: -13px;
-  }
-}
+
 
 .title-footer::before {
   content: "-albert einstein";
