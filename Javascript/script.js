@@ -125,21 +125,21 @@ const skills = {
     description:
       "HTML é a base da web. Estruturo layouts limpos e semânticos, garantindo acessibilidade e SEO eficiente.",
   },
-  CSS: {
+  python: {
     description:
-      "CSS dá vida ao design. Tenho domínio de Flexbox, Grid, animações e temas modernos responsivos.",
+      "O Python é uma linguagem interpretada, o que significa que executa diretamente o código linha por linha. Se houver erros no código do programa, ele será interrompido. Portanto, os programadores podem encontrar rapidamente erros no código.",
   },
   JavaScript: {
     description:
       "JavaScript é uma linguagem de programação leve, interpretada e versátil, usada para tornar páginas da web dinâmicas e interativas.",
   },
-  csharp: {
+  kotlin: {
     description:
-      "C# é uma linguagem de programação moderna e orientada a objetos, desenvolvida pela Microsoft como parte da plataforma .NET. É amplamente utilizada para criar diversos tipos de aplicativos, desde os que rodam em dispositivos da Internet das Coisas (IoT) até aplicações web e de jogos, e é conhecida por sua versatilidade e desempenho.",
+      "O Kotlin é conhecido por sua sintaxe concisa e intuitiva, o que o torna acessível até mesmo para iniciantes. Ao compará-lo com outras linguagens como Java ou C++, você perceberá que é muito mais fácil escrever e ler código em Kotlin. Isso significa menos tempo decifrando código e mais tempo criando soluções inovadoras.",
   },
-  sql: {
+  flutter: {
     description:
-      "MySQL é um sistema de gerenciamento de banco de dados relacional (RDBMS) de código aberto, amplamente utilizado para armazenar e gerenciar dados.",
+      "O Flutter é uma estrutura de código aberto desenvolvida e sustentada pelo Google. Desenvolvedores de front-end e full-stack usam o Flutter para criar a interface de usuário (UI) de uma aplicação para várias plataformas com uma única base de código.",
   },
   figma: {
     description:
@@ -149,9 +149,9 @@ const skills = {
     description:
       "Git é um sistema de controle de versão distribuído, gratuito e de código aberto, usado para rastrear alterações em arquivos ao longo do tempo, permitindo que múltiplos desenvolvedores trabalhem em um projeto simultaneamente.",
   },
-  github: {
+  swift: {
     description:
-      "O GitHub é uma plataforma online de hospedagem de código-fonte e uma rede social profissional para desenvolvedores, que utiliza o sistema de controle de versões distribuído Git.",
+      "O Swift é uma linguagem de programação de código aberto (open source), criada pela Apple em 2014. Ela é usada para desenvolvimento de aplicativos iOS, MacOS,tvOS e watchOS (o relógio da Apple). Essa linguagem tem crescido bastante e tomando força no mercado.",
   },
 };
 
@@ -243,30 +243,79 @@ if (window.innerWidth <= 768) {
   observer.observe(cardTablet);
 }
 
-
-
 function initScrollSpy() {
   const navLinks = document.querySelectorAll(".header-item");
 
   const sections = Array.from(navLinks)
-    .map(link => document.querySelector(link.querySelector("a").getAttribute("href")))
+    .map((link) =>
+      document.querySelector(link.querySelector("a").getAttribute("href")),
+    )
     .filter(Boolean);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          const href = link.querySelector("a").getAttribute("href");
-          link.classList.toggle("active-link", href === `#${entry.target.id}`);
-        });
-      }
-    });
-  }, {
-    rootMargin: "-100px 0px -40% 0px",
-    threshold: 0
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            const href = link.querySelector("a").getAttribute("href");
+            link.classList.toggle(
+              "active-link",
+              href === `#${entry.target.id}`,
+            );
+          });
+        }
+      });
+    },
+    {
+      rootMargin: "-100px 0px -40% 0px",
+      threshold: 0,
+    },
+  );
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 }
 
 document.addEventListener("DOMContentLoaded", initScrollSpy);
+
+const menuToggle = document.getElementById("check-mobile");
+
+menuToggle.addEventListener("change", () => {
+  if (menuToggle.checked) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+});
+
+function initCursoCardsMobile() {
+  const cards = document.querySelectorAll(".curso-card");
+  let observer;
+
+  function checkScreen() {
+    // Se for mobile
+    if (window.innerWidth < 768) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle("hover-active", entry.isIntersecting);
+          });
+        },
+        {
+          threshold: 0.6,
+        },
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    } else {
+      // Se voltar para desktop, remove classe
+      cards.forEach((card) => card.classList.remove("hover-active"));
+
+      if (observer) observer.disconnect();
+    }
+  }
+
+  checkScreen();
+  window.addEventListener("resize", checkScreen);
+}
+
+initCursoCardsMobile();
