@@ -277,35 +277,35 @@ function initScrollSpy() {
 
 document.addEventListener("DOMContentLoaded", initScrollSpy);
 
-function initCursoCardsMobile() {
-  const cards = document.querySelectorAll(".curso-card");
-  let observer;
+// function initCursoCardsMobile() {
+//   const cards = document.querySelectorAll(".curso-card");
+//   let observer;
 
-  function checkScreen() {
-    // Se for mobile
-    if (window.innerWidth < 768) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            entry.target.classList.toggle("hover-active", entry.isIntersecting);
-          });
-        },
-        {
-          threshold: 0.6,
-        },
-      );
+//   function checkScreen() {
+//     // Se for mobile
+//     if (window.innerWidth < 768) {
+//       observer = new IntersectionObserver(
+//         (entries) => {
+//           entries.forEach((entry) => {
+//             entry.target.classList.toggle("hover-active", entry.isIntersecting);
+//           });
+//         },
+//         {
+//           threshold: 0.6,
+//         },
+//       );
 
-      cards.forEach((card) => observer.observe(card));
-    } else {
-      // Se voltar para desktop, remove classe
-      cards.forEach((card) => card.classList.remove("hover-active"));
+//       cards.forEach((card) => observer.observe(card));
+//     } else {
+//       // Se voltar para desktop, remove classe
+//       cards.forEach((card) => card.classList.remove("hover-active"));
 
-      if (observer) observer.disconnect();
-    }
-  }
+//       if (observer) observer.disconnect();
+//     }
+//   }
 
-  checkScreen();
-  window.addEventListener("resize", checkScreen);
-}
+//   checkScreen();
+//   window.addEventListener("resize", checkScreen);
+// }
 
-initCursoCardsMobile();
+// initCursoCardsMobile();

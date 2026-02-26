@@ -23,15 +23,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&family=Fira+Code:wght@400&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./imagens/favicon.png" type="image/png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./Estilos/style.css">
+  <link rel="stylesheet" href="./Estilos/style.min.css">
 
   <!-- JS -->
   <script src="./Javascript/script.js" defer></script>
-  <!-- Favicon -->
-  <link rel="icon" href="./imagens/favicon.png" type="image/png">
+
 </head>
 
 <body>
@@ -59,8 +65,8 @@
           </label>
 
           <ul class="list-idiomas cor-2">
-            <label class="item-idiomas" for="idioma">Português</label>
-            <label class="item-idiomas" for="idioma">Ingles</label>
+            <li><label class="item-idiomas" for="idioma">Português</label></li>
+            <li><label class="item-idiomas" for="idioma">Ingles</label></li>
           </ul>
         </div>
       </div>
@@ -215,7 +221,7 @@
         </div>
       </div>
     </div>
-    <section class="section-seta"><a href="#sobreMim" class="seta-proxima"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
+    <section class="section-seta"><a href="#sobreMim" class="seta-proxima" aria-label="seta proxima pagina"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
           <g id="SVGRepo_iconCarrier">
@@ -656,7 +662,7 @@
           <picture>
             <source srcset="./imagens/main/meDesenhoMobile.png" media="(max-width: 768px)">
 
-            <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo"  loading="lazy">
+            <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo" loading="lazy">
           </picture>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gustavoAzevedo.code@gmail.com&su=Contato%20via%20Portf%C3%B3lio&body=Ol%C3%A1%20Gustavo,%0A%0AVim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade.%0A%0APodemos%20conversar%3F%0A%0AAtenciosamente," target="_blank" aria-label="link-gmail" class="btn-normal">Entrar em contato</a>
         </div>

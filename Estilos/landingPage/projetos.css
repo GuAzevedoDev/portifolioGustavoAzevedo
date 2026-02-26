@@ -18,6 +18,12 @@
   z-index: -2;
 }
 
+@media (max-width: 768px) {
+  .projetos-bg::before {
+    display: none;
+  }
+}
+
 .projetos-bg::after {
   content: "";
   position: absolute;
