@@ -16,11 +16,19 @@
   transition: all 1s;
 }
 
+@media (max-width: 1280px) {
+  .phone {
+    height: 650px;
+  }
+}
+
 @media (max-width: 500px) {
   .phone {
     height: 600px;
   }
 }
+
+
 
 .cardTablet:hover .phone,.cardTablet.active .phone {
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
