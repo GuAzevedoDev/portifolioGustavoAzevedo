@@ -1,6 +1,13 @@
+.main-bg {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .main-content {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
   justify-items: center;
 }
@@ -17,25 +24,8 @@ main::before {
   z-index: -1;
 }
 
-.image {
-  max-width: 610px;
-  height: 88vh;
-  animation: float 6s ease-in-out infinite;
-}
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.image img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.esquerda-main {
+  padding-top: 10vh;
 }
 
 .main-direita {
@@ -46,7 +36,7 @@ main::before {
 .main-text {
   justify-self: start;
   line-height: 1;
-  padding-top: 20vh;
+  padding-top: 15vh;
 }
 
 .main-text span {
@@ -76,7 +66,7 @@ main::before {
 }
 
 .title-full::before {
-  content: "Full-stack";
+  content: "Front-end";
   animation: back 10s infinite;
   height: 100%;
   background: 100%;
@@ -110,6 +100,36 @@ main::before {
   width: 680px;
 }
 
+.section-seta {
+  display: flex;
+  justify-content: center;
+}
+
+.seta-proxima {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--cor-p1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce 1.5s infinite;
+}
+
+.seta-proxima svg {
+  height: 40px;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
 @keyframes escrita {
   0%,
   50%,
@@ -125,24 +145,27 @@ main::before {
 @keyframes back {
   0%,
   20% {
-    content: "Back-end";
+    content: "Mobile";
   }
   41%,
   60% {
-    content: "Front-end";
+    content: "Designer";
   }
 }
 
 @media (max-width: 1150px) {
-  .image {
-    height: initial;
-    min-height: 500px;
+  .esquerda-main {
+    padding-top: 15vh;
+  }
+
+  .my-loader {
+    scale: 1;
   }
   .main-content {
     gap: 0px;
   }
   .main-text {
-    padding-top: 120px;
+    padding-top: 22vh;
   }
   .main-direita {
     justify-content: center;
@@ -154,6 +177,15 @@ main::before {
 }
 
 @media (max-width: 900px) {
+  .esquerda-main {
+    padding-top: 0vh;
+  }
+  .seta-proxima {
+    bottom: 0;
+  }
+  .my-loader {
+    scale: 0.8;
+  }
   .main-content {
     grid-template-columns: 1fr;
   }
@@ -161,8 +193,12 @@ main::before {
     max-width: 300px;
     min-height: initial;
   }
+  .main-direita {
+    justify-self: center;
+  }
   .main-text {
-    padding-top: 20px;
+    padding-top: 0px;
+    text-align: center;
   }
 }
 
@@ -171,6 +207,7 @@ main::before {
     grid-template-columns: 1fr;
     justify-items: center;
     justify-content: center;
+    grid-template-rows: auto auto;
   }
   .main-text h2 {
     display: none;
@@ -187,5 +224,39 @@ main::before {
   .baixoMain {
     width: auto;
     margin-top: 30px;
+    justify-content: center;
+  }
+
+  .my-loader {
+    scale: 0.7;
+  }
+}
+
+@media (max-height: 820px) {
+  .main-bg {
+    justify-content: space-between;
+  }
+  .section-seta {
+    margin-bottom: 50px;
+  }
+  .esquerda-main {
+    height: 350px;
+  }
+}
+
+@media (max-height: 750px) {
+  .main-bg {
+    justify-content: space-between;
+  }
+  .section-seta {
+    margin-bottom: 50px;
+  }
+  .esquerda-main {
+    height: 300px;
+    display: flex;
+    align-items: center;
+  }
+  .baixoMain {
+    margin-top: 15px;
   }
 }

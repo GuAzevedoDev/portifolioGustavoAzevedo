@@ -18,7 +18,6 @@
   z-index: -2;
 }
 
-
 .projetos-bg::after {
   content: "";
   position: absolute;
@@ -75,17 +74,6 @@
   }
 }
 
-@media (max-width: 450px) {
-  .linguagens-lst div {
-    font-size: 0.6rem;
-  }
-}
-
-@media (max-width: 350px) {
-  .linguagens-lst div {
-    font-size: 0.5rem;
-  }
-}
 
 .carrossel {
   display: flex;
@@ -403,7 +391,7 @@
     margin-top: 50px;
   }
   .carrossel-content {
-    width: 100%;  
+    width: 100%;
     height: 100%;
   }
   .btn-seta {
