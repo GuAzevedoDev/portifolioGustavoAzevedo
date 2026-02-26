@@ -285,14 +285,6 @@
   animation: my-rotateCube 5s infinite linear;
 }
 
-@media (max-width: 768px) {
-  .rubiks-cube {
-    animation: none;
-    transform: rotateX(60deg) rotateZ(120deg);
-  }
-  
-  
-}
 
 .my-loader .face-cube {
   position: absolute;
