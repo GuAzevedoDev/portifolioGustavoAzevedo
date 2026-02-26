@@ -24,6 +24,12 @@ main::before {
   z-index: -1;
 }
 
+@media (max-width: 768px) {
+  main::before {
+    display: none;
+  }
+}
+
 .esquerda-main {
   padding-top: 10vh;
 }
@@ -118,7 +124,10 @@ main::before {
 
 .seta-proxima svg {
   height: 40px;
+  transform: rotate(180deg);
 }
+
+
 
 @keyframes bounce {
   0%,

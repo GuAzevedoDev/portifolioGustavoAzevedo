@@ -165,6 +165,8 @@ source {
   text-transform: lowercase;
 }
 
+
+
 @media (max-width: 1300px) {
   .title-footer::before {
     font-size: 0.8rem;

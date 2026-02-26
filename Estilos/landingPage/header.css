@@ -30,6 +30,13 @@ body::before {
   filter: blur(80px);
   z-index: -2;
 }
+
+@media (max-width: 768px) {
+  body::before {
+    display: none;
+  }
+}
+
 .desaparece-header {
   transform: scaleX(0.95);
   backdrop-filter: blur(20px);
