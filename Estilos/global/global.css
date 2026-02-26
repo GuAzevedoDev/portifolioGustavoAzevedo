@@ -16,6 +16,8 @@ body {
   background: var(--fundo);
 }
 
+.hidden{overflow: hidden;}
+
 img {
   max-width: 100%;
   display: block;

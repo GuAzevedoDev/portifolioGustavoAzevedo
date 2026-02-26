@@ -277,16 +277,6 @@ function initScrollSpy() {
 
 document.addEventListener("DOMContentLoaded", initScrollSpy);
 
-const menuToggle = document.getElementById("check-mobile");
-
-menuToggle.addEventListener("change", () => {
-  if (menuToggle.checked) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
-});
-
 function initCursoCardsMobile() {
   const cards = document.querySelectorAll(".curso-card");
   let observer;
