@@ -80,7 +80,6 @@
   }
 }
 
-
 .carrossel {
   display: flex;
   gap: 20px;
@@ -105,6 +104,7 @@
   .carrossel li {
     min-width: 100%;
     width: 100%;
+    transform: scale(1);
   }
 }
 
@@ -150,6 +150,12 @@
   transition: 0.3s;
 }
 
+@media (max-width: 768px) {
+  .descricao-projetos {
+    transform: translateY(0px);
+  }
+}
+
 .carrossel li.ativo-carrossel .descricao-projetos {
   transform: translateY(0px);
   opacity: 1;
@@ -185,6 +191,10 @@
 .btn-seta svg {
   stroke: aliceblue;
   width: 30px;
+}
+
+.btn-seta.esquerda {
+  transform: rotate(180deg);
 }
 
 .img-carrosel {

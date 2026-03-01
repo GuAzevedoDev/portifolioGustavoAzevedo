@@ -41,6 +41,7 @@ body::before {
   transform: scaleX(0.95);
   backdrop-filter: blur(20px);
 }
+
 .header-list {
   position: absolute;
   display: flex;

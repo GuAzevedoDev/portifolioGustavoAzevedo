@@ -6,7 +6,6 @@
   scroll-behavior: smooth;
 }
 
-
 html {
   scroll-behavior: smooth !important;
   scroll-padding-top: 150px;
@@ -16,7 +15,9 @@ body {
   background: var(--fundo);
 }
 
-.hidden{overflow: hidden;}
+.hidden {
+  overflow: hidden;
+}
 
 img {
   max-width: 100%;
