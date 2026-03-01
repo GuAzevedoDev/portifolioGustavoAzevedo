@@ -57,11 +57,11 @@
 
 @media (max-width: 360px) {
   .footer-content {
-    gap: 25px 10px;
+    gap: 15px 10px;
   }
 }
 
-.footer-content>picture > img {
+.footer-content > picture > img {
   position: absolute;
   max-width: 100%;
   object-fit: cover;
@@ -103,6 +103,7 @@ source {
   justify-self: center;
   align-self: center;
   justify-items: center;
+  justify-self: center;
   padding-top: 100px;
   grid-row: 1/-1;
 }
@@ -153,8 +154,6 @@ source {
   color: #eaf1ff;
 }
 
-
-
 .title-footer::before {
   content: "-albert einstein";
   position: absolute;
@@ -164,8 +163,6 @@ source {
   font-family: "Poppins", sans-serif;
   text-transform: lowercase;
 }
-
-
 
 @media (max-width: 1300px) {
   .title-footer::before {
@@ -186,6 +183,7 @@ source {
 .footer-centro .btn-normal {
   position: absolute;
   align-self: end;
+  justify-self: center;
 }
 
 .footer-direita {
@@ -211,6 +209,7 @@ source {
   .footer-direita > h1,
   .footer-esquerda > h1 {
     margin-bottom: 15px;
+    justify-self: center;
   }
 }
 
