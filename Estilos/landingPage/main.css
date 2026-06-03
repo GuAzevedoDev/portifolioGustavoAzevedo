@@ -72,7 +72,7 @@ main::before {
 }
 
 .title-full::before {
-  content: "Front-end";
+  content: "Full-Stack";
   animation: back 10s infinite;
   height: 100%;
   background: 100%;
@@ -127,8 +127,6 @@ main::before {
   transform: rotate(180deg);
 }
 
-
-
 @keyframes bounce {
   0%,
   100% {
@@ -158,7 +156,7 @@ main::before {
   }
   41%,
   60% {
-    content: "Designer";
+    content: "Design";
   }
 }
 
