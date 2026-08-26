@@ -6,8 +6,35 @@
 
 .paragrafo {
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 1.5rem;
+  color: var(--cor-cinza);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Título principal (hero) */
+.titulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cor-p1);
+}
+
+/* Subtítulo, usado logo abaixo de um título principal */
+.subtitulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-cinza);
+  margin-top: 8px;
+}
+
+/* Título de seção, menor que o título principal */
+.titulo-secao {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cor-p1);
+  margin-bottom: 12px;
 }
 
 .logo {
@@ -66,9 +93,6 @@
 }
 
 @media (max-width: 850px) {
-  .header-item {
-    font-size: 1rem;
-  }
   .projects-modal-content > p {
     font-size: 0.8rem;
   }

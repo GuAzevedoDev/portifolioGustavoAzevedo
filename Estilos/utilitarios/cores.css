@@ -3,6 +3,9 @@ body {
   --cor-2: #000;
   --cor-p1: #4b6bb7;
   --cor-p2: #111111;
+  --cor-cinza: #a3a3a3;
+  --sombra-forte: rgba(0, 0, 0, 0.15);
+  --sombra-suave: rgba(0, 0, 0, 0.06);
   --gradiente: linear-gradient(90deg, var(--cor-p1), #00c6ff);
   --fundo: radial-gradient(circle at 30% 20%, #0a0f1c, #030712);
 }

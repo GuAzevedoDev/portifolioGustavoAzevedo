@@ -1,15 +1,5 @@
 .main-bg {
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  justify-items: center;
+  position: relative;
 }
 
 main::before {
@@ -30,240 +20,277 @@ main::before {
   }
 }
 
-.esquerda-main {
-  padding-top: 10vh;
-}
-
-.main-direita {
-  justify-self: start;
+.main {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: calc(100vh - 40px);
 }
 
-.main-text {
-  justify-self: start;
-  line-height: 1;
-  padding-top: 15vh;
-}
-
-.main-text span {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.main-text h2 {
-  display: inline-block;
-  font-size: 2rem;
-  font-weight: 400;
-}
-
-.main-text h1 {
-  font-size: 3.825rem;
-}
-
-.title-full {
-  font-size: 4.1rem;
-  display: inline-block;
-  letter-spacing: 2px;
-  margin-top: 10px;
-  margin-left: 15px;
-  animation: escrita steps(1) 1s infinite;
-  position: relative;
-  z-index: -1;
-}
-
-.title-full::before {
-  content: "Full-Stack";
-  animation: back 10s infinite;
-  height: 100%;
-  background: 100%;
-  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.baixoMain {
+/* Indicador de "role para baixo": some sozinho ao rolar, porque é só
+   mais um elemento dentro do main (não é fixed) */
+.scroll-indicador {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 40px;
-  width: 630px;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--cor-p1);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
-.redesMain {
-  display: flex;
-  gap: 20px;
+.scroll-indicador:hover {
+  opacity: 1;
 }
 
-.redesMain img {
-  transition: 0.2s;
-}
-
-.redesMain img:hover {
-  scale: 1.2;
-}
-
-.main-direita {
-  width: 680px;
-}
-
-.section-seta {
+.scroll-indicador-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid currentColor;
+  border-radius: 14px;
   display: flex;
   justify-content: center;
+  padding-top: 6px;
 }
 
-.seta-proxima {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--cor-p1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: bounce 1.5s infinite;
+.scroll-indicador-roda {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: scroll-indicador-roda 1.6s ease infinite;
 }
 
-.seta-proxima svg {
-  height: 40px;
-  transform: rotate(180deg);
+.scroll-indicador svg {
+  width: 16px;
+  height: 16px;
+  animation: scroll-indicador-seta 1.6s ease infinite;
 }
 
-@keyframes bounce {
+@keyframes scroll-indicador-roda {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-indicador-seta {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(12px);
+    transform: translateY(4px);
   }
 }
 
-@keyframes escrita {
-  0%,
-  50%,
-  100% {
-    border-right: 2px solid transparent;
-  }
-  25%,
-  75% {
-    border-right: 2px solid var(--cor-p1);
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicador-roda,
+  .scroll-indicador svg {
+    animation: none;
   }
 }
 
-@keyframes back {
-  0%,
-  20% {
-    content: "Mobile";
+/* Contatos (GitHub/LinkedIn/Gmail/Currículo) em ícones redondos, em coluna
+   na lateral direita. Fica absoluto dentro do .main-bg (que é o container),
+   então acompanha a largura do conteúdo em vez de encostar na borda da tela. */
+.contatos {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.contatos a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cor-1);
+  color: var(--cor-p1);
+  box-shadow:
+    0 12px 28px var(--sombra-forte),
+    0 2px 8px var(--sombra-suave);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.contatos svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contatos a:hover {
+  transform: translateX(-3px);
+  color: var(--cor-p2);
+}
+
+@media (max-width: 600px) {
+  .contatos {
+    gap: 8px;
   }
-  41%,
-  60% {
-    content: "Design";
+  .contatos a {
+    width: 38px;
+    height: 38px;
   }
+  .contatos svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+.main-esquerda {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 0px;
+}
+
+.main-sobre {
+  position: relative;
+}
+
+.main-sobre .botao {
+  margin-top: 24px;
+}
+
+.main-centro {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-centro video {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 45px var(--sombra-forte),
+    0 4px 14px var(--sombra-suave);
+  transform-origin: center center;
+  animation: cubo-entrada 5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cubo-entrada {
+  from {
+    transform: scale(2.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-centro video {
+    animation: none;
+  }
+}
+
+/* Coluna direita: tags de habilidade flutuantes */
+.main-direita {
+  position: relative;
+}
+
+.main-direita li {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px 14px 18px;
+  background: var(--cor-1);
+  border: none;
+  border-radius: 14px;
+  box-shadow:
+    0 12px 28px var(--sombra-forte),
+    0 2px 8px var(--sombra-suave);
+  color: var(--cor-p1);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Python: encostada na quina superior do cubo, levemente torta pra fugir do rigor do grid */
+.main-direita li:nth-child(1) {
+  top: 18%;
+  left: -70px;
+  transform: rotate(-4deg);
+}
+
+/* Flutter: quina inferior, rotação oposta pra dar sensação de "jogado" ali */
+.main-direita li:nth-child(2) {
+  bottom: 22%;
+  left: -70px;
+  transform: rotate(3deg);
+}
+
+.main-direita li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cor-p1);
+  flex-shrink: 0;
+}
+
+.main-direita li.ativo {
+  opacity: 1;
 }
 
 @media (max-width: 1150px) {
-  .esquerda-main {
-    padding-top: 15vh;
-  }
-
-  .my-loader {
-    scale: 1;
-  }
-  .main-content {
-    gap: 0px;
-  }
-  .main-text {
-    padding-top: 22vh;
-  }
-  .main-direita {
-    justify-content: center;
-    width: max-content;
-  }
-  .baixoMain {
-    width: 545px;
+  .main-centro video {
+    max-width: 340px;
   }
 }
 
 @media (max-width: 900px) {
-  .esquerda-main {
-    padding-top: 0vh;
-  }
-  .seta-proxima {
-    bottom: 0;
-  }
-  .my-loader {
-    scale: 0.8;
-  }
-  .main-content {
+  .main {
     grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 60px;
   }
-  .image {
-    max-width: 300px;
-    min-height: initial;
+  .main-esquerda {
+    padding: 40px 0;
+    text-align: center;
+  }
+  .main-sobre .botao {
+    margin-left: auto;
+    margin-right: auto;
   }
   .main-direita {
-    justify-self: center;
-  }
-  .main-text {
-    padding-top: 0px;
-    text-align: center;
+    display: none;
   }
 }
 
 @media (max-width: 600px) {
-  .main-content {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    justify-content: center;
-    grid-template-rows: auto auto;
-  }
-  .main-text h2 {
-    display: none;
-  }
-  .main-text h3 {
-    margin-left: 0;
-  }
-  .redesMain {
-    display: none;
-  }
-  .main-direita {
-    justify-content: center;
-  }
-  .baixoMain {
-    width: auto;
-    margin-top: 30px;
-    justify-content: center;
-  }
-
-  .my-loader {
-    scale: 0.7;
-  }
-}
-
-@media (max-height: 820px) {
-  .main-bg {
-    justify-content: space-between;
-  }
-  .section-seta {
-    margin-bottom: 50px;
-  }
-  .esquerda-main {
-    height: 350px;
-  }
-}
-
-@media (max-height: 750px) {
-  .main-bg {
-    justify-content: space-between;
-  }
-  .section-seta {
-    margin-bottom: 50px;
-  }
-  .esquerda-main {
-    height: 300px;
-    display: flex;
-    align-items: center;
-  }
-  .baixoMain {
-    margin-top: 15px;
+  .main-centro video {
+    max-width: 260px;
   }
 }
