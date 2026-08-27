@@ -58,7 +58,7 @@ export default function initSkills() {
         skillIcon.innerHTML = "";
         skillIcon.appendChild(iconSVG);
         skillDescription.textContent = skills[skill].description;
-        skillScreen.style.display = "block";
+        skillScreen.style.display = "flex";
       }, 1000);
     });
   });

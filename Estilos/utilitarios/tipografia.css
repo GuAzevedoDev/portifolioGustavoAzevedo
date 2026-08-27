@@ -1,14 +1,7 @@
 .title {
-  font-family: "Poppins", sans-serif;
+  font-family: "Unbounded", sans-serif;
   font-weight: 600;
   font-size: 4rem;
-}
-
-.paragrafo {
-  font-family: "Poppins", sans-serif;
-  color: var(--cor-cinza);
-  font-size: 1rem;
-  line-height: 1.6;
 }
 
 /* Título principal (hero) */
@@ -27,14 +20,6 @@
   font-weight: 600;
   color: var(--cor-cinza);
   margin-top: 8px;
-}
-
-/* Título de seção, menor que o título principal */
-.titulo-secao {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--cor-p1);
-  margin-bottom: 12px;
 }
 
 .logo {
@@ -57,7 +42,6 @@
   color: #b4b8b5;
 }
 
-
 @media (max-width: 700px) {
   .footer-titulo {
     font-size: 0.8rem;
@@ -78,15 +62,11 @@
 }
 
 @media (max-width: 1150px) {
-  body .main-text h1 {
-    font-size: 2.8rem;
-  }
+  
   .title {
     font-size: 3rem;
   }
-  .main-text .title-full {
-    font-size: 3rem;
-  }
+  
   .projects-modal-content > p {
     font-size: 1rem;
   }
@@ -99,12 +79,8 @@
 }
 
 @media (max-width: 500px) {
-  body .main-text h1 {
-    font-size: 2.4rem;
-  }
-  .main-text .title-full {
-    font-size: 2.6rem;
-  }
+  
+  
   .title {
     font-size: 2.6rem;
   }
@@ -185,11 +161,3 @@
   }
 }
 
-@media (max-width: 400px) {
-  body .main-text h1 {
-    font-size: 2.2rem;
-  }
-  .main-text .title-full {
-    font-size: 2.4rem;
-  }
-}

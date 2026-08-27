@@ -105,6 +105,15 @@ body::before {
   transition: background 0.3s ease, gap 0.3s ease;
 }
 
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .hamburger {
+    background: var(--vidro-fundo);
+    border: 1px solid var(--vidro-borda);
+    backdrop-filter: var(--vidro-blur);
+    -webkit-backdrop-filter: var(--vidro-blur);
+  }
+}
+
 .hamburger:hover {
   background: var(--cor-p2);
 }

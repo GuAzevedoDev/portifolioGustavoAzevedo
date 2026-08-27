@@ -260,6 +260,20 @@ main::before {
   flex-shrink: 0;
 }
 
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .main-direita li {
+    background: var(--vidro-fundo);
+    border: 1px solid var(--vidro-borda);
+    backdrop-filter: var(--vidro-blur);
+    -webkit-backdrop-filter: var(--vidro-blur);
+    color: var(--cor-1);
+  }
+
+  .main-direita li::before{
+    background: var(--cor-1);
+  }
+}
+
 .main-direita li.ativo {
   opacity: 1;
 }

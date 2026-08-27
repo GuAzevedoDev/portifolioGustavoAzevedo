@@ -35,7 +35,7 @@
   z-index: 1;
 }
 
-.curso-card:hover,.hover-active {
+.curso-card:hover {
   border: var(--cor-p1) solid 1px;
   box-shadow:
     0rem 6px 13px rgba(10, 60, 255, 0.1),

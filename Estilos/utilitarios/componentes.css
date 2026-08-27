@@ -53,48 +53,6 @@
   transform: translateX(4px);
 }
 
-.btn-baixo {
-  display: flex;
-  width: 200px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  transition: 0.3s;
-  height: 50px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
-}
-
-.btn-baixo svg {
-  max-width: 35px;
-  fill: var(--cor-1);
-  position: absolute;
-  transition: 0.2s;
-  left: 15px;
-  opacity: 0;
-  background: var(--cor-p1);
-  border-radius: 50%;
-  padding: 05px;
-  transform: scale(0);
-  margin-left: -100px;
-}
-
-.btn-baixo:hover {
-  background: var(--cor-1);
-  color: var(--cor-p1);
-  width: 235px;
-  justify-content: end;
-}
-
-.btn-baixo:hover svg {
-  margin-right: 120px;
-  opacity: 1;
-  transform: scale(1);
-  margin-left: 0px;
-}
-
 .btn-normal {
   padding: 15px;
   background: var(--gradiente);
@@ -115,17 +73,9 @@
 }
 
 @media (max-width: 500px) {
-  .btn.btn-baixo {
-    width: 170px;
-    height: 45px;
-    font-size: 1rem;
-  }
-  .btn.btn-baixo:hover {
-    width: 200px;
-  }
-  .btn-baixo svg {
-    max-width: 30px;
-  }
+  
+  
+  
   .modal-btn-codigo {
     font-size: 1rem;
   }
@@ -166,7 +116,6 @@
   color: #000;
   overflow: hidden;
   background: #000;
-  transition: all 2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (max-width: 1050px) {
@@ -183,9 +132,8 @@
   border-radius: inherit;
   background: var(--cor-2);
   transform-origin: center;
-  animation: moving 4.8s linear infinite paused;
+  animation: moving 12s linear infinite paused;
   transition: all 0.88s cubic-bezier(0.23, 1, 0.32, 1);
-  background: var(--cor-2);
 }
 
 .card:hover::before {
@@ -202,7 +150,13 @@
     0rem 55px 33px rgba(10, 60, 255, 0.05),
     0rem 97px 39px rgba(10, 60, 255, 0.01),
     0rem 152px 43px rgba(10, 60, 255, 0);
-  color: #000000;
+}
+
+/* Quem desativou animacoes no sistema recebe a borda com o gradiente parado */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover::before {
+    animation: none;
+  }
 }
 
 @keyframes moving {
