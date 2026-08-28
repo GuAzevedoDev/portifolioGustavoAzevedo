@@ -1,0 +1,213 @@
+/* ============================================================
+   Página individual de projeto (/projetos/*.html).
+   Reaproveita os tokens da landing: mesma paleta, mesmos raios e
+   o mesmo ritmo vertical, para as duas páginas parecerem o mesmo
+   site. Nada aqui redefine cor ou tipografia por conta própria.
+   ============================================================ */
+
+.projeto-pagina {
+  padding-bottom: var(--espaco-secao);
+}
+
+/* ---------------- topo ---------------- */
+
+.projeto-topo {
+  padding-top: 48px;
+}
+
+/* Voltar: fica antes do título, é a primeira coisa que a pessoa
+   encontra ao chegar por link direto */
+.projeto-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--espaco-bloco);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--azul-200);
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.projeto-voltar:hover {
+  color: var(--cor-1);
+  gap: 12px;
+}
+
+.projeto-voltar svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.projeto-titulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--cor-1);
+}
+
+.projeto-subtitulo {
+  max-width: 70ch;
+  margin-top: 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--azul-200);
+}
+
+.projeto-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--espaco-bloco);
+}
+
+.projeto-meta .projeto-tags {
+  margin-right: auto;
+}
+
+/* ---------------- botões de ação ---------------- */
+
+.projeto-acao {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: var(--raio-md);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.projeto-acao svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.projeto-acao:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.projeto-acao--site {
+  background: var(--cor-p1);
+  box-shadow: none;
+}
+
+.projeto-acao--site:hover {
+  background: var(--azul-400);
+}
+
+.projeto-acao:focus-visible {
+  outline: 2px solid var(--azul-400);
+  outline-offset: 3px;
+}
+
+/* ---------------- galeria ---------------- */
+
+.projeto-galeria {
+  margin-top: var(--espaco-secao);
+  display: grid;
+  gap: 72px;
+}
+
+/* Captura à esquerda, explicação à direita. A imagem recebe a fração
+   maior porque é ela que carrega a informação; o texto acompanha. */
+.projeto-secao {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.projeto-secao-imagem {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--raio-lg);
+  background: var(--azul-800);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 40px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* A imagem manda na própria altura: são capturas de proporções
+   diferentes, e recortar cortaria o conteúdo do site */
+.projeto-secao-imagem img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.projeto-secao-texto {
+  display: grid;
+  gap: 12px;
+}
+
+.projeto-secao-titulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cor-1);
+}
+
+.projeto-secao-texto p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--azul-200);
+}
+
+/* Abaixo de 860px as duas colunas não cabem: a imagem passa a ocupar a
+   largura toda e o texto vai para baixo dela */
+@media (max-width: 860px) {
+  .projeto-galeria {
+    gap: 48px;
+  }
+
+  .projeto-secao {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ---------------- rodapé da página ---------------- */
+
+.projeto-fim {
+  margin-top: var(--espaco-secao);
+  padding-top: var(--espaco-bloco);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.projeto-fim p {
+  color: var(--azul-200);
+  opacity: 0.75;
+}
+
+@media (max-width: 600px) {
+  .projeto-topo {
+    padding-top: 32px;
+  }
+
+  .projeto-galeria {
+    gap: 28px;
+  }
+
+  .projeto-meta {
+    gap: 10px;
+  }
+
+  .projeto-acao {
+    padding: 11px 16px;
+    font-size: 0.75rem;
+  }
+}

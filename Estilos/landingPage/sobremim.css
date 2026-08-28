@@ -1,12 +1,12 @@
 .about-bg {
   min-height: 100vh;
-  margin-top: 100px;
+  margin-top: var(--espaco-secao);
   padding: 0 20px;
 }
 
-.about-bg h1 {
-  margin-bottom: 20px;
-}
+/* O respiro do título vem de h1.title (--espaco-titulo), igual ao das
+   outras seções; o 20px daqui deixava "sobre mim" e "cursos" mais
+   apertados que "projetos" e "Tecnologias". */
 
 @media (max-width: 550px) {
   .about-bg {
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: var(--raio-md);
   overflow: hidden;
 }
 
@@ -30,7 +30,7 @@
   background-color: var(--cor-1);
   height: 100%;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: var(--raio-md);
 }
 
 .about-esquerda::after,

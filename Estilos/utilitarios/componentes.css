@@ -13,12 +13,22 @@
   }
 }
 
+/* Base tipográfica de todo botão do site. Antes .botao usava Unbounded a
+   0.85rem e .btn-normal herdava Inter a 1.6rem, então o CTA do hero e o do
+   footer pareciam de projetos diferentes. */
+.btn,
+.botao,
+.btn-normal {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 .btn {
   padding: 15px;
   background: var(--cor-p1);
-  border-radius: 25px;
-  font-size: 1.25rem;
-  font-weight: bold;
+  border-radius: var(--raio-md);
 }
 
 /* Botão primário do hero (main): fundo de destaque, hover assume o
@@ -31,7 +41,7 @@
   padding: 14px 22px;
   background: var(--cor-p1);
   color: var(--cor-1);
-  border-radius: 10px;
+  border-radius: var(--raio-md);
   font-family: "Unbounded", sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
@@ -54,9 +64,13 @@
 }
 
 .btn-normal {
-  padding: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
   background: var(--gradiente);
-  border-radius: 25px;
+  color: var(--cor-1);
+  border-radius: var(--raio-md);
   transition: 0.3s;
   z-index: 1;
 }
@@ -101,7 +115,7 @@
   align-items: center;
   justify-content: center;
   padding: 2px;
-  border-radius: 24px;
+  border-radius: var(--raio-lg);
   line-height: 1.6;
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
@@ -112,7 +126,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 34px;
-  border-radius: 22px;
+  border-radius: var(--raio-lg);
   color: #000;
   overflow: hidden;
   background: #000;
@@ -206,7 +220,7 @@
   height: 20px;
   width: 20px;
   margin-right: 10px;
-  border-radius: 10px;
+  border-radius: var(--raio-md);
   background-color: #b3d4fc;
   animation: pulse 1.5s infinite ease-in-out;
 }

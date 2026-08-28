@@ -25,7 +25,11 @@
 
 @media (max-width: 550px) {
   .footer-content {
-    grid-template-columns: auto auto;
+    /* minmax(0, 1fr) em vez de auto: colunas "auto" crescem conforme o
+       conteúdo e podem passar da largura do container — em 320px a coluna
+       central estourava 8px para fora da tela. O minmax deixa as colunas
+       encolherem até caber. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     height: initial;
     gap: 50px 10px;
   }
@@ -287,4 +291,26 @@ source {
 .footer-esquerda a:hover::after,
 .footer-direita a:hover::after {
   width: 100%;
+}
+
+/* Guardas de responsividade: nada dentro do footer pode ultrapassar a
+   largura da própria coluna. Não altera o layout em nenhuma largura em
+   que ele já cabia. */
+.footer-content,
+.footer-esquerda,
+.footer-direita,
+.footer-centro,
+.footer-centro > div {
+  min-width: 0;
+}
+
+.footer-centro img {
+  max-width: 100%;
+}
+
+@media (max-width: 360px) {
+  .footer-centro .btn-normal {
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
 }

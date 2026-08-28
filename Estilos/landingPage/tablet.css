@@ -17,27 +17,18 @@
   position: relative;
 }
 
-/* Mesma largura e altura de antes do redesign */
+/* A altura era fixa em degraus (750/650/600px), então num iPad em retrato
+   o aparelho ficava quase quadrado - 650px de altura para ~810px de
+   largura. Agora acompanha a largura de forma contínua, com piso para o
+   conteúdo interno (barra, relógio, apps e dock) continuar cabendo. */
 .phone {
   width: 100%;
-  height: 750px;
+  height: clamp(440px, 54vw, 750px);
   margin: 0 auto;
   position: relative;
   transform-style: preserve-3d;
   transform: rotateX(30deg) scale(0.6);
   transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (max-width: 1280px) {
-  .phone {
-    height: 650px;
-  }
-}
-
-@media (max-width: 500px) {
-  .phone {
-    height: 600px;
-  }
 }
 
 .cardTablet:hover .phone,
@@ -174,13 +165,19 @@
 }
 
 .head .h-right span {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   margin: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.85;
+  color: var(--tinta);
+  opacity: 0.9;
+}
+
+/* A bateria é deitada (viewBox 26x16); num quadrado de 15px ela achataria */
+.head .h-right .battery {
+  width: 24px;
 }
 
 .logo-head {
@@ -225,15 +222,24 @@
 
 /* ---------------- grade de apps ---------------- */
 
+/* Flex em vez de grid porque as categorias têm de 2 a 4 apps: numa grade de
+   4 colunas fixas, uma categoria com 2 itens encostaria à esquerda, com duas
+   células vazias à direita. Com flex, qualquer quantidade fica centralizada. */
 .front .home {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, auto);
-  column-gap: 10px;
-  row-gap: 34px;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   align-content: center;
+  column-gap: 28px;
+  row-gap: 34px;
   padding: 10px 6% 0;
+}
+
+/* Só a categoria escolhida no dock aparece. O seletor precisa do [hidden]
+   junto pra vencer o display:flex do próprio .app */
+.front .home .app[hidden] {
+  display: none;
 }
 
 .front .home .app {
@@ -299,16 +305,66 @@
 
 .front .home2 {
   display: flex;
+  /* O dock é <div class="home home2">, então herdava o flex-wrap:wrap da
+     grade de apps e quebrava a última aba para uma segunda linha no
+     celular. As abas devem ficar sempre numa fila só. */
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 4px;
   width: fit-content;
   justify-self: center;
   margin: 22px 0 0;
-  padding: 10px 16px;
-  border-radius: 26px;
+  padding: 5px 6px;
+  border-radius: var(--raio-xl);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Abas de categoria. Ocupam o dock, que antes só tinha um ícone decorativo */
+.dock-aba {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.62);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  padding: 7px 15px;
+  border-radius: var(--raio-pill);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.dock-aba:hover {
+  color: #fff;
+}
+
+.dock-aba.ativo {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.dock-aba:focus-visible {
+  outline: 2px solid var(--cor-p1);
+  outline-offset: 2px;
+}
+
+/* "Banco de dados" não cabe no dock em tela estreita: cada aba carrega os
+   dois rótulos e o CSS escolhe qual mostrar */
+.dock-aba-curto {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock-aba {
+    transition: none;
+  }
 }
 
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
@@ -352,7 +408,7 @@
   width: 132px;
   height: 5px;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--raio-pill);
   background: rgba(255, 255, 255, 0.45);
 }
 
@@ -456,10 +512,10 @@
   padding: 11px 26px;
   border: none;
   /* pílula: o raio dos botões do iPadOS */
-  border-radius: 999px;
+  border-radius: var(--raio-pill);
   background: var(--cor-p1);
   font-family: "Inter", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #fff;
   cursor: pointer;
@@ -496,6 +552,24 @@
 }
 
 @media (max-width: 700px) {
+  .dock-aba-longo {
+    display: none;
+  }
+
+  .dock-aba-curto {
+    display: inline;
+  }
+
+  .dock-aba {
+    font-size: 0.7rem;
+    padding: 6px 9px;
+  }
+
+  .front .home2 {
+    gap: 2px;
+    padding: 4px 5px;
+  }
+
   .cardTablet {
     --bezel: 12px;
     --raio-corpo: 26px;
@@ -503,7 +577,7 @@
   }
 
   .front .home {
-    grid-template-columns: repeat(4, 1fr);
+    column-gap: 18px;
     row-gap: 28px;
     padding: 6px 4% 0;
   }
@@ -549,7 +623,7 @@
 
 @media (max-width: 500px) {
   .front .home {
-    grid-template-columns: repeat(3, 1fr);
+    column-gap: 14px;
   }
 
   .front .home2 {
@@ -574,5 +648,19 @@
     margin-top: 18px;
     padding: 9px 20px;
     font-size: 0.8rem;
+  }
+}
+
+/* Celulares estreitos: 5 abas numa fila só exigem tipografia menor */
+@media (max-width: 420px) {
+  .dock-aba {
+    font-size: 0.62rem;
+    padding: 6px 7px;
+    letter-spacing: 0;
+  }
+
+  .front .home2 {
+    gap: 1px;
+    padding: 4px;
   }
 }

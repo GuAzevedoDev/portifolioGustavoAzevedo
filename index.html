@@ -33,7 +33,7 @@
   <link rel="icon" href="./imagens/favicon.png" type="image/png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./Estilos/style.css">
+  <link rel="stylesheet" href="./Estilos/style.min.css">
 
   <!-- JS -->
   <script type="module" src="./Javascript/script.js"></script>
@@ -143,7 +143,7 @@
       <div class="main-esquerda">
         <div class="main-introducao">
           <h1 class="titulo">Gustavo</h1>
-          <h2 class="subtitulo">Full-Stack & Mobile</h2>
+          <h2 class="subtitulo">Back-end & Mobile</h2>
         </div>
 
         <div class="main-sobre">
@@ -156,7 +156,27 @@
         </div>
       </div>
       <div class="main-centro">
-        <video src="imagens/main/rubiks-cube.webm" loop muted playsinline aria-hidden="true"></video>
+        <!-- O mp4 (opaco) fica no HTML porque toca em qualquer navegador. O
+             webm tem canal alpha e dispensa fundo, mas o Safari lê VP9 e
+             ignora o alpha, pintando o fundo de preto - por isso quem troca
+             pro webm é o JS, só onde a transparência funciona de verdade.
+             preload="none" garante que nada baixa antes dessa decisão. -->
+        <video
+          poster="imagens/main/cube/cubo_azul_chamativo/cubo_azul_chamativo_poster.webp"
+          data-webm="imagens/main/cube/cubo_azul_chamativo/cubo_azul_chamativo.webm"
+          width="1100"
+          height="1100"
+          preload="none"
+          loop
+          muted
+          playsinline
+          aria-hidden="true"
+        >
+          <source
+            src="imagens/main/cube/cubo_azul_chamativo/cubo_azul_chamativo.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
       <ul class="main-direita">
         <li>Python</li>
@@ -263,93 +283,61 @@
     <div class="projetos-content">
       <h1 class="title cor-1 container" id="projeto-title">projetos<span class="cor-p1">.</span></h1>
 
-      <div class="carrossel-container">
-        <button class="btn-seta esquerda" aria-label="Projeto anterior"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </g>
-          </svg></button>
+      <ul class="projetos-grid container">
+          <li class="projeto-card">
+            <a href="projetos/bikcraft.html" class="projeto-abrir">
+              <span class="sr-only">Ver detalhes de Bikcraft</span>
+            </a>
 
-        <ul class="carrossel">
-          <li class="ativo-carrossel" data-imagens="bikcraft.png,bikcraftBikes.png,bikcraftEscolhe.png,bikcraftBike.png,bikcraftBikesPage.png" data-descricao="O Bikcraft é um site moderno e responsivo desenvolvido para apresentar uma linha de bicicletas elétricas premium. O projeto destaca o design limpo, navegação intuitiva e foco na experiência do usuário. Foi construído com HTML, CSS e JavaScript puro, seguindo boas práticas de acessibilidade e SEO. A página “Bicicletas” apresenta os modelos disponíveis, cada um com seus diferenciais, preço e botões de ação, simulando um catálogo real de e-commerce." data-codigo="https://github.com/GuAzevedoDev/bikcraft" data-projeto="https://guazevedodev.github.io/bikcraft/">
-            <img src="imagens/projetos/bikcraft.png" alt="">
-            <div class="descricao-projetos">
-              <h2 class="cor-1">Bikcraft</h2>
-              <div class="linguagens-lst cor-1">
-                <div class="linguagem-item">HTML</div>
-                <div class="linguagem-item">CSS</div>
-                <div class="linguagem-item">JS</div>
-              </div>
+            <div class="projeto-capa">
+              <img src="imagens/projetos/bikcraft.png" alt="Tela inicial do projeto Bikcraft" loading="lazy" />
+            </div>
+
+            <div class="projeto-info">
+              <h3 class="projeto-nome">Bikcraft</h3>
+              <p class="projeto-resumo">O Bikcraft é um site moderno e responsivo desenvolvido para apresentar uma linha de bicicletas elétricas premium.</p>
+
+              <ul class="projeto-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JS</li>
+              </ul>
+            </div>
+
+            <div class="projeto-rodape">
+              <span class="projeto-detalhes">Ver projeto</span>
+              <a href="https://github.com/GuAzevedoDev/bikcraft" target="_blank" rel="noopener" class="projeto-mini">GitHub</a>
+              <a href="https://guazevedodev.github.io/bikcraft/" target="_blank" rel="noopener" class="projeto-mini">Site</a>
             </div>
           </li>
 
-          <li class="ativo-carrossel" data-imagens="ciaDasTortasHeader.png,ciaDasTortasChefe.png,ciaDasTortasParceria.png,ciaDasTortasFeed.png,ciaDasTortasMenu.png" data-descricao="O Cia Das Tortas é um site moderno e responsivo desenvolvido para apresentar uma linha de doces premium. O projeto destaca o design limpo, navegação intuitiva e foco na experiência do usuário. Foi construído com HTML, CSS e JavaScript puro, seguindo boas práticas de acessibilidade e SEO." data-codigo="https://github.com/GuAzevedoDev/CiaDasTortas" data-projeto="https://guazevedodev.github.io/CiaDasTortas/">
-            <img src="imagens/projetos/ciaDasTortasHeader.png" alt="">
-            <div class="descricao-projetos">
-              <h2 class="cor-1">Cia Das Tortas</h2>
-              <div class="linguagens-lst cor-1">
-                <div class="linguagem-item">HTML</div>
-                <div class="linguagem-item">CSS</div>
-                <div class="linguagem-item">JS</div>
-              </div>
+          <li class="projeto-card">
+            <a href="projetos/cia-das-tortas.html" class="projeto-abrir">
+              <span class="sr-only">Ver detalhes de Cia Das Tortas</span>
+            </a>
+
+            <div class="projeto-capa">
+              <img src="imagens/projetos/ciaDasTortasHeader.png" alt="Tela inicial do projeto Cia Das Tortas" loading="lazy" />
+            </div>
+
+            <div class="projeto-info">
+              <h3 class="projeto-nome">Cia Das Tortas</h3>
+              <p class="projeto-resumo">O Cia Das Tortas é um site moderno e responsivo desenvolvido para apresentar uma linha de doces premium.</p>
+
+              <ul class="projeto-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JS</li>
+              </ul>
+            </div>
+
+            <div class="projeto-rodape">
+              <span class="projeto-detalhes">Ver projeto</span>
+              <a href="https://github.com/GuAzevedoDev/CiaDasTortas" target="_blank" rel="noopener" class="projeto-mini">GitHub</a>
+              <a href="https://guazevedodev.github.io/CiaDasTortas/" target="_blank" rel="noopener" class="projeto-mini">Site</a>
             </div>
           </li>
-        </ul>
-
-        <button class="btn-seta direita" aria-label="Projeto anterior"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </g>
-          </svg></button>
-      </div>
-    </div>
-    <div class="projects-modal">
-      <div class="projects-modal-content">
-        <div class="projects-modal-cima">
-          <p id="fechar-modal-projetos">&times;</p>
-        </div>
-
-        <div class="carrossel-content">
-          <ul class="images-projects"></ul>
-        </div>
-
-        <p id="descricao-modal"></p>
-
-        <div class="btns-modal">
-          <a href="#" class="btn modal-btn-codigo" target="_blank">Ver Código
-            <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradIcon" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style="stop-color:#00c6ff;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:var(--cor-p1);stop-opacity:1" />
-                </linearGradient>
-              </defs>
-              <g id="SVGRepo_iconCarrier">
-                <path d="M4.0744 2.9938C4.13263 1.96371 4.37869 1.51577 5.08432 1.15606C5.84357 0.768899 7.04106 0.949072 8.45014 1.66261C9.05706 1.97009 9.11886 1.97635 10.1825 1.83998C11.5963 1.65865 13.4164 1.65929 14.7213 1.84164C15.7081 1.97954 15.7729 1.97265 16.3813 1.66453C18.3814 0.651679 19.9605 0.71795 20.5323 1.8387C20.8177 2.39812 20.8707 3.84971 20.6494 5.04695C20.5267 5.71069 20.5397 5.79356 20.8353 6.22912C22.915 9.29385 21.4165 14.2616 17.8528 16.1155C17.5801 16.2574 17.3503 16.3452 17.163 16.4167C16.5879 16.6363 16.4133 16.703 16.6247 17.7138C16.7265 18.2 16.8491 19.4088 16.8973 20.4002C16.9844 22.1922 16.9831 22.2047 16.6688 22.5703C16.241 23.0676 15.6244 23.076 15.2066 22.5902C14.9341 22.2734 14.9075 22.1238 14.9075 20.9015C14.9075 19.0952 14.7095 17.8946 14.2417 16.8658C13.6854 15.6415 14.0978 15.185 15.37 14.9114C17.1383 14.531 18.5194 13.4397 19.2892 11.8146C20.0211 10.2698 20.1314 8.13501 18.8082 6.83668C18.4319 6.3895 18.4057 5.98446 18.6744 4.76309C18.7748 4.3066 18.859 3.71768 18.8615 3.45425C18.8653 3.03823 18.8274 2.97541 18.5719 2.97541C18.4102 2.97541 17.7924 3.21062 17.1992 3.49805L16.2524 3.95695C16.1663 3.99866 16.07 4.0147 15.975 4.0038C13.5675 3.72746 11.2799 3.72319 8.86062 4.00488C8.76526 4.01598 8.66853 3.99994 8.58215 3.95802L7.63585 3.49882C7.04259 3.21087 6.42482 2.97541 6.26317 2.97541C5.88941 2.97541 5.88379 3.25135 6.22447 4.89078C6.43258 5.89203 6.57262 6.11513 5.97101 6.91572C5.06925 8.11576 4.844 9.60592 5.32757 11.1716C5.93704 13.1446 7.4295 14.4775 9.52773 14.9222C10.7926 15.1903 11.1232 15.5401 10.6402 16.9905C10.26 18.1319 10.0196 18.4261 9.46707 18.4261C8.72365 18.4261 8.25796 17.7821 8.51424 17.1082C8.62712 16.8112 8.59354 16.7795 7.89711 16.5255C5.77117 15.7504 4.14514 14.0131 3.40172 11.7223C2.82711 9.95184 3.07994 7.64739 4.00175 6.25453C4.31561 5.78028 4.32047 5.74006 4.174 4.83217C4.09113 4.31822 4.04631 3.49103 4.0744 2.9938Z" fill="url(#gradIcon)"></path>
-                <path d="M3.33203 15.9454C3.02568 15.4859 2.40481 15.3617 1.94528 15.6681C1.48576 15.9744 1.36158 16.5953 1.66793 17.0548C1.8941 17.3941 2.16467 17.6728 2.39444 17.9025C2.4368 17.9449 2.47796 17.9858 2.51815 18.0257C2.71062 18.2169 2.88056 18.3857 3.05124 18.5861C3.42875 19.0292 3.80536 19.626 4.0194 20.6962C4.11474 21.1729 4.45739 21.4297 4.64725 21.5419C4.85315 21.6635 5.07812 21.7352 5.26325 21.7819C5.64196 21.8774 6.10169 21.927 6.53799 21.9559C7.01695 21.9877 7.53592 21.998 7.99999 22.0008C8.00033 22.5527 8.44791 23.0001 8.99998 23.0001C9.55227 23.0001 9.99998 22.5524 9.99998 22.0001V21.0001C9.99998 20.4478 9.55227 20.0001 8.99998 20.0001C8.90571 20.0001 8.80372 20.0004 8.69569 20.0008C8.10883 20.0026 7.34388 20.0049 6.67018 19.9603C6.34531 19.9388 6.07825 19.9083 5.88241 19.871C5.58083 18.6871 5.09362 17.8994 4.57373 17.2891C4.34391 17.0194 4.10593 16.7834 3.91236 16.5914C3.87612 16.5555 3.84144 16.5211 3.80865 16.4883C3.5853 16.265 3.4392 16.1062 3.33203 15.9454Z" fill="url(#gradIcon)"></path>
-              </g>
-            </svg>
-          </a>
-          <a href="#" class="btn modal-btn-projeto" target="_blank">Ver Projeto
-            <svg width="64px" height="64px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_iconCarrier">
-                <title>open-external</title>
-                <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
-                  <g id="icon" transform="translate(85.333333, 64.000000)">
-                    <path d="M128,63.999444 L128,106.666444 L42.6666667,106.666667 L42.6666667,320 L256,320 L256,234.666444 L298.666,234.666444 L298.666667,362.666667 L4.26325641e-14,362.666667 L4.26325641e-14,64 L128,63.999444 Z M362.666667,1.42108547e-14 L362.666667,170.666667 L320,170.666667 L320,72.835 L143.084945,249.751611 L112.915055,219.581722 L289.83,42.666 L192,42.6666667 L192,1.42108547e-14 L362.666667,1.42108547e-14 Z" id="Combined-Shape"> </path>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </a>
-        </div>
-      </div>
+      </ul>
     </div>
   </article>
 
@@ -362,34 +350,9 @@
             <div class="head">
               <div class="h-left">Gustavo</div>
               <div class="h-right">
-                <span class="wifi"><svg stroke="#ffffff" xml:space="preserve" viewBox="0 0 365.892 365.892" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" width="200px" height="200px" fill="#ffffff" class="logo-head">
-                    <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
-                    <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <g>
-                        <circle r="41.494" cy="286.681" cx="182.945"></circle>
-                        <path d="M182.946,176.029c-35.658,0-69.337,17.345-90.09,46.398c-5.921,8.288-4.001,19.806,4.286,25.726 c3.249,2.321,6.994,3.438,10.704,3.438c5.754,0,11.423-2.686,15.021-7.724c13.846-19.383,36.305-30.954,60.078-30.954 c23.775,0,46.233,11.571,60.077,30.953c5.919,8.286,17.437,10.209,25.726,4.288c8.288-5.92,10.208-17.438,4.288-25.726 C252.285,193.373,218.606,176.029,182.946,176.029z"></path>
-                        <path d="M182.946,106.873c-50.938,0-99.694,21.749-133.77,59.67c-6.807,7.576-6.185,19.236,1.392,26.044 c3.523,3.166,7.929,4.725,12.32,4.725c5.051-0.001,10.082-2.063,13.723-6.116c27.091-30.148,65.849-47.439,106.336-47.439 s79.246,17.291,106.338,47.438c6.808,7.576,18.468,8.198,26.043,1.391c7.576-6.808,8.198-18.468,1.391-26.043 C282.641,128.621,233.883,106.873,182.946,106.873z"></path>
-                        <path d="M360.611,112.293c-47.209-48.092-110.305-74.577-177.665-74.577c-67.357,0-130.453,26.485-177.664,74.579 c-7.135,7.269-7.027,18.944,0.241,26.079c3.59,3.524,8.255,5.282,12.918,5.281c4.776,0,9.551-1.845,13.161-5.522 c40.22-40.971,93.968-63.534,151.344-63.534c57.379,0,111.127,22.563,151.343,63.532c7.136,7.269,18.812,7.376,26.08,0.242 C367.637,131.238,367.745,119.562,360.611,112.293z"></path>
-                      </g>
-                    </g>
-                  </svg></span>
-                <span class="network"><svg stroke-width="0.00016" stroke="#000000" fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.00 16.00" class="logo-head">
-                    <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
-                    <g stroke-width="0.032" stroke="#CCCCCC" stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path fill="#ffffff" d="m 13 1 c -0.554688 0 -1 0.445312 -1 1 v 12 c 0 0.554688 0.445312 1 1 1 h 1 c 0.554688 0 1 -0.445312 1 -1 v -12 c 0 -0.554688 -0.445312 -1 -1 -1 z m -4 3 c -0.554688 0 -1 0.445312 -1 1 v 9 c 0 0.554688 0.445312 1 1 1 h 1 c 0.554688 0 1 -0.445312 1 -1 v -9 c 0 -0.554688 -0.445312 -1 -1 -1 z m -4 3 c -0.554688 0 -1 0.445312 -1 1 v 6 c 0 0.554688 0.445312 1 1 1 h 1 c 0.554688 0 1 -0.445312 1 -1 v -6 c 0 -0.554688 -0.445312 -1 -1 -1 z m -4 3 c -0.554688 0 -1 0.445312 -1 1 v 3 c 0 0.554688 0.445312 1 1 1 h 1 c 0.554688 0 1 -0.445312 1 -1 v -3 c 0 -0.554688 -0.445312 -1 -1 -1 z m 0 0"></path>
-                    </g>
-                  </svg></span>
-                <span class="battery"><svg transform="matrix(-1, 0, 0, 1, 0, 0)" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="1 10 20 5" class="logo-head">
-                    <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
-                    <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path fill="none" d="M24,0V24H0V0Z"></path>
-                      <path fill-opacity="0.3" d="M20,10V8.33A1.34,1.34,0,0,0,18.67,7H8V17H18.67A1.34,1.34,0,0,0,20,15.67V14h2V10Z"></path>
-                      <path d="M3.33,17H8V7H3.34A1.34,1.34,0,0,0,2,8.33v7.33A1.34,1.34,0,0,0,3.33,17Z"></path>
-                    </g>
-                  </svg></span>
+                <span class="wifi"><svg class="logo-head" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 12.4a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6Z"/><path d="M8 8.3c-1.28 0-2.45.5-3.32 1.32a.62.62 0 0 0 .85.9A3.55 3.55 0 0 1 8 9.55c.96 0 1.83.37 2.47.97a.62.62 0 1 0 .85-.9A4.79 4.79 0 0 0 8 8.3Z"/><path d="M8 4.6c-2.3 0-4.4.9-5.94 2.37a.62.62 0 1 0 .86.9A7.3 7.3 0 0 1 8 5.85c2 0 3.82.78 5.08 2.02a.62.62 0 1 0 .86-.9A8.55 8.55 0 0 0 8 4.6Z"/></svg></span>
+                <span class="network"><svg class="logo-head" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="9.5" width="2.6" height="3.5" rx="0.8"/><rect x="5.1" y="7.2" width="2.6" height="5.8" rx="0.8"/><rect x="9.2" y="4.9" width="2.6" height="8.1" rx="0.8"/><rect x="13.3" y="2.6" width="2.6" height="10.4" rx="0.8" opacity="0.35"/></svg></span>
+                <span class="battery"><svg class="logo-head" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.6" y="3.6" width="21" height="9.4" rx="3" stroke="currentColor" stroke-width="1.1" opacity="0.45"/><rect x="2.3" y="5.3" width="13.5" height="6" rx="1.8" fill="currentColor"/><path d="M23.2 6.6c.9.35 1.5 1.1 1.5 1.7 0 .6-.6 1.35-1.5 1.7V6.6Z" fill="currentColor" opacity="0.45"/></svg></span>
               </div>
             </div>
 
@@ -400,19 +363,7 @@
             </div>
 
             <div class="home">
-              <span class="app" id="html-tablet" data-skill="HTML">
-                <span>HTML</span>
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path d="M6 28L4 3H28L26 28L16 31L6 28Z" fill="#E44D26"></path>
-                    <path d="M26 5H16V29.5L24 27L26 5Z" fill="#F16529"></path>
-                    <path d="M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z" fill="white"></path>
-                  </g>
-                </svg>
-              </span>
-              <span class="app" id="python-tablet" data-skill="python">
+              <span class="app" id="python-tablet" data-skill="python" data-cat="backend">
                 <span>PYTHON</span>
                 <svg width="64px" height="64px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -433,7 +384,11 @@
                   </g>
                 </svg>
               </span>
-              <span class="app" id="js-tablet" data-skill="JavaScript">
+              <span class="app" id="flask-tablet" data-skill="flask" data-cat="backend">
+                <span>FLASK</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#ffffff" d="M44.44 100.63c-4.23-3.33-8.74-6.52-11.83-11.01-6.49-7.92-11.49-17.1-14.9-26.74-2.07-6.27-2.77-12.99-5.44-19.02-2.78-4.38.48-9.16 5.27-10.55 2.13-.41 5.89-2.43 1.36-.98-4.06 2.98-4.45-2.71-.29-3.07 2.84-.38 3.89-2.7 2.92-4.8-3.05-1.99 7.4-4.18 2.14-7.15-5.48-5.91 7.66-7.05 4.42-.33-.77 5.16 9.18-.95 6.87 5.01 2.35 2.86 8.8.65 8.63 4.67 3.42.24 4.6 3.11 7.8 3.33 3.33 1.5 9.36 2.69 10.49 6.44-3.3 2.61-10.95-5.4-11.31 1.84 1 10.69.74 21.7 4.65 31.88 1.85 6.16 6.33 11.01 10.38 15.81 3.88 4.7 9.12 8.01 14.48 10.8 4.69 2.21 9.75 3.68 14.87 4.6 2.07-1.59 5.74-7.48 8.97-5 .16 2.8-6.42 5.84-.31 5.54 3.59-1.08 6.08 2.77 9.04-.71 2.72 3.23 11.32-2.06 9.38 4.53-2.62 1.69-6.44.67-9.07 3-4.33-2.16-7.77 1.93-12.56 1.42-5.32.95-10.73 1.34-16.13 1.34-8.85-.7-17.89-.99-26.3-4.07-4.74-1.38-9.37-4.08-13.53-6.78zm7.47 3.24c4.63 2 9.16 4.11 14.23 4.75 8.05 1.12 16.37 2.84 24.45 1.27-3.66-1.65-7.44.64-11.08-1.18-4.37.94-9.06-.24-13.5-.82-5.05-2.25-10.5-3.8-15.23-6.72-5.91-2.16 3.06 2.77 4.65 3.17 3.69 2.1-4.06-1.08-5.16-1.95-3.09-1.74-3.49-1.37-.31.39.64.37 1.28.77 1.95 1.09zm-8.81-6.23c4.49 1.66-.02-3.16-2.07-2.88-.91-1.58-3.48-2.58-1.67-3.43-3.26 1.13-3.42-4.3-4.95-3.53-3.45-1.09-1.34-4.95-5.45-7.32-.37-2.5-4.08-4.66-5.26-8.43-.52-1.93-4.19-7.46-1.94-2.31 1.92 4.96 5.29 9.21 8.1 13.45 2.18 4.04 4.76 8.26 8.72 10.78 1.34 1.3 2.63 3.27 4.52 3.67zM30.17 83.45c.16-.68.82 1.46 0 0zm18.3 16.18c1-.44-1.43-.56 0 0zm2.44.89c-.25-1.23-1.11.69 0 0zm3.05 1.27c1.45-1.38-2.24-.87 0 0zm5.22 2.91c.89-1.3-2.82-.49 0 0zm-10.03-6.99c2.25-1.46-2.91-.02 0 0zm2.29 1.14c-.07-.77-.82.34 0 0zm11.43 7.13c1.84 1.16 10.73 2.54 5.16.48-.93.2-10.33-2.66-5.16-.48zM44.72 91.85c-.18-.77-2.85-.85 0 0zm5.32 3.1c1.39-.96-2.87-.74 0 0zm4.48 2.75c1.98-.75-3.23-.75 0 0zm-11.97-8.21c2.16 1.65 8.7.21 3.3-.99-2.45-1.31-7.99-2.2-4.22.79l.92.2zm15 9.16c.9-1.53-3.77-.88 0 0zm-4.56-3.63c5.27 1.49-4.43-3.34-1.3-.55l.7.32.6.23zm9.14 5.28c4.99.05-4.51-.68 0 0zm-21.5-13.7c-.19-.93-1.23.08 0 0zm29.94 18.44c.14-1.68-1.62 1.25 0 0zM49.15 91.82c-.3-.88-1.56-.04 0 0zm-8.04-5.8c2.86-.17-3.93-1.26 0 0zm-9.54-6.16c-.36-1.38-3.12-2.47 0 0zM56.6 95.74c-.52-.6-.25.13 0 0zm15.58 9.56c-.05-.91-.85.35 0 0zM55.22 94.32c.28-1.18-2.44-.36 0 0zm-11.6-7.36c2.13-.23-3.42-1.44 0 0zm19.63 12.2c3.32-1.32-3.24-.64 0 0zm-10.21-6.93c3.83.49-4.56-2.61-.84-.28l.84.28zm13.31 8.19c3.58-2.14 2.4 5.01 6.07.6 3.62-2.64-3.13 3.27 1.33.47 3.23-2.16 7.99 1.02 11 2.06 2.16-.11 4.27 1.87 6.49.67 4.27-1.15-8.36-1.71-5.05-3.75-3.91 1.14-6.8-1.36-8.72-3.86-4.39-1.01-9.46-3.25-11.65-7.14-.89-1.46 1.29.21-.77-2.18-2.64-2.35-3.96-5.02-5.73-7.88-2.12-1.13-2.37-4.46-2.58-.11.02-2.74-2.56-4.59-3.19-3.82-.01-2.64 2.76-1.32.82-3.27-.42-2.74-1.79-5.59-2.2-8.68-.64-1.49-.09-4.68-2.19-1.31-.76 3.57-.25-4.38.94-1.76 1.56-2.67-.56-2.36-.65-1.99 1.02-2.26.64-5.46-.27-4.24.54-2.39.86-8.8-.81-7.66 1.01-2.5 1.92-11.44-2.47-8.03-1.78.03-4.85.64-6.31 1.37 4.56 2.51-.46.91-2.32.51-.24 2.33-2.08 1.32-4.38 1.34 3.67.45-1.79 3.75-3.89 2.47-2.74 1.31 2.36 4.57.05 5.58.28 1.52-4.19-.55-3.84 2.96-2.65-1.12-.36 4.16.96 2.38 4.51 1.22 3.18 4.01 3.29 6.65-.74 1.54-3.63-3.62-.64-3.38-2.36-3.83-2.61-1.38-4.56.39-.45.13 4.99 2.53 1.57 3.72 3.01.47 3.1 3.1 3.71 4.76 1.81 1.88 1.44-2.08 3.6.18-1.37-2.02-7.25-5.68-2.52-4.51-.03-2.03-.86-3.67.6-3.63 1.44-2.6-1.51 6.42 1.73 3.11.9-.39 1.12-2.6 2.73.21 2.34 2.3.85 3.97-2.46 1.86.59 2.01 4.42 2.72 3.7 5.86.76 2.76 1.83 1.74 2.76 1.58.73 2.68 1.14.71 1.18-.57 3.34.72 2.56 2.69 3.6 4.07 2.3 1.04-3.29-7.04.66-2.43 4.16 3.75 1.56 5.32-2.17 4.72 2.36-.19 3.12 3.19 6.07 3.07 2.69 1.28 4.52 6.2-.12 4.15-1.61-1.45-7.31-3.24-2.65-.48 4.3 1.99 7.71 3.18 11.86 5.68 2.96 2.12 4.25 4.54 5.37 5.02-2.49 1.19-7.51-.95-3.78-1.61-2.33-.42-4.94-1.6-2.71 1.3 1.89 1.58 6.71 1.42 7.58 1.59-.73 1.61-1.99 1.74.03 1.86-2.25 1.22.72 1.41.93 2.1zm-4.6-13c-1.37-1.43-1.72-4.11-.24-1.78.75.3 2.43 4.38.24 1.78zm14.99 9.52c.85-.06.02.65 0 0zM59.59 83.91c-.06-2.17.49 1.67 0 0zM58.1 81.9c-1.73-3.32 2.17.95 0 0zM40.04 69.44c1.01-.27.5 1.73 0 0zm14.37 7.79c.62-2.33.73 1.96 0 0zm-10.15-7.06c-.71-1.29 1.5 1.21 0 0zm8.71 2.79c-1.63-3.65 1.16-2 .36.6l-.36-.6zM37.95 62.95c-.73-1.2-1.93-4.72-1.55-5.79.35 1.75 3.72 7.53 1.65 2.39-2.28-4.3 2.73 1.4 3.25 2.47.24 1.07-1.41-.29-.29 2.21-2.04-2.85-1.2 1.58-3.06-1.28zm-4.64-3.2c.19-2.79 1.06 1.91 0 0zm2.08.72c1-2.11 1.69 2.93 0 0zm-5.02-3.89c-1.73-1.72-2.98-3.3.08-1.07 1.18.05-2.62-3.6.28-1.16 3.06.56 1.51 5.01-.36 2.23zm2.64-.07c1-.99.53.98 0 0zm1.62.52c-1.52-2.85 1.85 1.2 0 0zm-3.22-3.08c-5.02-4.47 6.31 2.34.82.83l-.82-.83zm14.39 8.36c-2.18-1.3-.58-9.18.16-3.79 2.11-.68-.12 2.78 1.46 2.75-.24 2.18-.95 2.97-1.62 1.04zm5.33 3.15c.21-2.38.45 1.62 0 0zm-.93-.92c.24-1.01.03 1.2 0 0zM32.39 52.48c-3.23-4.45 9.38 4.51 2.07 1.13-.77-.21-1.69-.28-2.07-1.13zm10.26 5.43c-.31-3.75.68.62 0 0zm7.78 5c.6-2.14.05 1.41 0 0zM32.89 50.78c1.92-.41 7.95 3.37 2.41 1.08-.62-.69-1.93-.38-2.41-1.08zm16.47 8.21c.2-3.84 1.15-2.29.01.55l-.01-.55zm-15.05-9.55c.78-1.15-2.08-5.18.41-1.45 1.08.85 3.11 1.43 1.31 1.79 2.84 2.5-.68.68-1.72-.34zm14.24 8.35c.54-4.37.47 2.56 0 0zM32.68 45.41c.6-.26.32.79 0 0zm3.71 2.21c.96-2.01 1.77 2.23 0 0zm10.47 5.82c0-.77.2 1.12 0 0zm-.6-1.34c-1.45-3.59 1.35 1.9 0 0zm-.89-2.35c-.25-1.48.83 1.86 0 0zm1.45-2.36c-1-1.76 1.26-7.75 1.51-4.03-1.05 2.89-.3 4.51.43.63 1.36-3.06-.29 6.02-1.94 3.4zm1.49-8.91c.44-.53.1.65 0 0zM45.82 87.6c-.59-.52.07.33 0 0zm5.13 2.6c2.86.74 2.84-.44.26-.79-1.39-1.29-5.77-2.66-1.85-.16.27.65 1.09.63 1.59.95zm-10.14-6.74c1.57 1.18 5.93 3.32 2.24.45 1.24-1.44-2.38-2.21-1.18-3.18-3.06-1.87-2.41-1.7-.27-1.64-3.67-1.64.53-1.52.33-2.36-1.42-.28-7.03-2.5-3.73.18-3.36-1.71-.8.64-1.82.39-3.44-.94 3.06 2.62-.54 1.73 1.97 1.56 5.3 4 .83 1.65-.57.85 3.21 2.14 4.14 2.78zm5.37 3.09c6.53 2.1-3.2-2.58 0 0zm27.5 16.65c.08-1.3-.9 1.11 0 0zm2.82 1.19c1.51-1.46.06 2.33 2.5-.36.03-1.92-.07-3.06-2.8-.72-.75.42-1.09 2.19.3 1.08zM31.65 76.22c-.47-1.82-3.25-1.81 0 0zm3.01 1.98c-1.12-1.86-4-1.68 0 0zm17.17 10.35c1.68 1.49 7.7 1.09 2.03.18-.83-1.24-5.32-.94-2.03-.18zm23.6 14.57c2.57-2.16-2.5.97 0 0zm5.36 3.69c.02-.69-1.11.3 0 0zm.01-.97c2.86-3.03-2.77.18 0 0zM24.22 70.01c-2.43-3.47-1.51-5.03-3.86-7.87-.45-2.17-4.03-7.09-1.85-1.88 1.99 3.05 2.58 7.77 5.71 9.75zm55.68 34.87c5.26-3.4-2.15-1.48 0 0zm4.01 1.57c2.64-2.26-1.66-.47 0 0zM30.75 72.38c.76-1.12-1.94-.14 0 0zm52.33 32.99c2.55-1.64-.59-1.39-.46.15l.46-.15zM48.5 83.58c-.09-1.11-1.35.09 0 0zm2.14 1.23c-.69-1.38-1.05.21 0 0zm36.53 21.67c3.27-2.36-1.98-.45-.68.45l.68-.45zm-1.26-.6c2.67-2.23-2.8.99 0 0zm6.39 4.25c1.79-1.19-2.17-.38 0 0zM32.39 71.57c2.39.54 9.56 5.89 5.33.37-2.17-.64-.87-5.94-3.08-5 1.48 2.48 1.22 3.53-1.9 1.97-3.91-1.91-2.2.94-1.43 1.73-1.04.25 1.39.91 1.08.93zm-10.9-8.61c.43-1.77-3.95-9.75-2.07-4 .68 1.21.61 3.49 2.07 4zM41.5 75.3c-1.23-1.03-.06-.15 0 0zm3.03.71c0-1.88-3.35-.77 0 0zm26.3 16.57c-.5-1.28-1.98-.02 0 0zm1.26.93c-.18-.72-.72.14 0 0zm10.43 6.56c1-.74-1.25-.09 0 0zM26.93 64.35c2.87-1.11-3.07-.79 0 0zm41.59 26.2c-.04-1.86-1.83.46 0 0zM25.8 61.71c1.84-.62-1.71-.41 0 0zm5.34 2.59c-.03-.61-.56.23 0 0zm65.22 39.99c2.37-.48 7.77 1.21 8.64-.63-2.88-.07-9.95-2.03-10.28.46l.63.1 1.01.07zM32.84 64.73c.05-1.88-1.46-.07 0 0zm-14.05-9.75c-.64-3.58-2.43-.54 0 0zm3.35.84c.04-1.15-3.07-1.03 0 0zm1.91.94c-.55-.44-.43.57 0 0zm12.06 7.73c.57-.52-1.35-.38 0 0zm-13.33-9.85c-.33-2.71-3.88-.4 0 0zm-6.87-4.46c-.1-1.25-.67.47 0 0zm1.02-.77c-.17-1.48-.88.19 0 0zm5.65 3.37c2.39-.94-4.35-1.94-.49-.18l.49.18zm75.59 46.69c1.53-1.4-1.94-.43 0 0zm9.13 4.74c.61-1.81-1.54.23 0 0zM23.15 49.82c.26-1.75-1.89.35 0 0zm-8.03-5.38c-.43-2.47-.37-6.82 3.76-5.35-5.51 1.1 3.82 6.85 2.64 2.31 2.32.11 4.53-1.37 3.32.88 4.57-.5 7.73-4.46 12.14-3.91 3.44-.46 7.19-.8 10.89-2.18 3.04-.22 5.97-3.5 4.31-5.44-4.15-.35-8.5.17-13.08 1.08-5.08 1.06-9.7 3.06-14.83 3.93-5 .67 1 1.85-.43 2.11-2.61.9 3.11 1.52-.34 2.47-2.13-.41-4.35-1.14-3.44-3.38-4.79.62-9 2.61-5.21 7.48h.27zm11.54-5.88c1.12-4.14 6.01 3.4 1.84.55-.5-.38-1.32-.68-1.84-.55zm.22-2.01c1.62-1.2.86.68 0 0zm2.06.04c.15-1.9 4.71 1.01.75.68l-.75-.68zm2.81-1.14c1.03-1.2.3 1.07 0 0zm.72-.48c1.71-2.06 9.69-1.31 3.85-.2-1.56-1.18-2.76.7-3.85.2zm10.42-1.6c-.26-5.62 5.18 1.99 0 0zm2.96-.02c1.08-2.83 4.2-1.14.5-.57.08.3-.11 1.46-.5.57zM21.99 48.37c3.23-1.98-3.43-1.72 0 0zm2.39.66c1.13-1.2-2.46-.49 0 0zm-7.04-4.99c1.85-1.42-2.18-.54 0 0zm95.35 59.65c.05-1.65-1.41.74 0 0zM103 97.08c.28-1.9-1.24.16 0 0zm12.36 7.25c2.58.01 7.82-.8 2.2-.8-.88.13-5.13.11-2.2.8zM26.48 47.87c2.09-.14 3.27-2.3-.41-2.18-5.69-.59 5.02 1.95-.73 1.22-.77.51 1.09 1.1 1.14.96zm1.84.93c-.22-1.34-.65.71 0 0zm2.18-5.82c.9-1.12-1.26-.3 0 0zm-6.95-11.6c3.73-1.27 8.82-2.69 10.58.62-1.79-2.15-.72-4.28.97-1.12 2.39 3.19 3.59-1.45 2.03-2.52 1.77 2.2 3.79 3.24 1.19.14 2.83-3.4-5.66.45-7.59.41-.92.41-9.58 2.2-7.18 2.47zm2.19-4.18c2.13-1.6 7.35.96 4-1.59-.33-.3-7.35 1.93-4 1.59zm7.75.32c2.49.06-1.07-3.34 1.89-1.8-.49-1.59-3.45-1.89-4.9-2.52-.82 1.45 1.66 4.34 3.01 4.32zm-6.39-7.04c.86-1.16-1.51.6 0 0zm3.16.76c4.01-.53-1.02-1.72-.81-.04l.81.04zm-5.91-4.62c-2.82-3.69 5.31.62 2.44-3.24-2.41-1.92-4.73 2.16-2.44 3.24zm36.21 19.5c1.29-2.29-5.34-3.09-.87-.81.42.14.32.97.87.81z"/></svg>
+              </span>
+              <span class="app" id="js-tablet" data-skill="JavaScript" data-cat="frontend">
                 <span>JAVASCRIPT</span>
                 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -445,7 +400,58 @@
                   </g>
                 </svg>
               </span>
-              <span class="app" id="kotlin-tablet" data-skill="kotlin">
+              <span class="app" id="html-tablet" data-skill="HTML" data-cat="frontend">
+                <span>HTML</span>
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path d="M6 28L4 3H28L26 28L16 31L6 28Z" fill="#E44D26"></path>
+                    <path d="M26 5H16V29.5L24 27L26 5Z" fill="#F16529"></path>
+                    <path d="M9.5 17.5L8.5 8H24L23.5 11H11.5L12 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5H9.5Z" fill="white"></path>
+                  </g>
+                </svg>
+              </span>
+              <span class="app" id="css-tablet" data-skill="css" data-cat="frontend">
+                <span>CSS</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"/><path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"/><path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95V51.429z"/><path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"/><path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881H81.127z"/><path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047 27.996v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447z"/></svg>
+              </span>
+              <span class="app" id="flutter-tablet" data-skill="flutter" data-cat="mobile">
+                <span>FLUTTER</span>
+                <svg width="64px" height="64px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title>file_type_flutter</title>
+                    <polyline points="15.383 18.316 18.744 15.042 27.093 15.042 19.697 22.438 15.383 18.316 15.383 18.316 15.383 18.316 15.383 18.316 15.383 18.316" style="fill:#40d0fd"></polyline>
+                    <polygon points="4.907 16.125 9.106 20.424 27.093 2.287 18.744 2.287 4.907 16.125" style="fill:#41d0fd;isolation:isolate"></polygon>
+                    <polygon points="11.176 22.479 15.435 26.675 19.697 22.438 15.383 18.316 11.176 22.479" style="fill:#1fbcfd"></polygon>
+                    <polygon points="15.435 26.675 19.697 22.438 26.989 29.813 18.593 29.813 15.435 26.675" style="fill:#095a9d"></polygon>
+                    <polygon points="15.435 26.675 19.406 25.354 18.068 24.057 15.435 26.675" style="fill:#0e5199"></polygon>
+                  </g>
+                </svg>
+              </span>
+              <span class="app" id="dart-tablet" data-skill="dart" data-cat="mobile">
+                <span>DART</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#00c4b3" d="M35.2 34.9l-8.3-8.3v59.7l.1 2.8c0 1.3.2 2.8.7 4.3l65.6 23.1 16.3-7.2-74.4-74.4z"/><path d="M27.7 93.4zm81.9 15.9l-16.3 7.2-65.4-23.1c1.3 4.8 4 10.1 7 13.2l21.3 21.2 47.6.1 5.8-18.6z" fill="#22d3c5"/><path fill="#0075c9" d="M1.7 65.1C-.4 67.3.7 72 4 75.5l14.7 14.8 9.2 3.3c-.3-1.5-.7-3-.7-4.3l-.1-2.8-.2-59.8m82.7 82.6l7.2-16.4-23-65.6c-1.5-.3-3-.6-4.3-.7l-2.9-.1-59.6.1"/><path d="M93.6 27.3c.2 0 .2 0 0 0 .2 0 .2 0 0 0zm16 82l17.7-5.8V54.8l-20.4-20.5c-3-3-8.3-5.8-13.2-7l23.1 65.6" fill="#00a8e1"/><path fill="#00c4b3" d="M90.5 18.2L75.7 3.5c-3.4-3.4-8-4.4-10.4-2.3L26.9 26.6h59.5l2.9.1c1.3 0 2.8.2 4.3.7l-3.1-9.2z"/></svg>
+              </span>
+              <span class="app" id="swift-tablet" data-skill="swift" data-cat="mobile">
+                <span>SWIFT</span>
+                <svg width="64px" height="64px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path d="M22.1356 25.2715C18.835 27.17 14.2967 27.3651 9.73079 25.4166C6.03387 23.8505 2.96639 21.109 1 17.9767C1.94387 18.7598 3.04503 19.3865 4.22484 19.9344C8.9401 22.135 13.6544 21.9843 16.972 19.94C12.2526 16.3374 8.23626 11.6326 5.2475 7.79547C4.61799 7.16887 4.14605 6.38567 3.67412 5.68084C7.29225 8.97014 13.0343 13.1207 15.0789 14.296C10.7535 9.75321 6.8991 4.1147 7.0561 4.27103C13.8993 11.163 20.2707 15.079 20.2707 15.079C20.4815 15.1974 20.6442 15.2959 20.775 15.384C20.9129 15.0347 21.0338 14.672 21.1357 14.296C22.2368 10.3018 20.9787 5.759 18.2254 2C24.5962 5.83752 28.3721 13.0425 26.7985 19.0732C26.7575 19.2359 26.7129 19.3965 26.6648 19.5542C29.8106 23.4703 29.0008 27.6884 28.6076 26.9053C26.901 23.5801 23.7418 24.5969 22.1356 25.2715Z" fill="url(#paint0_linear_87_8231)"></path>
+                    <defs>
+                      <linearGradient id="paint0_linear_87_8231" x1="15.0103" y1="2" x2="15.0103" y2="27.0013" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#F88A36"></stop>
+                        <stop offset="1" stop-color="#FD2020"></stop>
+                      </linearGradient>
+                    </defs>
+                  </g>
+                </svg>
+              </span>
+              <span class="app" id="kotlin-tablet" data-skill="kotlin" data-cat="mobile">
                 <span>KOTLIN</span>
                 <svg width="64px" height="64px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -467,52 +473,23 @@
                   </g>
                 </svg>
               </span>
-              <span class="app" id="flutter-tablet" data-skill="flutter">
-                <span>FLUTTER</span>
-                <svg width="64px" height="64px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <title>file_type_flutter</title>
-                    <polyline points="15.383 18.316 18.744 15.042 27.093 15.042 19.697 22.438 15.383 18.316 15.383 18.316 15.383 18.316 15.383 18.316 15.383 18.316" style="fill:#40d0fd"></polyline>
-                    <polygon points="4.907 16.125 9.106 20.424 27.093 2.287 18.744 2.287 4.907 16.125" style="fill:#41d0fd;isolation:isolate"></polygon>
-                    <polygon points="11.176 22.479 15.435 26.675 19.697 22.438 15.383 18.316 11.176 22.479" style="fill:#1fbcfd"></polygon>
-                    <polygon points="15.435 26.675 19.697 22.438 26.989 29.813 18.593 29.813 15.435 26.675" style="fill:#095a9d"></polygon>
-                    <polygon points="15.435 26.675 19.406 25.354 18.068 24.057 15.435 26.675" style="fill:#0e5199"></polygon>
-                  </g>
-                </svg>
+              <span class="app" id="postgresql-tablet" data-skill="postgresql" data-cat="dados">
+                <span>POSTGRESQL</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M93.809 92.112c.785-6.533.55-7.492 5.416-6.433l1.235.108c3.742.17 8.637-.602 11.513-1.938 6.191-2.873 9.861-7.668 3.758-6.409-13.924 2.873-14.881-1.842-14.881-1.842 14.703-21.815 20.849-49.508 15.543-56.287-14.47-18.489-39.517-9.746-39.936-9.52l-.134.025c-2.751-.571-5.83-.912-9.289-.968-6.301-.104-11.082 1.652-14.709 4.402 0 0-44.683-18.409-42.604 23.151.442 8.841 12.672 66.898 27.26 49.362 5.332-6.412 10.484-11.834 10.484-11.834 2.558 1.699 5.622 2.567 8.834 2.255l.249-.212c-.078.796-.044 1.575.099 2.497-3.757 4.199-2.653 4.936-10.166 6.482-7.602 1.566-3.136 4.355-.221 5.084 3.535.884 11.712 2.136 17.238-5.598l-.22.882c1.474 1.18 1.375 8.477 1.583 13.69.209 5.214.558 10.079 1.621 12.948 1.063 2.868 2.317 10.256 12.191 8.14 8.252-1.764 14.561-4.309 15.136-27.985"/><path d="M75.458 125.256c-4.367 0-7.211-1.689-8.938-3.32-2.607-2.46-3.641-5.629-4.259-7.522l-.267-.79c-1.244-3.358-1.666-8.193-1.916-14.419-.038-.935-.064-1.898-.093-2.919-.021-.747-.047-1.684-.085-2.664a18.8 18.8 0 01-4.962 1.568c-3.079.526-6.389.356-9.84-.507-2.435-.609-4.965-1.871-6.407-3.82-4.203 3.681-8.212 3.182-10.396 2.453-3.853-1.285-7.301-4.896-10.542-11.037-2.309-4.375-4.542-10.075-6.638-16.943-3.65-11.96-5.969-24.557-6.175-28.693C4.292 23.698 7.777 14.44 15.296 9.129 27.157.751 45.128 5.678 51.68 7.915c4.402-2.653 9.581-3.944 15.433-3.851 3.143.051 6.136.327 8.916.823 2.9-.912 8.628-2.221 15.185-2.139 12.081.144 22.092 4.852 28.949 13.615 4.894 6.252 2.474 19.381.597 26.651-2.642 10.226-7.271 21.102-12.957 30.57 1.544.011 3.781-.174 6.961-.831 6.274-1.295 8.109 2.069 8.607 3.575 1.995 6.042-6.677 10.608-9.382 11.864-3.466 1.609-9.117 2.589-13.745 2.377l-.202-.013-1.216-.107-.12 1.014-.116.991c-.311 11.999-2.025 19.598-5.552 24.619-3.697 5.264-8.835 6.739-13.361 7.709-1.544.33-2.947.474-4.219.474zm-9.19-43.671c2.819 2.256 3.066 6.501 3.287 14.434.028.99.054 1.927.089 2.802.106 2.65.355 8.855 1.327 11.477.137.371.26.747.39 1.146 1.083 3.316 1.626 4.979 6.309 3.978 3.931-.843 5.952-1.599 7.534-3.851 2.299-3.274 3.585-9.86 3.821-19.575l4.783.116-4.75-.57.14-1.186c.455-3.91.783-6.734 3.396-8.602 2.097-1.498 4.486-1.353 6.389-1.01-2.091-1.58-2.669-3.433-2.823-4.193l-.399-1.965 1.121-1.663c6.457-9.58 11.781-21.354 14.609-32.304 2.906-11.251 2.02-17.226 1.134-18.356-11.729-14.987-32.068-8.799-34.192-8.097l-.359.194-1.8.335-.922-.191c-2.542-.528-5.366-.82-8.393-.869-4.756-.08-8.593 1.044-11.739 3.431l-2.183 1.655-2.533-1.043c-5.412-2.213-21.308-6.662-29.696-.721-4.656 3.298-6.777 9.76-6.305 19.207.156 3.119 2.275 14.926 5.771 26.377 4.831 15.825 9.221 21.082 11.054 21.693.32.108 1.15-.537 1.976-1.529a270.708 270.708 0 0110.694-12.07l2.77-2.915 3.349 2.225c1.35.897 2.839 1.406 4.368 1.502l7.987-6.812-1.157 11.808c-.026.265-.039.626.065 1.296l.348 2.238-1.51 1.688-.174.196 4.388 2.025 1.836-2.301z"/><path fill="#336791" d="M115.731 77.44c-13.925 2.873-14.882-1.842-14.882-1.842 14.703-21.816 20.849-49.51 15.545-56.287C101.924.823 76.875 9.566 76.457 9.793l-.135.024c-2.751-.571-5.83-.911-9.291-.967-6.301-.103-11.08 1.652-14.707 4.402 0 0-44.684-18.408-42.606 23.151.442 8.842 12.672 66.899 27.26 49.363 5.332-6.412 10.483-11.834 10.483-11.834 2.559 1.699 5.622 2.567 8.833 2.255l.25-.212c-.078.796-.042 1.575.1 2.497-3.758 4.199-2.654 4.936-10.167 6.482-7.602 1.566-3.136 4.355-.22 5.084 3.534.884 11.712 2.136 17.237-5.598l-.221.882c1.473 1.18 2.507 7.672 2.334 13.557-.174 5.885-.29 9.926.871 13.082 1.16 3.156 2.316 10.256 12.192 8.14 8.252-1.768 12.528-6.351 13.124-13.995.422-5.435 1.377-4.631 1.438-9.49l.767-2.3c.884-7.367.14-9.743 5.225-8.638l1.235.108c3.742.17 8.639-.602 11.514-1.938 6.19-2.871 9.861-7.667 3.758-6.408z"/><path fill="#fff" d="M75.957 122.307c-8.232 0-10.84-6.519-11.907-9.185-1.562-3.907-1.899-19.069-1.551-31.503a1.59 1.59 0 011.64-1.55 1.594 1.594 0 011.55 1.639c-.401 14.341.168 27.337 1.324 30.229 1.804 4.509 4.54 8.453 12.275 6.796 7.343-1.575 10.093-4.359 11.318-11.46.94-5.449 2.799-20.951 3.028-24.01a1.593 1.593 0 011.71-1.472 1.597 1.597 0 011.472 1.71c-.239 3.185-2.089 18.657-3.065 24.315-1.446 8.387-5.185 12.191-13.794 14.037-1.463.313-2.792.453-4 .454zM31.321 90.466a6.71 6.71 0 01-2.116-.35c-5.347-1.784-10.44-10.492-15.138-25.885-3.576-11.717-5.842-23.947-6.041-27.922-.589-11.784 2.445-20.121 9.02-24.778 13.007-9.216 34.888-.44 35.813-.062a1.596 1.596 0 01-1.207 2.955c-.211-.086-21.193-8.492-32.768-.285-5.622 3.986-8.203 11.392-7.672 22.011.167 3.349 2.284 15.285 5.906 27.149 4.194 13.742 8.967 22.413 13.096 23.79.648.216 2.62.873 5.439-2.517A245.272 245.272 0 0145.88 73.046a1.596 1.596 0 012.304 2.208c-.048.05-4.847 5.067-10.077 11.359-2.477 2.979-4.851 3.853-6.786 3.853zm69.429-13.445a1.596 1.596 0 01-1.322-2.487c14.863-22.055 20.08-48.704 15.612-54.414-5.624-7.186-13.565-10.939-23.604-11.156-7.433-.16-13.341 1.738-14.307 2.069l-.243.099c-.971.305-1.716-.227-1.997-.849a1.6 1.6 0 01.631-2.025c.046-.027.192-.089.429-.176l-.021.006.021-.007c1.641-.601 7.639-2.4 15.068-2.315 11.108.118 20.284 4.401 26.534 12.388 2.957 3.779 2.964 12.485.019 23.887-3.002 11.625-8.651 24.118-15.497 34.277-.306.457-.81.703-1.323.703zm.76 10.21c-2.538 0-4.813-.358-6.175-1.174-1.4-.839-1.667-1.979-1.702-2.584-.382-6.71 3.32-7.878 5.208-8.411-.263-.398-.637-.866-1.024-1.349-1.101-1.376-2.609-3.26-3.771-6.078-.182-.44-.752-1.463-1.412-2.648-3.579-6.418-11.026-19.773-6.242-26.612 2.214-3.165 6.623-4.411 13.119-3.716C97.6 28.837 88.5 10.625 66.907 10.271c-6.494-.108-11.82 1.889-15.822 5.93-8.96 9.049-8.636 25.422-8.631 25.586a1.595 1.595 0 11-3.19.084c-.02-.727-.354-17.909 9.554-27.916C53.455 9.272 59.559 6.96 66.96 7.081c13.814.227 22.706 7.25 27.732 13.101 5.479 6.377 8.165 13.411 8.386 15.759.165 1.746-1.088 2.095-1.341 2.147l-.576.013c-6.375-1.021-10.465-.312-12.156 2.104-3.639 5.201 3.406 17.834 6.414 23.229.768 1.376 1.322 2.371 1.576 2.985.988 2.396 2.277 4.006 3.312 5.3.911 1.138 1.7 2.125 1.982 3.283.131.23 1.99 2.98 13.021.703 2.765-.57 4.423-.083 4.93 1.45.997 3.015-4.597 6.532-7.694 7.97-2.775 1.29-7.204 2.106-11.036 2.106zm-4.696-4.021c.35.353 2.101.962 5.727.806 3.224-.138 6.624-.839 8.664-1.786 2.609-1.212 4.351-2.567 5.253-3.492l-.5.092c-7.053 1.456-12.042 1.262-14.828-.577a6.162 6.162 0 01-.54-.401c-.302.119-.581.197-.78.253-1.58.443-3.214.902-2.996 5.105zm-45.562 8.915c-1.752 0-3.596-.239-5.479-.71-1.951-.488-5.24-1.957-5.19-4.37.057-2.707 3.994-3.519 5.476-3.824 5.354-1.103 5.703-1.545 7.376-3.67.488-.619 1.095-1.39 1.923-2.314 1.229-1.376 2.572-2.073 3.992-2.073.989 0 1.8.335 2.336.558 1.708.708 3.133 2.42 3.719 4.467.529 1.847.276 3.625-.71 5.006-3.237 4.533-7.886 6.93-13.443 6.93zm-7.222-4.943c.481.372 1.445.869 2.518 1.137 1.631.408 3.213.615 4.705.615 4.546 0 8.196-1.882 10.847-5.594.553-.774.387-1.757.239-2.274-.31-1.083-1.08-2.068-1.873-2.397-.43-.178-.787-.314-1.115-.314-.176 0-.712 0-1.614 1.009a41.146 41.146 0 00-1.794 2.162c-2.084 2.646-3.039 3.544-9.239 4.821-1.513.31-2.289.626-2.674.835zm12.269-7.36a1.596 1.596 0 01-1.575-1.354 8.218 8.218 0 01-.08-.799c-4.064-.076-7.985-1.82-10.962-4.926-3.764-3.927-5.477-9.368-4.699-14.927.845-6.037.529-11.366.359-14.229-.047-.796-.081-1.371-.079-1.769.003-.505.013-1.844 4.489-4.113 1.592-.807 4.784-2.215 8.271-2.576 5.777-.597 9.585 1.976 10.725 7.246 3.077 14.228.244 20.521-1.825 25.117-.385.856-.749 1.664-1.04 2.447l-.257.69c-1.093 2.931-2.038 5.463-1.748 7.354a1.595 1.595 0 01-1.335 1.819l-.244.02zM42.464 42.26l.062 1.139c.176 2.974.504 8.508-.384 14.86-.641 4.585.759 9.06 3.843 12.276 2.437 2.542 5.644 3.945 8.94 3.945h.068c.369-1.555.982-3.197 1.642-4.966l.255-.686c.329-.884.714-1.74 1.122-2.646 1.991-4.424 4.47-9.931 1.615-23.132-.565-2.615-1.936-4.128-4.189-4.627-4.628-1.022-11.525 2.459-12.974 3.837zm9.63-.677c-.08.564 1.033 2.07 2.485 2.271 1.449.203 2.689-.975 2.768-1.539.079-.564-1.033-1.186-2.485-1.388-1.451-.202-2.691.092-2.768.656zm2.818 2.826l-.407-.028c-.9-.125-1.81-.692-2.433-1.518-.219-.29-.576-.852-.505-1.354.101-.736.999-1.177 2.4-1.177.313 0 .639.023.967.069.766.106 1.477.327 2.002.62.91.508.977 1.075.936 1.368-.112.813-1.405 2.02-2.96 2.02zm-2.289-2.732c.045.348.907 1.496 2.029 1.651l.261.018c1.036 0 1.81-.815 1.901-1.082-.096-.182-.762-.634-2.025-.81a5.823 5.823 0 00-.821-.059c-.812 0-1.243.183-1.345.282zm43.605-1.245c.079.564-1.033 2.07-2.484 2.272-1.45.202-2.691-.975-2.771-1.539-.076-.564 1.036-1.187 2.486-1.388 1.45-.203 2.689.092 2.769.655zm-2.819 2.56c-1.396 0-2.601-1.086-2.7-1.791-.115-.846 1.278-1.489 2.712-1.688.316-.044.629-.066.93-.066 1.238 0 2.058.363 2.14.949.053.379-.238.964-.739 1.492-.331.347-1.026.948-1.973 1.079l-.37.025zm.943-3.013c-.276 0-.564.021-.856.061-1.441.201-2.301.779-2.259 1.089.048.341.968 1.332 2.173 1.332l.297-.021c.787-.109 1.378-.623 1.66-.919.443-.465.619-.903.598-1.052-.028-.198-.56-.49-1.613-.49zm3.965 32.843a1.594 1.594 0 01-1.324-2.483c3.398-5.075 2.776-10.25 2.175-15.255-.257-2.132-.521-4.337-.453-6.453.07-2.177.347-3.973.614-5.71.317-2.058.617-4.002.493-6.31a1.595 1.595 0 113.186-.172c.142 2.638-.197 4.838-.525 6.967-.253 1.643-.515 3.342-.578 5.327-.061 1.874.178 3.864.431 5.97.64 5.322 1.365 11.354-2.691 17.411a1.596 1.596 0 01-1.328.708z"/></svg>
               </span>
-              <span class="app" id="swift-tablet" data-skill="swift">
-                <span>SWIFT</span>
-                <svg width="64px" height="64px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path d="M22.1356 25.2715C18.835 27.17 14.2967 27.3651 9.73079 25.4166C6.03387 23.8505 2.96639 21.109 1 17.9767C1.94387 18.7598 3.04503 19.3865 4.22484 19.9344C8.9401 22.135 13.6544 21.9843 16.972 19.94C12.2526 16.3374 8.23626 11.6326 5.2475 7.79547C4.61799 7.16887 4.14605 6.38567 3.67412 5.68084C7.29225 8.97014 13.0343 13.1207 15.0789 14.296C10.7535 9.75321 6.8991 4.1147 7.0561 4.27103C13.8993 11.163 20.2707 15.079 20.2707 15.079C20.4815 15.1974 20.6442 15.2959 20.775 15.384C20.9129 15.0347 21.0338 14.672 21.1357 14.296C22.2368 10.3018 20.9787 5.759 18.2254 2C24.5962 5.83752 28.3721 13.0425 26.7985 19.0732C26.7575 19.2359 26.7129 19.3965 26.6648 19.5542C29.8106 23.4703 29.0008 27.6884 28.6076 26.9053C26.901 23.5801 23.7418 24.5969 22.1356 25.2715Z" fill="url(#paint0_linear_87_8231)"></path>
-                    <defs>
-                      <linearGradient id="paint0_linear_87_8231" x1="15.0103" y1="2" x2="15.0103" y2="27.0013" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#F88A36"></stop>
-                        <stop offset="1" stop-color="#FD2020"></stop>
-                      </linearGradient>
-                    </defs>
-                  </g>
-                </svg>
+              <span class="app" id="mysql-tablet" data-skill="mysql" data-cat="dados">
+                <span>MYSQL</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#4d9fd1" d="M117.688 98.242c-6.973-.191-12.297.461-16.852 2.379-1.293.547-3.355.559-3.566 2.18.711.746.82 1.859 1.387 2.777 1.086 1.754 2.922 4.113 4.559 5.352 1.789 1.348 3.633 2.793 5.551 3.961 3.414 2.082 7.223 3.27 10.504 5.352 1.938 1.23 3.859 2.777 5.75 4.164.934.684 1.563 1.75 2.773 2.18v-.195c-.637-.812-.801-1.93-1.387-2.777l-2.578-2.578c-2.52-3.344-5.719-6.281-9.117-8.719-2.711-1.949-8.781-4.578-9.91-7.73l-.199-.199c1.922-.219 4.172-.914 5.949-1.391 2.98-.797 5.645-.59 8.719-1.387l4.164-1.187v-.793c-1.555-1.594-2.664-3.707-4.359-5.152-4.441-3.781-9.285-7.555-14.273-10.703-2.766-1.746-6.184-2.883-9.117-4.363-.988-.496-2.719-.758-3.371-1.586-1.539-1.961-2.379-4.449-3.566-6.738-2.488-4.793-4.93-10.023-7.137-15.066-1.504-3.437-2.484-6.828-4.359-9.91-9-14.797-18.687-23.73-33.695-32.508-3.195-1.867-7.039-2.605-11.102-3.57l-6.543-.395c-1.332-.555-2.715-2.184-3.965-2.977C16.977 3.52 4.223-3.312.539 5.672-1.785 11.34 4.016 16.871 6.09 19.746c1.457 2.012 3.32 4.273 4.359 6.539.688 1.492.805 2.984 1.391 4.559 1.438 3.883 2.695 8.109 4.559 11.695.941 1.816 1.98 3.727 3.172 5.352.727.996 1.98 1.438 2.18 2.973-1.227 1.715-1.297 4.375-1.984 6.543-3.098 9.77-1.926 21.91 2.578 29.137 1.383 2.223 4.641 6.98 9.117 5.156 3.918-1.598 3.043-6.539 4.164-10.902.254-.988.098-1.715.594-2.379v.199l3.57 7.133c2.641 4.254 7.324 8.699 11.297 11.699 2.059 1.555 3.68 4.242 6.344 5.152v-.199h-.199c-.516-.805-1.324-1.137-1.98-1.781-1.551-1.523-3.277-3.414-4.559-5.156-3.613-4.902-6.805-10.27-9.711-15.855-1.391-2.668-2.598-5.609-3.77-8.324-.453-1.047-.445-2.633-1.387-3.172-1.281 1.988-3.172 3.598-4.164 5.945-1.582 3.754-1.789 8.336-2.375 13.082-.348.125-.195.039-.398.199-2.762-.668-3.73-3.508-4.758-5.949-2.594-6.164-3.078-16.09-.793-23.191.59-1.836 3.262-7.617 2.18-9.316-.516-1.691-2.219-2.672-3.172-3.965-1.18-1.598-2.355-3.703-3.172-5.551-2.125-4.805-3.113-10.203-5.352-15.062-1.07-2.324-2.875-4.676-4.359-6.738-1.645-2.289-3.484-3.977-4.758-6.742-.453-.984-1.066-2.559-.398-3.566.215-.684.516-.969 1.191-1.191 1.148-.887 4.352.297 5.547.793 3.18 1.32 5.832 2.578 8.527 4.363 1.289.855 2.598 2.512 4.16 2.973h1.785c2.789.641 5.914.195 8.523.988 4.609 1.402 8.738 3.582 12.488 5.949 11.422 7.215 20.766 17.48 27.156 29.734 1.027 1.973 1.473 3.852 2.379 5.945 1.824 4.219 4.125 8.559 5.941 12.688 1.816 4.113 3.582 8.27 6.148 11.695 1.348 1.801 6.551 2.766 8.918 3.766 1.66.699 4.379 1.43 5.949 2.379 3 1.809 5.906 3.965 8.723 5.945 1.402.992 5.73 3.168 5.945 4.957zm-88.605-75.52c-1.453-.027-2.48.156-3.566.395v.199h.195c.695 1.422 1.918 2.34 2.777 3.566l1.98 4.164.199-.195c1.227-.867 1.789-2.25 1.781-4.363-.492-.52-.562-1.164-.992-1.785-.562-.824-1.66-1.289-2.375-1.98zm0 0"/></svg>
               </span>
-              <span class="app" id="figma-tablet" data-skill="figma">
-                <span>FIGMA</span>
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 16C16 13.7909 17.7909 12 20 12C22.2091 12 24 13.7909 24 16C24 18.2091 22.2091 20 20 20C17.7909 20 16 18.2091 16 16Z" fill="#1ABCFE"></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 24C8 21.7909 9.79086 20 12 20H16V24C16 26.2091 14.2091 28 12 28C9.79086 28 8 26.2091 8 24Z" fill="#0ACF83"></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 4V12H20C22.2091 12 24 10.2091 24 8C24 5.79086 22.2091 4 20 4H16Z" fill="#FF7262"></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 8C8 10.2091 9.79086 12 12 12H16V4H12C9.79086 4 8 5.79086 8 8Z" fill="#F24E1E"></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C8 18.2091 9.79086 20 12 20H16V12H12C9.79086 12 8 13.7909 8 16Z" fill="#A259FF"></path>
-                  </g>
-                </svg>
+              <span class="app" id="sqlite-tablet" data-skill="sqlite" data-cat="dados">
+                <span>SQLITE</span>
+                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sqlite-original-a" x1="-15.615" x2="-6.741" y1="-9.108" y2="-9.108" gradientTransform="rotate(90 -90.486 64.634) scale(9.2712)" gradientUnits="userSpaceOnUse"><stop stop-color="#95d7f4" offset="0"/><stop stop-color="#0f7fcc" offset=".92"/><stop stop-color="#0f7fcc" offset="1"/></linearGradient></defs><path d="M69.5 99.176c-.059-.73-.094-1.2-.094-1.2S67.2 83.087 64.57 78.642c-.414-.707.043-3.594 1.207-7.88.68 1.169 3.54 6.192 4.118 7.81.648 1.824.78 2.347.78 2.347s-1.57-8.082-4.144-12.797a162.286 162.286 0 012.004-6.265c.973 1.71 3.313 5.859 3.828 7.3.102.293.192.543.27.774.023-.137.05-.274.074-.414-.59-2.504-1.75-6.86-3.336-10.082 3.52-18.328 15.531-42.824 27.84-53.754H16.9c-5.387 0-9.789 4.406-9.789 9.789v88.57c0 5.383 4.406 9.789 9.79 9.789h52.897a118.657 118.657 0 01-.297-14.652" fill="#0b7fcc"/><path d="M65.777 70.762c.68 1.168 3.54 6.188 4.117 7.809.649 1.824.781 2.347.781 2.347s-1.57-8.082-4.144-12.797a164.535 164.535 0 012.004-6.27c.887 1.567 2.922 5.169 3.652 6.872l.082-.961c-.648-2.496-1.633-5.766-2.898-8.328 3.242-16.871 13.68-38.97 24.926-50.898H16.899a6.94 6.94 0 00-6.934 6.933v82.11c17.527-6.731 38.664-12.88 56.855-12.614-.672-2.605-1.441-4.96-2.25-6.324-.414-.707.043-3.597 1.207-7.879" fill="url(#sqlite-original-a)"/><path d="M115.95 2.781c-5.5-4.906-12.164-2.933-18.734 2.899a44.347 44.347 0 00-2.914 2.859c-11.25 11.926-21.684 34.023-24.926 50.895 1.262 2.563 2.25 5.832 2.894 8.328.168.64.32 1.242.442 1.754.285 1.207.437 1.996.437 1.996s-.101-.383-.515-1.582c-.078-.23-.168-.484-.27-.773-.043-.125-.105-.274-.172-.434-.734-1.703-2.765-5.305-3.656-6.867-.762 2.25-1.437 4.36-2.004 6.265 2.578 4.715 4.149 12.797 4.149 12.797s-.137-.523-.782-2.347c-.578-1.621-3.441-6.64-4.117-7.809-1.164 4.281-1.625 7.172-1.207 7.88.809 1.362 1.574 3.722 2.25 6.323 1.524 5.867 2.586 13.012 2.586 13.012s.031.469.094 1.2a118.653 118.653 0 00.297 14.651c.504 6.11 1.453 11.363 2.664 14.172l.828-.449c-1.781-5.535-2.504-12.793-2.188-21.156.48-12.793 3.422-28.215 8.856-44.289 9.191-24.27 21.938-43.738 33.602-53.035-10.633 9.602-25.023 40.684-29.332 52.195-4.82 12.891-8.238 24.984-10.301 36.574 3.55-10.863 15.047-15.53 15.047-15.53s5.637-6.958 12.227-16.888c-3.95.903-10.43 2.442-12.598 3.352-3.2 1.344-4.067 1.8-4.067 1.8s10.371-6.312 19.27-9.171c12.234-19.27 25.562-46.648 12.141-58.621" fill="#0f5a80"/></svg>
               </span>
-              <span class="app" id="git-tablet" data-skill="git">
+              <span class="app" id="sqlalchemy-tablet" data-skill="sqlalchemy" data-cat="dados">
+                <span>SQLALCHEMY</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#d8dee9" d="M9.394 72.999c-.759-.121-2.701-.607-4.31-1.047l-2.93-.82 1.503-2.762 1.502-2.762-1.214-1.503C2.23 61.98.015 57.322 0 55.82c-.016-3.507 4.536-8.59 10.121-11.321 3.84-1.882 6.89-1.927 10.714-.136l2.883 1.35.835-1.199c.454-.653.834-1.517.834-1.897 0-.38.38-.713.835-.713.455 0 .834.12.834.257 0 .335-3.353 8.802-3.565 9.014-.092.09-1.003-.333-2.035-.94-2.913-1.716-6.57-2.854-9.408-2.93-6.6-.167-8.893 6.284-4.233 11.928l1.638 1.989 4.477-3.628c5.023-4.051 5.6-4.143 9.515-1.44 4.4 3.034 4.476 7.647.226 12.472-3.763 4.295-7.631 5.48-14.279 4.37zm11.26-4.628c2.184-1.714 2.033-4.887-.335-7.406-2.974-3.156-3.898-3.02-9.134 1.35-5.206 4.34-5.236 4.174.986 6.162 4.112 1.335 6.692 1.29 8.483-.106zm42.277 16.722c-1.488-.546-5.494-2.2-8.923-3.687-9.257-4.037-10.562-4.113-13.324-.759-.637.774-1.335 1.26-1.532 1.063-.593-.593 1.168-3.43 3.293-5.296 1.729-1.518 2.305-1.73 4.219-1.518 1.213.136 5.25 1.548 8.967 3.126 8.392 3.566 10.85 4.325 14.053 4.325 3.899 0 5.903-2.731 4.673-6.358-.303-.91-.213-1.215.395-1.215 1.137 0 1.715 4.25.896 6.693-.35 1.046-1.367 2.533-2.262 3.277-1.336 1.123-2.185 1.366-4.69 1.35-1.684-.014-4.278-.454-5.766-1zM41.307 72.12c-3.445-1.61-6.556-4.675-8.347-8.256-2.867-5.736-1.988-9.408 3.445-14.37 4.567-4.174 8.301-5.798 13.325-5.798 3.625 0 4.4.198 6.75 1.639 5.57 3.445 6.951 10.016 3.598 17.177-3.93 8.408-12.231 12.642-18.771 9.606zm11.533-3.992c2.579-1.275 4.355-7.163 3.626-12.05-.91-6.023-9.059-10.136-15.038-7.586-6.146 2.625-6.237 9.62-.197 15.918 4.218 4.416 7.845 5.57 11.609 3.718zm11.7 5.099c0-.259.955-.713 2.139-1.002l2.14-.532.455-7.707c.5-8.529.135-16.921-.79-18.043-.334-.396-1.35-.882-2.275-1.093-3.763-.835-1.26-1.412 6.04-1.412 7.299 0 9.62.532 6.145 1.412-2.99.744-3.005.789-3.005 12.959 0 6.752.243 11.837.592 12.489.486.91 1.214 1.107 4.006 1.107 5.766 0 7.754-1.365 9.318-6.419.47-1.516 1.684-1.243 1.259.29-.198.712-.515 2.881-.713 4.855l-.364 3.566H77.013c-6.86 0-12.473-.212-12.473-.47z"/><path fill="#ca2727" d="M92.87 72.862c0-.454.441-.91 1.169-1.259.972-.455 1.608-1.411 3.915-5.918 3.657-7.131 9.424-19.378 9.97-21.215.424-1.396.516-1.471 2.094-1.653.91-.106 1.669-.167 1.684-.137.015.03 1.275 2.791 2.808 6.146 1.518 3.353 4.568 9.727 6.783 14.158 3.703 7.45 4.113 8.118 5.357 8.724.759.365 1.35.927 1.35 1.26 0 .531-.652.592-6.266.592-5.63 0-6.268-.06-6.268-.606 0-.364.486-.759 1.259-1.018.714-.227 1.26-.652 1.26-.97 0-.304-.744-2.307-1.655-4.446l-1.653-3.9h-12.535l-1.198 2.64c-2.247 4.947-2.292 6.116-.198 6.676 1.048.289 1.336.517 1.214.987-.136.547-.683.622-4.628.622-4.234.031-4.462 0-4.462-.683zm20.547-12.276c.212-.379-4.507-10.683-4.946-10.79-.32-.09-5.206 9.986-5.206 10.744 0 .38 9.925.425 10.152.046z"/></svg>
+              </span>
+                          <span class="app" id="git-tablet" data-skill="git" data-cat="producao">
                 <span>GIT</span>
                 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -522,6 +499,30 @@
                     <path d="M12.1489 5.06152L10.9336 6.27686L14.0725 9.41577C13.9455 9.68819 13.8746 9.99201 13.8746 10.3124C13.8746 11.222 14.4461 11.9981 15.2496 12.3012V19.9798C14.4461 20.2829 13.8746 21.059 13.8746 21.9686C13.8746 23.1422 14.826 24.0936 15.9996 24.0936C17.1732 24.0936 18.1246 23.1422 18.1246 21.9686C18.1246 21.144 17.6549 20.429 16.9684 20.0768V12.3117L19.9689 15.3122C19.8481 15.5791 19.7809 15.8754 19.7809 16.1874C19.7809 17.361 20.7323 18.3124 21.9059 18.3124C23.0795 18.3124 24.0309 17.361 24.0309 16.1874C24.0309 15.0138 23.0795 14.0624 21.9059 14.0624C21.6778 14.0624 21.4582 14.0983 21.2522 14.1648L18.0297 10.9423C18.0914 10.7433 18.1246 10.5317 18.1246 10.3124C18.1246 9.13878 17.1732 8.18738 15.9996 8.18738C15.7803 8.18738 15.5688 8.22061 15.3697 8.2823L12.1489 5.06152Z" fill="white"></path>
                   </g>
                 </svg>
+              </span>
+              <span class="app" id="docker-tablet" data-skill="docker" data-cat="producao">
+                <span>DOCKER</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill-rule="evenodd" clip-rule="evenodd" fill="#3A4D54" d="M73.8 50.8h11.3v11.5h5.7c2.6 0 5.3-.5 7.8-1.3 1.2-.4 2.6-1 3.8-1.7-1.6-2.1-2.4-4.7-2.6-7.3-.3-3.5.4-8.1 2.8-10.8l1.2-1.4 1.4 1.1c3.6 2.9 6.5 6.8 7.1 11.4 4.3-1.3 9.3-1 13.1 1.2l1.5.9-.8 1.6c-3.2 6.2-9.9 8.2-16.4 7.8-9.8 24.3-31 35.8-56.8 35.8-13.3 0-25.5-5-32.5-16.8l-.1-.2-1-2.1c-2.4-5.2-3.1-10.9-2.6-16.6l.2-1.7h9.6V50.8h11.3V39.6h22.5V28.3h13.5v22.5z"/><path fill="#00AADA" d="M110.4 55.1c.8-5.9-3.6-10.5-6.4-12.7-3.1 3.6-3.6 13.2 1.3 17.2-2.8 2.4-8.5 4.7-14.5 4.7H18.6c-.6 6.2.5 11.9 3 16.8l.8 1.5c.5.9 1.1 1.7 1.7 2.6 3 .2 5.7.3 8.2.2 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5 1.1-8.3 1.3h-.6c-1.3.1-2.7.1-4.2.1-1.6 0-3.1 0-4.9-.1 6 6.8 15.4 10.8 27.2 10.8 25 0 46.2-11.1 55.5-35.9 6.7.7 13.1-1 16-6.7-4.5-2.7-10.5-1.8-13.9-.1z"/><path fill="#28B8EB" d="M110.4 55.1c.8-5.9-3.6-10.5-6.4-12.7-3.1 3.6-3.6 13.2 1.3 17.2-2.8 2.4-8.5 4.7-14.5 4.7h-68c-.3 9.5 3.2 16.7 9.5 21 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.5 1.4l-.1-.1c8.5 4.4 20.8 4.3 35-1.1 15.8-6.1 30.6-17.7 40.9-30.9-.2.1-.4.1-.5.2z"/><path fill="#028BB8" d="M18.7 71.8c.4 3.3 1.4 6.4 2.9 9.3l.8 1.5c.5.9 1.1 1.7 1.7 2.6 3 .2 5.7.3 8.2.2 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.5 1.4h-.4c-1.3.1-2.7.1-4.1.1-1.6 0-3.2 0-4.9-.1 6 6.8 15.5 10.8 27.3 10.8 21.4 0 40-8.1 50.8-26H18.7v-.1z"/><path fill="#019BC6" d="M23.5 71.8c1.3 5.8 4.3 10.4 8.8 13.5 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.6 1.4 8.5 4.4 20.8 4.3 34.9-1.1 8.5-3.3 16.8-8.2 24.2-14.1H23.5z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3" d="M28.4 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm3-12h9.8v9.8h-9.8v-9.8zm.9.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#23C2EE" d="M39.6 52.7h9.8v9.8h-9.8v-9.8zm.9.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3" d="M50.9 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#23C2EE" d="M50.9 41.5h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm3.1 10.4H72v9.8h-9.8v-9.8zm.8.8h.8v8.1H63v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3" d="M62.2 41.5H72v9.8h-9.8v-9.8zm.8.8h.8v8.1H63v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#23C2EE" d="M62.2 30.2H72V40h-9.8v-9.8zm.8.8h.8v8.1H63V31zm1.5 0h.8v8.1h-.8V31zm1.4 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3" d="M73.5 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#D4EEF1" d="M48.8 78.3c1.5 0 2.7 1.2 2.7 2.7 0 1.5-1.2 2.7-2.7 2.7-1.5 0-2.7-1.2-2.7-2.7 0-1.5 1.2-2.7 2.7-2.7"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#3A4D54" d="M48.8 79.1c.2 0 .5 0 .7.1-.2.1-.4.4-.4.7 0 .4.4.8.8.8.3 0 .6-.2.7-.4.1.2.1.5.1.7 0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9 0-1 .8-1.9 1.9-1.9M1.1 72.8h125.4c-2.7-.7-8.6-1.6-7.7-5.2-5 5.7-16.9 4-20 1.2-3.4 4.9-23 3-24.3-.8-4.2 5-17.3 5-21.5 0-1.4 3.8-21 5.7-24.3.8-3 2.8-15 4.5-20-1.2 1.1 3.5-4.9 4.5-7.6 5.2"/><path fill="#BFDBE0" d="M56 97.8c-6.7-3.2-10.3-7.5-12.4-12.2-2.5.7-5.5 1.2-8.9 1.4-1.3.1-2.7.1-4.1.1-1.7 0-3.4 0-5.2-.1 6 6 13.6 10.7 27.5 10.8H56z"/><path fill="#D4EEF1" d="M46.1 89.9c-.9-1.3-1.8-2.8-2.5-4.3-2.5.7-5.5 1.2-8.9 1.4 2.3 1.2 5.7 2.4 11.4 2.9z"/></svg>
+              </span>
+              <span class="app" id="traefik-tablet" data-skill="traefik" data-cat="producao">
+                <span>TRAEFIK</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#24a1c1" d="M63.998 6.385c5.807 0 10.967 4.096 10.967 9.14 0 5.042-4.912 9.138-10.968 9.138-.69 0-1.591-.115-2.706-.341a3.651 3.651 0 0 0-2.536.405l-39.314 22.36a1.83 1.83 0 0 0 .008 3.185l42.618 23.922a3.659 3.659 0 0 0 3.564.012l42.846-23.82a1.823 1.823 0 0 0 .016-3.186l-13.37-7.587a3.659 3.659 0 0 0-3.579-.02l-14.109 7.826a1.259 1.259 0 0 0-.637.955l-.005.136c0 5.045-4.912 9.137-10.967 9.137-6.05 0-10.963-4.091-10.963-9.138 0-5.044 4.913-9.14 10.964-9.14.227 0 .483.018.775.037l.464.05.512.06a3.664 3.664 0 0 0 2.263-.423l20.873-11.578a5.478 5.478 0 0 1 5.144-.09l.224.115 29.144 16.546c3.653 2.073 3.693 7.295.15 9.448l-.195.115-19.5 10.836a1.834 1.834 0 0 0-.936 1.622 1.84 1.84 0 0 0 .976 1.592l19.31 10.16c3.836 2.015 3.925 7.472.166 9.614L66.55 120.895a5.497 5.497 0 0 1-5.437 0L2.802 87.611c-3.766-2.15-3.662-7.619.183-9.622l19.521-10.185a1.832 1.832 0 0 0 .05-3.217l-19.76-11.09c-3.652-2.052-3.729-7.249-.218-9.43l.195-.119 48.523-27.59a3.675 3.675 0 0 0 1.641-1.967l.06-.195c1.707-5.072 5.58-7.81 11.001-7.81Zm27.075 67.32L67.115 87.482l-.224.122a5.461 5.461 0 0 1-5.18-.098L37.827 74.039a3.644 3.644 0 0 0-3.477-.052l-13.768 7.195a1.83 1.83 0 0 0-.057 3.21l42.062 24.069a3.656 3.656 0 0 0 3.617 0l42.422-24.238a1.83 1.83 0 0 0 .926-1.619 1.83 1.83 0 0 0-.978-1.588l-13.987-7.38a3.65 3.65 0 0 0-3.516.07zm0 0"/></svg>
+              </span>
+              <span class="app" id="letsencrypt-tablet" data-skill="letsencrypt" data-cat="producao">
+                <span>LET'S ENCRYPT</span>
+                <svg fill="#4a9fd8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.9914 0a.8829.8829 0 00-.8718.817v3.0209A.8829.8829 0 0012 4.7207a.8829.8829 0 00.8803-.8803V.817a.8829.8829 0 00-.889-.817zm7.7048 3.1089a.8804.8804 0 00-.5214.1742l-2.374 1.9482a.8804.8804 0 00.5592 1.5622.8794.8794 0 00.5592-.2001l2.3714-1.9506a.8804.8804 0 00-.5944-1.534zm-15.3763.0133a.8829.8829 0 00-.611 1.5206l2.37 1.9506a.876.876 0 00.5606.2001v-.002a.8804.8804 0 00.5597-1.5602L4.8277 3.2831a.8829.8829 0 00-.5078-.161zm7.6598 3.2275a5.0456 5.0456 0 00-5.0262 5.0455v1.4876H5.787a.9672.9672 0 00-.9647.9643v9.1887a.9672.9672 0 00.9647.9643H18.213a.9672.9672 0 00.9643-.9643v-9.1907a.9672.9672 0 00-.9643-.9623h-1.1684v-1.4876a5.0456 5.0456 0 00-5.0649-5.0455zm.0127 2.8933a2.1522 2.1522 0 012.1593 2.1522v1.4876H9.8473v-1.4876a2.1522 2.1522 0 012.145-2.1522zm7.3812.5033a.8829.8829 0 10.0705 1.7632h3.0267a.8829.8829 0 000-1.7609H19.444a.8829.8829 0 00-.0705-.0023zm-17.8444.0023a.8829.8829 0 000 1.7609h2.9983a.8829.8829 0 000-1.7609zm10.4596 6.7746a1.2792 1.2792 0 01.641 2.3926v1.2453a.6298.6298 0 01-1.2595 0v-1.2453a1.2792 1.2792 0 01.6185-2.3926z"/></svg>
+              </span>
+              <span class="app" id="gunicorn-tablet" data-skill="gunicorn" data-cat="producao">
+                <span>GUNICORN</span>
+                <svg fill="#66b566" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.145 20.014c-.266-.085-.267-.122-.022-.865.244-.743.132-1.432-.32-1.974-.617-.737-.914-1.366-1.009-2.135-.08-.66-.107-.713-.376-.764-.18-.035-.43.034-1.023.281-.864.36-1.07.52-1.273.98-.108.242-.12.387-.06.667.075.342.378.892.494.893.03 0 .196.114.368.252.287.23.307.27.225.458-.176.408-.595.902-.764.902-.095 0-.482-.272-.91-.637-.836-.717-.872-.79-.96-1.965-.1-1.403.244-2.058 1.78-3.375l.964-.827.062-.5c.063-.518-.026-1.748-.177-2.427-.09-.4-.382-.783-.66-.86-.303-.084-.48.09-.712.694-.25.654-.486.882-.92.882-.27 0-.52-.173-.694-.477C4.033 9 3.96 7.691 4.035 7.002c.036-.33.038-.666.005-.745-.054-.128-.52-.405-1.62-.962a4.343 4.343 0 0 1-.518-.303 3.053 3.053 0 0 0-.49-.267C.994 4.54-.095 3.903.007 3.903c.193 0 1.01.252 1.446.445.266.118.52.215.565.215.045 0 .558.165 1.14.366.58.202 1.111.367 1.18.367.16 0 .185-.14.134-.746-.024-.275-.023-.5.002-.5s.132.053.238.118c.324.198 1.02.32 1.84.32.783.002 1.806.157 2.196.335.56.254 1.211 1.05 2.036 2.49.574 1.002 1.19 1.426 2.073 1.427.357 0 1.31-.147 2.6-.4 1.063-.21 2.467-.259 3.012-.103.665.19 1.545.7 2.27 1.314.68.576.786.704 1.204 1.468.5.912 1.05 2.207 1.54 3.622.07.202.216.54.326.753.294.568.28.603-.255.603-.58 0-.853-.092-1.233-.415-.365-.31-.46-.5-1.032-2.05-.292-.796-.577-1.273-.76-1.273-.124 0-.376.852-.376 1.273 0 .3.187.702.67 1.447.788 1.21 1.202 2.922 1.036 4.28l-.07.586-.526.022c-.825.034-.817.046-.817-1.135 0-1.257-.085-1.529-.64-2.035-.23-.21-.748-.81-1.149-1.33-.402-.52-.786-.946-.854-.946-.158 0-.236.428-.244 1.332-.006.595-.03.696-.205.88-.476.497-.81 1.403-1.016 2.754-.046.3-.085.355-.279.398-.285.064-1.075.075-1.143.015-.059-.05.044-.863.278-2.19.088-.504.185-1.18.214-1.503.053-.574-.065-1.65-.204-1.867-.058-.09-.353-.11-1.732-.116-.915-.003-1.918-.033-2.23-.066l-.565-.06v.25c0 .27.07.506.53 1.822.162.464.397 1.17.523 1.57l.227.728-.192.592a6.11 6.11 0 0 1-.348.867c-.152.266-.17.274-.595.27a2.97 2.97 0 0 1-.677-.083z"/></svg>
+              </span>
+              <span class="app" id="hostinger-tablet" data-skill="hostinger" data-cat="producao">
+                <span>VPS HOSTINGER</span>
+                <svg fill="#8b6ef0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.415 0v7.16l5.785 3.384V2.949L16.415 0ZM1.8 0v11.237h18.815L14.89 8.09l-7.457-.003V3.024L1.8 0Zm14.615 20.894v-5.019l-7.514-.005c.007.033-5.82-3.197-5.82-3.197l19.119.091V24l-5.785-3.106ZM1.8 13.551v7.343l5.633 2.949v-6.988L1.8 13.551Z"/></svg>
+              </span>
+              <span class="app" id="vercel-tablet" data-skill="vercel" data-cat="producao">
+                <span>VERCEL</span>
+                <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M64.002 8.576 128 119.424H0Zm0 0"/></svg>
               </span>
             </div>
 
@@ -535,25 +536,57 @@
               <button id="close-btn">Voltar</button>
             </div>
 
-            <div class="home home2">
-              <span class="menu"><svg class="logo-menu" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 256 256" xml:space="preserve">
-                  <g>
-                    <g>
-                      <g>
-                        <path fill="#ffffff" d="M10,39.5V69h29.5H69V39.5V10H39.5H10V39.5z"></path>
-                        <path fill="#ffffff" d="M98.5,39.5V69H128h29.5V39.5V10H128H98.5V39.5z"></path>
-                        <path fill="#ffffff" d="M187,39.5V69h29.5H246V39.5V10h-29.5H187V39.5z"></path>
-                        <path fill="#ffffff" d="M10,128v29.5h29.5H69V128V98.5H39.5H10V128z"></path>
-                        <path fill="#ffffff" d="M98.5,128v29.5H128h29.5V128V98.5H128H98.5V128z"></path>
-                        <path fill="#ffffff" d="M187,128v29.5h29.5H246V128V98.5h-29.5H187V128z"></path>
-                        <path fill="#ffffff" d="M10,216.5V246h29.5H69v-29.5V187H39.5H10V216.5z"></path>
-                        <path fill="#ffffff" d="M98.5,216.5V246H128h29.5v-29.5V187H128H98.5V216.5z"></path>
-                        <path fill="#ffffff" d="M187,216.5V246h29.5H246v-29.5V187h-29.5H187V216.5z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg></span>
-
+            <div class="home home2" role="tablist" aria-label="Categorias de tecnologia">
+              <button
+                class="dock-aba ativo"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                data-cat="backend"
+              >
+                <span class="dock-aba-longo">Back-end</span>
+                <span class="dock-aba-curto">Back</span>
+              </button>
+              <button
+                class="dock-aba"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-cat="frontend"
+              >
+                <span class="dock-aba-longo">Front-end</span>
+                <span class="dock-aba-curto">Front</span>
+              </button>
+              <button
+                class="dock-aba"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-cat="mobile"
+              >
+                <span class="dock-aba-longo">Mobile</span>
+                <span class="dock-aba-curto">Mobile</span>
+              </button>
+              <button
+                class="dock-aba"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-cat="dados"
+              >
+                <span class="dock-aba-longo">Banco de dados</span>
+                <span class="dock-aba-curto">Dados</span>
+              </button>
+              <button
+                class="dock-aba"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-cat="producao"
+              >
+                <span class="dock-aba-longo">Produção</span>
+                <span class="dock-aba-curto">Deploy</span>
+              </button>
             </div>
             <div class="navigation">
               <span class="btn-tablet btn-task"></span>
@@ -579,7 +612,6 @@
       </div>
 
     </div>
-    </div>
   </article>
 
   <footer class="footer-bg" id="contato">
@@ -596,6 +628,7 @@
             <li class="footer-item"><a href="#sobreMim">Sobre Mim</a></li>
             <li class="footer-item"><a href="#projetos">Projetos</a></li>
             <li class="footer-item"><a href="#tecnologias">Tecnologias</a></li>
+          </ul>
         </nav>
       </div>
 
@@ -603,6 +636,8 @@
         <div class="cor-1">
           <h1 class="title-footer">"A imaginação é mais importante que o conhecimento"</h1>
           <picture>
+            <source srcset="./imagens/main/meDesenhoMobile.webp" media="(max-width: 768px)" type="image/webp">
+            <source srcset="./imagens/main/meDesenho.webp" type="image/webp">
             <source srcset="./imagens/main/meDesenhoMobile.png" media="(max-width: 768px)">
 
             <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo" loading="lazy">
@@ -622,7 +657,6 @@
           </ul>
         </nav>
       </div>
-    </div>
     </div>
   </footer>
 

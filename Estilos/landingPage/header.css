@@ -33,7 +33,7 @@ body::before {
   padding: 20px;
   background: var(--cor-p1);
   backdrop-filter: blur(8px);
-  border-radius: 12px;
+  border-radius: var(--raio-md);
   opacity: 0;
   visibility: hidden;
   transform: translate(0px, 40px) scale(0.9);
@@ -101,7 +101,7 @@ body::before {
   display: inline-block;
   cursor: pointer;
   background: var(--cor-p1);
-  border-radius: 10px;
+  border-radius: var(--raio-md);
   transition: background 0.3s ease, gap 0.3s ease;
 }
 
@@ -157,5 +157,31 @@ body::before {
 @media (max-width: 750px) {
   .header nav {
     width: 150px;
+  }
+}
+
+/* O menu abre num painel estreito; a 1.1rem os rótulos maiores
+   ("Tecnologias") quebravam em duas linhas no celular e no tablet */
+@media (max-width: 900px) {
+  .header nav a {
+    font-size: 0.95rem;
+  }
+
+  .header nav ul {
+    gap: 12px;
+  }
+
+  .header nav {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header nav a {
+    font-size: 0.85rem;
+  }
+
+  .header nav {
+    padding: 14px;
   }
 }
