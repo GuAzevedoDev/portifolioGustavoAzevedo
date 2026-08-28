@@ -1,457 +1,437 @@
+/* ============================================================
+   Tablet — linguagem visual de iPad: moldura fina e uniforme nos
+   quatro lados, cantos bem arredondados, alumínio escuro e
+   nenhum brilho neon. A hierarquia vem do material, não de efeito.
+   ============================================================ */
+
 .cardTablet {
-  perspective: 1000px;
+  --bezel: 20px;
+  --raio-corpo: 38px;
+  --raio-tela: 22px;
+  --aluminio-claro: #3c3e45;
+  --aluminio-escuro: #16171b;
+  --tinta: rgba(255, 255, 255, 0.92);
+  --tinta-fraca: rgba(255, 255, 255, 0.55);
+  perspective: 1600px;
   transform-style: preserve-3d;
   position: relative;
 }
 
+/* A altura era fixa em degraus (750/650/600px), então num iPad em retrato
+   o aparelho ficava quase quadrado - 650px de altura para ~810px de
+   largura. Agora acompanha a largura de forma contínua, com piso para o
+   conteúdo interno (barra, relógio, apps e dock) continuar cabendo. */
 .phone {
-  transform: rotateX(40deg);
+  width: 100%;
+  height: clamp(440px, 54vw, 750px);
   margin: 0 auto;
   position: relative;
-  perspective: 1000px;
-  width: 100%;
-  height: 750px;
   transform-style: preserve-3d;
-  transform: rotateX(30deg) rotateY(00deg) rotateZ(0deg) scale(0.6);
-  transition: all 1s;
+  transform: rotateX(30deg) scale(0.6);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (max-width: 1280px) {
+.cardTablet:hover .phone,
+.cardTablet.active .phone {
+  transform: rotateX(0deg) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
   .phone {
-    height: 650px;
+    transition: none;
   }
 }
 
-@media (max-width: 500px) {
-  .phone {
-    height: 600px;
-  }
-}
-
-
-
-.cardTablet:hover .phone,.cardTablet.active .phone {
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
-}
-.front {
-  width: 100%;
-  height: 100%;
-  background: lightgrey;
-  border: solid 5px rgb(0, 0, 0);
-  border-radius: 10px;
-  border-top: 15px solid;
-  border-bottom: 15px solid;
-  background: lightblue;
-  padding: 0.5rem;
-  text-align: center;
-  transform: translateY(20px);
-  background: url(../../imagens/tablet/tablet.png);
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* outline: 2px solid rgb(116, 115, 115); */
-}
-.front .home {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  grid-template-rows: repeat(2, auto);
-  justify-items: center;
-  align-items: center;
-}
-
-.front .home2 {
-  grid-template-rows: repeat(1, 1fr) !important;
-  grid-template-columns: repeat(1, auto);
-  margin-bottom: 0.5rem;
-  justify-items: center;
-  padding: 10px;
-  border-radius: 50px;
-  justify-self: center;
-  margin-bottom: 20px;
-}
-
-.front .home .app {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background-color: rgba(142, 171, 235, 0.25);
-  border-radius: 30%;
-  text-align: center;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  background-color: #1b1f2f;
-  border-radius: 20%;
-  padding: 15px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 140, 255, 0.15);
-  cursor: pointer;
-}
-
-@media (max-width: 1000px) {
-  .front .home .app {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 500px) {
-  .front .home {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .front .home .app {
-    width: 60px;
-    height: 60px;
-    padding: 5px;
-  }
-  .home.home2 {
-    grid-template-columns: 1fr;
-    margin-bottom: 0px;
-  }
-}
-
-.front .home .app span {
-  position: absolute;
-  transform: translateY(0px);
-  color: #fff;
-  background: rgba(142, 171, 235, 0.25);
-  padding: 5px 10px;
-  border-radius: 15px;
-  transition: 0.3s;
-  bottom: calc(100% + 10px);
-  transform: scale(0);
-}
-
-.front .home .app:hover span {
-  transform: scale(1);
-  transform-origin: bottom;
-}
-
-.front .home .app:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(0, 140, 255, 0.45); /* brilho azul mais forte no hover */
-  filter: brightness(1.2);
-}
-
-.front .home .app svg {
-  max-width: 75px;
-}
-
-.front .home .app .logo-app {
-  width: 70%;
-  height: 70%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.full-logo {
-  background-color: transparent !important;
-}
-
-.full-logo .logo-app {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.date {
-  color: white;
-  position: relative;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.date .hour {
-  font-size: 5rem;
-  line-height: 90px;
-  margin-top: 10px;
-}
-
-.date * {
-  display: inline-block;
-}
-
-.date .period,
-.date .day {
-  font-size: 1.5rem;
-  line-height: 10px;
-}
-
-@media (max-width: 500px) {
-  .date .hour {
-    font-size: 3.5rem;
-    line-height: 60px;
-    margin-top: 20px;
-  }
-  .date .period,
-  .date .day {
-    font-size: 1.2rem;
-    line-height: 5px;
-  }
-}
-
-.bullet {
-  display: inline-block;
-  width: 30%;
-  height: 0;
-  border-bottom: 5px dotted rgba(255, 255, 255, 0.651);
-  justify-self: center;
-  margin-bottom: 15px;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-around;
-}
-
-.navigation .btn-tablet {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-}
-
-@media (max-width: 500px) {
-  .navigation .btn-tablet {
-    width: 15px;
-    height: 15px;
-  }
-}
-
-.navigation .btn-home {
-  border-radius: 50%;
-  border: solid 1px white;
-}
-
-.navigation .btn-back {
-  border-radius: 35%;
-  border: solid 1px white;
-  border-left: 1px solid transparent;
-}
-
-.navigation .btn-task {
-  border-radius: 35%;
-  border: solid 1px white;
-}
+/* ---------------- corpo do aparelho ---------------- */
 
 .face {
   position: absolute;
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(24, 23, 24);
   top: 50%;
   left: 50%;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-rows: auto auto 1fr auto auto;
 }
 
-.head {
-  font-size: 6px;
-  width: 100%;
-  left: 0;
-  top: 0;
-  height: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.head .h-left {
-  color: white;
-  margin: 0 2px;
-  font-size: 1rem;
-}
-.head .h-right span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin: 0 1px;
-}
-
-.logo-head {
-  width: 70%;
-  height: 70%;
-}
-
-.top,
-.bottom {
-  width: 150px;
-  height: 10px;
-}
-
-.right,
-.left {
-  height: 254px;
-  width: 10px;
-}
-
 .front {
-  transform: translate(-50%, -50%) translateZ(5px);
-}
-.back {
-  transform: translate(-50%, -50%) rotateY(180deg) translateZ(5px);
-}
-.left {
-  transform: translate(-50%, -50%) rotateY(-90deg) translateZ(75px);
-}
-.right {
-  transform: translate(-50%, -50%) rotateY(90deg) translateZ(75px);
-}
-.top {
-  transform: translate(-50%, -50%) rotateX(90deg) translateZ(127px);
-}
-.bottom {
-  transform: translate(-50%, -50%) rotateX(-90deg) translateZ(127px);
-}
-
-.bottom .elements {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  transform: translate(-50%, -50%);
+  padding: var(--bezel);
+  border-radius: var(--raio-corpo);
+  background: linear-gradient(
+    155deg,
+    var(--aluminio-claro),
+    var(--aluminio-escuro) 55%
+  );
+  /* Fio de luz na quina + profundidade. Substitui as faces 3D, que
+     tinham medida fixa e não acompanhavam a largura fluida. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 20px 44px rgba(0, 0, 0, 0.45),
+    0 64px 96px -32px rgba(0, 0, 0, 0.65);
 }
 
-.bottom .elements .headphone {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #333;
-}
-
-.bottom .elements .microphone {
-  display: inline-block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: #333;
-}
-
-.bottom .elements .charge {
-  display: inline-block;
-  width: 20px;
-  height: 6px;
-  position: relative;
-  border-radius: 3px 3px 10px 10px;
-  background-color: #333;
-}
-
-.charge::before {
+/* A tela. Gradiente no lugar do PNG de 3,6 MB */
+.front::before {
   content: "";
-  display: inline-block;
-  width: 10px;
-  height: 2px;
   position: absolute;
-  border-radius: 3px 3px 10px 10px;
-  top: 50%;
+  inset: var(--bezel);
+  border-radius: var(--raio-tela);
+  background:
+    radial-gradient(
+      120% 90% at 18% 0%,
+      rgba(75, 107, 183, 0.38),
+      transparent 62%
+    ),
+    radial-gradient(
+      90% 70% at 92% 100%,
+      rgba(0, 198, 255, 0.16),
+      transparent 58%
+    ),
+    #090c14;
+  z-index: 0;
+}
+
+/* Conteúdo acima da tela */
+.head,
+.date,
+.home,
+.navigation {
+  position: relative;
+  z-index: 1;
+}
+
+/* As faces 3D antigas tinham tamanho fixo (150px, 254px) e não
+   acompanhavam a largura do aparelho. A espessura agora vem do
+   box-shadow do corpo, que funciona em qualquer largura. */
+.back,
+.top,
+.bottom,
+.left,
+.right {
+  display: none;
+}
+
+/* Câmera: rente à moldura, centralizada na borda superior */
+.front-camera {
+  position: absolute;
+  top: calc(var(--bezel) / 2);
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(26, 25, 25);
-}
-
-.bottom .elements .speaker {
-  display: inline-block;
-  width: 30px;
-  height: 0;
-  border-top: #333 dotted 5px;
-}
-
-.front-camera {
-  width: 10px;
-  height: 10px;
-  background-color: rgb(26, 25, 25);
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  position: absolute;
-  top: -11px;
-  left: 50%;
-  transform: translateX(-50%);
+  background: #05060a;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .front-camera::after {
   content: "";
   position: absolute;
+  inset: 1.5px;
   border-radius: 50%;
-  display: inline-block;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  height: 50%;
-  transform: translate(-50%, -50%);
   background: radial-gradient(
-    circle at 6px 2px,
-    rgba(255, 255, 255, 0.726),
-    rgb(0, 0, 0)
+    circle at 35% 30%,
+    rgba(120, 170, 255, 0.5),
+    transparent 60%
   );
 }
 
-.front-camera::before {
-  content: "";
+/* ---------------- barra de status ---------------- */
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 14px 0;
+  height: auto;
+  font-size: 0.8rem;
+}
+
+.head .h-left {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--tinta);
+}
+
+.head .h-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.head .h-right span {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tinta);
+  opacity: 0.9;
+}
+
+/* A bateria é deitada (viewBox 26x16); num quadrado de 15px ela achataria */
+.head .h-right .battery {
+  width: 24px;
+}
+
+.logo-head {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------- relógio ---------------- */
+
+.date {
+  color: var(--tinta);
+  text-align: center;
+  margin: 0;
+  padding: 26px 0 10px;
+}
+
+.date * {
+  display: block;
+}
+
+.date .hour {
+  font-family: "Inter", sans-serif;
+  font-size: 4.5rem;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.date .day {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--tinta-fraca);
+}
+
+/* o <br> entre hora e dia atrapalha o empilhamento em bloco */
+.date br {
+  display: none;
+}
+
+/* ---------------- grade de apps ---------------- */
+
+/* Flex em vez de grid porque as categorias têm de 2 a 4 apps: numa grade de
+   4 colunas fixas, uma categoria com 2 itens encostaria à esquerda, com duas
+   células vazias à direita. Com flex, qualquer quantidade fica centralizada. */
+.front .home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  column-gap: 28px;
+  row-gap: 34px;
+  padding: 10px 6% 0;
+}
+
+/* Só a categoria escolhida no dock aparece. O seletor precisa do [hidden]
+   junto pra vencer o display:flex do próprio .app */
+.front .home .app[hidden] {
+  display: none;
+}
+
+.front .home .app {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  /* squircle: aproximação do raio contínuo dos ícones do iPadOS */
+  border-radius: 23%;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 6px 16px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.front .home .app svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.front .home .app:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .front .home .app {
+    transition: none;
+  }
+  .front .home .app:hover {
+    transform: none;
+  }
+}
+
+/* Rótulo sempre visível abaixo do ícone, como no iPadOS —
+   não é mais tooltip que só aparece no hover */
+.front .home .app span {
   position: absolute;
-  border-radius: 50%;
-  display: inline-block;
-  top: 50%;
+  top: calc(100% + 9px);
   left: 50%;
-  width: 25%;
-  height: 25%;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  background-color: #212121;
+  transform: translateX(-50%);
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  white-space: nowrap;
+  color: var(--tinta-fraca);
+}
+
+/* ---------------- dock ---------------- */
+
+.front .home2 {
+  display: flex;
+  /* O dock é <div class="home home2">, então herdava o flex-wrap:wrap da
+     grade de apps e quebrava a última aba para uma segunda linha no
+     celular. As abas devem ficar sempre numa fila só. */
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  justify-self: center;
+  margin: 22px 0 0;
+  padding: 5px 6px;
+  border-radius: var(--raio-xl);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Abas de categoria. Ocupam o dock, que antes só tinha um ícone decorativo */
+.dock-aba {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.62);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  padding: 7px 15px;
+  border-radius: var(--raio-pill);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.dock-aba:hover {
+  color: #fff;
+}
+
+.dock-aba.ativo {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.dock-aba:focus-visible {
+  outline: 2px solid var(--cor-p1);
+  outline-offset: 2px;
+}
+
+/* "Banco de dados" não cabe no dock em tela estreita: cada aba carrega os
+   dois rótulos e o CSS escolhe qual mostrar */
+.dock-aba-curto {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock-aba {
+    transition: none;
+  }
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .front .home2 {
+    background: var(--vidro-fundo);
+    backdrop-filter: var(--vidro-blur);
+    -webkit-backdrop-filter: var(--vidro-blur);
+  }
 }
 
 .menu {
-  background-color: transparent !important;
-  height: 60px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto !important;
+  background: none !important;
+  cursor: pointer;
 }
 
 .logo-menu {
-  width: 30%;
-  width: 70px;
-}
-@media (max-width: 500px) {
-  .logo-menu {
-    width: 50px;
-  }
-}
-.modal-html {
-  background: #e44d26;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  display: none;
+  width: 44px;
+  height: 44px;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  100% {
-    transform: rotateX(360deg) rotateY(360deg);
-  }
-}
+/* ---------------- indicador de home ---------------- */
 
-#loading-screen {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 13, 25, 0.97);
-  backdrop-filter: blur(8px);
+/* O iPad não tem os três botões do Android: tem uma barrinha só. */
+.navigation {
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  padding: 14px 0 6px;
+}
+
+.navigation .btn-task,
+.navigation .btn-back {
+  display: none;
+}
+
+.navigation .btn-home {
+  width: 132px;
+  height: 5px;
+  border: none;
+  border-radius: var(--raio-pill);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* ---------------- telas de app ---------------- */
+
+/* Antes cobriam a janela inteira (position: fixed). Agora abrem
+   dentro da tela do aparelho, que é o ponto do componente. */
+#loading-screen {
+  display: none;
+  position: absolute;
+  inset: var(--bezel);
+  border-radius: var(--raio-tela);
+  background: rgba(9, 12, 20, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }
 
 #loading-screen svg {
-  width: 120px;
-  height: 120px;
+  width: 96px;
+  height: 96px;
   opacity: 0;
   transform: scale(0.8);
   animation:
@@ -473,42 +453,36 @@
     opacity: 0.9;
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.08);
     opacity: 1;
   }
 }
 
 /* Tela da habilidade */
 #skill-screen {
+  /* o JS liga com display:flex, por isso a centralizacao abaixo */
   display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 13, 25, 0.98);
-  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: var(--bezel);
+  border-radius: var(--raio-tela);
+  padding: 8%;
+  background: rgba(9, 12, 20, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: var(--tinta);
   text-align: center;
-  padding: 40px;
-  z-index: 1001;
-  animation: fadeInSkill 0.4s ease-out forwards;
-}
-
-#skill-screen p {
-  font-size: 1.5rem;
-}
-
-@media (max-width: 500px) {
-  #skill-screen{
-    padding: 20px;
-  }
-  
-  #skill-screen p {
-    font-size: 1rem;
-  }
+  overflow-y: auto;
+  z-index: 4;
+  animation: fadeInSkill 0.35s ease-out forwards;
 }
 
 @keyframes fadeInSkill {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.97);
   }
   to {
     opacity: 1;
@@ -517,38 +491,176 @@
 }
 
 #skill-icon svg {
-  width: 140px;
-  height: 140px;
-  margin-bottom: 20px;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 24px;
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-@media (max-width: 500px) {
-  #skill-icon svg {
-    width: 80px;
-    height: 80px;
-  }
-}
-
 #skill-description {
-  max-width: 400px;
+  max-width: 46ch;
   margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  opacity: 0.9;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #close-btn {
-  margin-top: 20px;
-  background: #0077ff;
+  margin-top: 28px;
+  padding: 11px 26px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: white;
+  /* pílula: o raio dos botões do iPadOS */
+  border-radius: var(--raio-pill);
+  background: var(--cor-p1);
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.25s ease;
 }
 
 #close-btn:hover {
-  background: #3399ff;
+  background: #5f7fcb;
+}
+
+/* ---------------- responsivo ---------------- */
+
+@media (max-width: 1000px) {
+  .cardTablet {
+    --bezel: 16px;
+    --raio-corpo: 32px;
+    --raio-tela: 18px;
+  }
+
+  .front .home .app {
+    width: 74px;
+    height: 74px;
+    padding: 14px;
+  }
+
+  .date .hour {
+    font-size: 3.6rem;
+  }
+
+  .logo-menu {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 700px) {
+  .dock-aba-longo {
+    display: none;
+  }
+
+  .dock-aba-curto {
+    display: inline;
+  }
+
+  .dock-aba {
+    font-size: 0.7rem;
+    padding: 6px 9px;
+  }
+
+  .front .home2 {
+    gap: 2px;
+    padding: 4px 5px;
+  }
+
+  .cardTablet {
+    --bezel: 12px;
+    --raio-corpo: 26px;
+    --raio-tela: 15px;
+  }
+
+  .front .home {
+    column-gap: 18px;
+    row-gap: 28px;
+    padding: 6px 4% 0;
+  }
+
+  .front .home .app {
+    width: 58px;
+    height: 58px;
+    padding: 10px;
+  }
+
+  .front .home .app span {
+    top: calc(100% + 7px);
+    font-size: 0.6rem;
+  }
+
+  .date {
+    padding: 16px 0 6px;
+  }
+
+  .date .hour {
+    font-size: 2.6rem;
+  }
+
+  .date .day {
+    font-size: 0.8rem;
+  }
+
+  .navigation .btn-home {
+    width: 96px;
+    height: 4px;
+  }
+
+  #skill-icon svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+  }
+
+  #skill-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .front .home {
+    column-gap: 14px;
+  }
+
+  .front .home2 {
+    margin-top: 16px;
+    padding: 8px 12px;
+  }
+
+  .head {
+    font-size: 0.7rem;
+    padding: 2px 8px 0;
+  }
+
+  .head .h-left {
+    font-size: 0.7rem;
+  }
+
+  #skill-screen {
+    padding: 7% 6%;
+  }
+
+  #close-btn {
+    margin-top: 18px;
+    padding: 9px 20px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Celulares estreitos: 5 abas numa fila só exigem tipografia menor */
+@media (max-width: 420px) {
+  .dock-aba {
+    font-size: 0.62rem;
+    padding: 6px 7px;
+    letter-spacing: 0;
+  }
+
+  .front .home2 {
+    gap: 1px;
+    padding: 4px;
+  }
 }

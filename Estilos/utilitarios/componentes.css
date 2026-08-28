@@ -13,60 +13,64 @@
   }
 }
 
+/* Base tipográfica de todo botão do site. Antes .botao usava Unbounded a
+   0.85rem e .btn-normal herdava Inter a 1.6rem, então o CTA do hero e o do
+   footer pareciam de projetos diferentes. */
+.btn,
+.botao,
+.btn-normal {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 .btn {
   padding: 15px;
   background: var(--cor-p1);
-  border-radius: 25px;
-  font-size: 1.25rem;
-  font-weight: bold;
+  border-radius: var(--raio-md);
 }
 
-.btn-baixo {
-  display: flex;
-  width: 200px;
-  justify-content: center;
+/* Botão primário do hero (main): fundo de destaque, hover assume o
+   secundário */
+.botao {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  transition: 0.3s;
-  height: 50px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
-}
-
-.btn-baixo svg {
-  max-width: 35px;
-  fill: var(--cor-1);
-  position: absolute;
-  transition: 0.2s;
-  left: 15px;
-  opacity: 0;
+  width: fit-content;
+  padding: 14px 22px;
   background: var(--cor-p1);
-  border-radius: 50%;
-  padding: 05px;
-  transform: scale(0);
-  margin-left: -100px;
+  color: var(--cor-1);
+  border-radius: var(--raio-md);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background 0.3s ease, gap 0.3s ease;
 }
 
-.btn-baixo:hover {
-  background: var(--cor-1);
-  color: var(--cor-p1);
-  width: 235px;
-  justify-content: end;
+.botao svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
 }
 
-.btn-baixo:hover svg {
-  margin-right: 120px;
-  opacity: 1;
-  transform: scale(1);
-  margin-left: 0px;
+.botao:hover {
+  background: var(--cor-p2);
+  gap: 14px;
+}
+
+.botao:hover svg {
+  transform: translateX(4px);
 }
 
 .btn-normal {
-  padding: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
   background: var(--gradiente);
-  border-radius: 25px;
+  color: var(--cor-1);
+  border-radius: var(--raio-md);
   transition: 0.3s;
   z-index: 1;
 }
@@ -83,17 +87,9 @@
 }
 
 @media (max-width: 500px) {
-  .btn.btn-baixo {
-    width: 170px;
-    height: 45px;
-    font-size: 1rem;
-  }
-  .btn.btn-baixo:hover {
-    width: 200px;
-  }
-  .btn-baixo svg {
-    max-width: 30px;
-  }
+  
+  
+  
   .modal-btn-codigo {
     font-size: 1rem;
   }
@@ -119,7 +115,7 @@
   align-items: center;
   justify-content: center;
   padding: 2px;
-  border-radius: 24px;
+  border-radius: var(--raio-lg);
   line-height: 1.6;
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
@@ -130,11 +126,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 34px;
-  border-radius: 22px;
+  border-radius: var(--raio-lg);
   color: #000;
   overflow: hidden;
   background: #000;
-  transition: all 2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (max-width: 1050px) {
@@ -151,9 +146,8 @@
   border-radius: inherit;
   background: var(--cor-2);
   transform-origin: center;
-  animation: moving 4.8s linear infinite paused;
+  animation: moving 12s linear infinite paused;
   transition: all 0.88s cubic-bezier(0.23, 1, 0.32, 1);
-  background: var(--cor-2);
 }
 
 .card:hover::before {
@@ -170,7 +164,13 @@
     0rem 55px 33px rgba(10, 60, 255, 0.05),
     0rem 97px 39px rgba(10, 60, 255, 0.01),
     0rem 152px 43px rgba(10, 60, 255, 0);
-  color: #000000;
+}
+
+/* Quem desativou animacoes no sistema recebe a borda com o gradiente parado */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover::before {
+    animation: none;
+  }
 }
 
 @keyframes moving {
@@ -220,7 +220,7 @@
   height: 20px;
   width: 20px;
   margin-right: 10px;
-  border-radius: 10px;
+  border-radius: var(--raio-md);
   background-color: #b3d4fc;
   animation: pulse 1.5s infinite ease-in-out;
 }
@@ -268,112 +268,3 @@
   }
 }
 
-/* From Uiverse.io by lukepadiachy */
-.my-loader {
-  width: 200px;
-  height: 200px;
-  perspective: 1000px;
-  margin: 100px auto;
-  scale: 1.2;
-}
-
-.rubiks-cube {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: my-rotateCube 5s infinite linear;
-}
-
-@media (max-width: 768px) {
-  .rubiks-cube {
-    animation: none;
-    transform: rotateX(60deg) rotateZ(120deg);
-  }
-  
-  
-}
-
-.my-loader .face-cube {
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
-}
-
-.my-loader .face-cube.front-cube {
-  transform: translateZ(100px);
-}
-.my-loader .face-cube.back {
-  transform: rotateY(180deg) translateZ(100px);
-}
-.my-loader .face-cube.left {
-  transform: rotateY(-90deg) translateZ(100px);
-}
-.my-loader .face-cube.right {
-  transform: rotateY(90deg) translateZ(100px);
-}
-.my-loader .face-cube.top {
-  transform: rotateX(90deg) translateZ(100px);
-}
-.my-loader .face-cube.bottom {
-  transform: rotateX(-90deg) translateZ(100px);
-}
-
-.my-loader .cube {
-  width: calc(100% / 3);
-  height: calc(100% / 3);
-  box-sizing: border-box;
-  border: 1px solid #000;
-}
-
-.azul1 {
-  background: #2563eb;
-  -webkit-box-shadow: 0px 0px 36px 17px rgba(37, 100, 235, 0.11);
-  -moz-box-shadow: 0px 0px 36px 17px rgba(37, 100, 235, 0.11);
-  box-shadow: 0px 0px 36px 17px rgba(37, 100, 235, 0.11);
-}
-.azul2 {
-  background: #3b82f6;
-  -webkit-box-shadow: 0px 0px 36px 17px rgba(59, 131, 246, 0.11);
-  -moz-box-shadow: 0px 0px 36px 17px rgba(59, 131, 246, 0.11);
-  box-shadow: 0px 0px 36px 17px rgba(59, 131, 246, 0.11);
-}
-.azul3 {
-  background: #1e3a8a;
-  -webkit-box-shadow: 0px 0px 36px 17px rgba(30, 59, 138, 0.11);
-  -moz-box-shadow: 0px 0px 36px 17px rgba(30, 59, 138, 0.11);
-  box-shadow: 0px 0px 36px 17px rgba(30, 59, 138, 0.11);
-}
-.azul4 {
-  background: #60a5fa;
-  -webkit-box-shadow: 0px 0px 36px 17px rgba(96, 165, 250, 0.11);
-  -moz-box-shadow: 0px 0px 36px 17px rgba(96, 165, 250, 0.11);
-  box-shadow: 0px 0px 36px 17px rgba(96, 165, 250, 0.11);
-}
-.branco {
-  background: #a2ccff;
-}
-
-@keyframes spinOrbit {
-  from {
-    transform: rotateX(70deg) rotateZ(0deg);
-  }
-  to {
-    transform: rotateX(70deg) rotateZ(360deg);
-  }
-}
-
-.cube {
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-}
-
-@keyframes my-rotateCube {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  100% {
-    transform: rotateX(360deg) rotateY(360deg);
-  }
-}

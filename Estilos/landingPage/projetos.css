@@ -1,5 +1,224 @@
+/* ============================================================
+   Projetos — grade de cards no lugar do carrossel. O carrossel
+   escondia metade do trabalho atrás de um clique em seta, o que é
+   ruim justamente na seção mais importante do portfólio: agora
+   todos os projetos ficam visíveis de uma vez, e a grade cresce
+   sozinha conforme novos forem entrando.
+   ============================================================ */
+
+.projetos-grid {
+  display: grid;
+  /* auto-fit: 2 colunas no desktop, 1 no celular, sem media query —
+     e acomoda 3, 4 ou mais projetos sem tocar no CSS */
+  /* auto-fill, não auto-fit: com auto-fit as faixas vazias colapsam e os
+     poucos cards existentes esticam para preencher a linha inteira — hoje
+     dariam 568px cada. Com auto-fill eles ficam no tamanho pretendido, e a
+     lacuna à direita desaparece sozinha conforme novos projetos entram. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 24px;
+  margin-top: var(--espaco-titulo);
+  list-style: none;
+}
+
+.projeto-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--raio-lg);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+.projeto-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 0 0 1px rgba(122, 158, 235, 0.45),
+    0 18px 40px -12px rgba(0, 0, 0, 0.55);
+}
+
+/* Botão que cobre o card inteiro: deixa a área toda clicável sem
+   aninhar links dentro de link, o que seria HTML inválido */
+.projeto-abrir {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.projeto-abrir:focus-visible {
+  outline: 2px solid var(--azul-400);
+  outline-offset: -4px;
+  border-radius: var(--raio-lg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------------- capa ---------------- */
+
+.projeto-capa {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--azul-900);
+}
+
+.projeto-capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projeto-card:hover .projeto-capa img {
+  transform: scale(1.04);
+}
+
+/* Véu que escurece a base da imagem, para o card não brigar com o
+   texto logo abaixo */
+.projeto-capa::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 14, 26, 0.55), transparent 45%);
+  pointer-events: none;
+}
+
+/* ---------------- conteúdo ---------------- */
+
+.projeto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 18px 14px;
+}
+
+.projeto-nome {
+  font-family: "Unbounded", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--cor-1);
+}
+
+.projeto-resumo {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--azul-200);
+  /* 2 linhas: o texto completo vive na página do projeto */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.projeto-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.projeto-tags li {
+  padding: 4px 10px;
+  border-radius: var(--raio-pill);
+  background: rgba(122, 158, 235, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(122, 158, 235, 0.22);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--azul-200);
+}
+
+/* ---------------- rodapé do card ---------------- */
+
+.projeto-rodape {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding: 0 18px 16px;
+}
+
+.projeto-detalhes {
+  margin-right: auto;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--azul-100);
+}
+
+/* Links diretos, discretos: quem quiser ir direto ao código ou ao site
+   não precisa abrir a página do projeto. z-index acima do link que cobre
+   o card, senão não receberiam o clique. */
+.projeto-mini {
+  position: relative;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--azul-300);
+  opacity: 0.8;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.projeto-mini:hover {
+  color: var(--cor-1);
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.projeto-card:hover .projeto-detalhes {
+  color: var(--cor-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projeto-card,
+  .projeto-capa img {
+    transition: none;
+  }
+  .projeto-card:hover {
+    transform: none;
+  }
+  .projeto-card:hover .projeto-capa img {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .projetos-grid {
+    gap: 24px;
+  }
+
+  .projeto-info {
+    padding: 20px;
+  }
+
+  .projeto-nome {
+    font-size: 1.2rem;
+  }
+}
+
 .projetos-content {
-  margin-top: 100px;
+  margin-top: var(--espaco-secao);
 }
 
 .projetos-bg {
@@ -42,26 +261,8 @@
 
 /* Carrossel */
 
-.carrossel-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 10px;
-  padding: 20px;
-}
-
-@media (max-width: 550px) {
-  .carrossel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    gap: 10px;
-    padding: 10px;
-  }
-}
-
+/* Usada também pela seção de cursos (certificados.css depende dela):
+   sem o flex, as tags viram blocos empilhados de largura total. */
 .linguagens-lst {
   display: flex;
   gap: 20px;
@@ -71,48 +272,18 @@
 .linguagens-lst li {
   background: var(--cor-p1);
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: var(--raio-sm);
 }
 
 .linguagens-lst div {
   background: var(--cor-p1);
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: var(--raio-sm);
 }
 
 @media (max-width: 550px) {
   .linguagens-lst div {
     font-size: 0.8rem;
-  }
-}
-
-.carrossel {
-  display: flex;
-  gap: 20px;
-  overflow-x: hidden;
-  transition: transform 0.3s ease;
-   transition: transform 0.4s ease;
-  will-change: transform;
-  
-}
-
-.carrossel li {
-  min-width: 300px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  opacity: 0.5;
-  transform: scale(0.9);
-  transition: all 0.3s ease;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-@media (max-width: 500px) {
-  .carrossel li {
-    min-width: 100%;
-    width: 100%;
-    transform: scale(1);
   }
 }
 
@@ -144,97 +315,18 @@
 
 .carrossel li img {
   width: 100%;
-  border-radius: 10px 10px 0 0;
+  border-radius: var(--raio-md) 10px 0 0;
 }
 
-.carrossel li.ativo-carrossel {
-  opacity: 1;
-  transform: scale(1);
-}
+.carrossel li.ativo-carrossel 
 
-.descricao-projetos {
-  transform: translateY(-90px);
-  opacity: 0;
-  transition: 0.3s;
-}
+/* As setas tinham top:210px fixo, medida pensada para a altura do card no
+   desktop; em tablet o card encolhe e elas caíam por cima da imagem. Agora
+   acompanham a altura real do carrossel. O gradiente também passa a vir do
+   token, em vez de repetir o par de cores à mão. */
 
-@media (max-width: 768px) {
-  .descricao-projetos {
-    transform: translateY(0px);
-  }
-}
-
-.carrossel li.ativo-carrossel .descricao-projetos {
-  transform: translateY(0px);
-  opacity: 1;
-}
-
-.btn-seta {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  font-size: 20px;
-  position: absolute;
-  z-index: 9;
-  right: 10px;
-  top: 210px;
-  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  font-weight: 600;
-  border: none;
-  transition: 0.3s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.btn-seta:first-child {
-  left: 10px;
-}
-
-.btn-seta:hover {
-  transform: scale(1.1);
-  color: var(--cor-1);
-}
-
-.btn-seta svg {
-  stroke: aliceblue;
-  width: 30px;
-}
-
-.btn-seta.esquerda {
-  transform: rotate(180deg);
-}
-
-.img-carrosel {
-  position: relative;
-  border-radius: 10px;
-  z-index: 2;
-  transition: 0.3s;
-}
-
-.projects-modal {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.8);
-  top: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.projects-modal.ativo-modal {
-  display: flex;
-  animation: fadeIn 0.4s ease forwards;
-}
-
-.projects-modal-content {
-  opacity: 0;
-  transform: scale(0.9);
-  animation: zoomIn 0.4s ease forwards;
-  animation-delay: 0.1s;
-}
+/* Em tablet e celular a seta encosta no card; encolher evita que ela tape
+   parte da imagem */
 
 @keyframes fadeIn {
   from {
@@ -252,198 +344,29 @@
   }
 }
 
-.projects-modal-content {
-  display: grid;
-  background: var(--cor-2);
-  width: 60%;
-  border: 1px solid var(--cor-p1);
-  border-radius: 5px;
-  padding: 20px;
-}
-
-.projects-modal-cima {
-  justify-self: right;
-  align-self: safe;
-}
-
-.projects-modal-cima span {
-  color: var(--cor-1);
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 2rem;
-}
-
-.projects-modal-cima span:hover {
-  transform: scale(1.1);
-}
-
-.carrossel-content {
-  width: 605px;
-  height: 400px;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-.projects-modal-content ul {
-  display: flex;
-  width: 500%;
-  animation: carrossel-modal 20s linear infinite;
-}
-
-.projects-modal-content ul li {
-  width: 100%;
-  flex-shrink: 0;
-  height: 100%;
-  height: 300px;
-}
-
-@keyframes carrossel-modal {
-  0% {
-    transform: translateX(0);
-  }
-  16% {
-    transform: translateX(0);
-  }
-
-  20% {
-    transform: translateX(-100%);
-  }
-  36% {
-    transform: translateX(-100%);
-  }
-
-  40% {
-    transform: translateX(-200%);
-  }
-  56% {
-    transform: translateX(-200%);
-  }
-
-  60% {
-    transform: translateX(-300%);
-  }
-  76% {
-    transform: translateX(-300%);
-  }
-
-  80% {
-    transform: translateX(-400%);
-  }
-  96% {
-    transform: translateX(-400%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.projects-modal-content > p {
-  color: var(--cor-1);
-  max-width: 80ch;
-  margin-top: 20px;
-  justify-self: center;
-}
-
-.btns-modal {
-  display: flex;
-  justify-self: right;
-  gap: 10px;
-  margin-top: 40px;
-}
-
-.btns-modal a {
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.modal-btn-projeto {
-  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  color: var(--cor-1);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.modal-btn-projeto svg {
-  max-width: 30px;
-  height: 30px;
-  fill: var(--cor-1);
-  transition: 0.3s;
-}
-
-.modal-btn-projeto:hover {
-  background: var(--cor-1);
-  color: var(--cor-2);
-}
-
-.modal-btn-projeto:hover svg {
-  fill: var(--cor-2);
-}
-
-.modal-btn-codigo {
-  background: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.modal-btn-codigo:hover {
-  transform: scale(1.05);
-}
-
-.modal-btn-codigo svg {
-  max-width: 30px;
-  height: 30px;
-}
-
-@media (max-width: 1100px) {
-  .projects-modal-content {
-    width: 90%;
-  }
-}
+/* width 100% (era 500%): os keyframes deslocam -100%, -200%... e essa
+   porcentagem é medida sobre a largura do próprio ul. Com 500%, cada passo
+   pulava 5 slides de uma vez e a galeria saía da área visível — o modal
+   abria mostrando um retângulo vazio. Os <li> não encolhem (flex-shrink 0),
+   então continuam em fila mesmo com o ul do tamanho do container. */
 
 @media (max-width: 670px) {
-  .carrossel li {
-    flex-shrink: 0.06;
-  }
-  .carrossel-content {
-    width: 100%;
-    height: 100%;
-  }
-  .btn-seta {
-    width: 40px;
-    height: 40px;
-    top: 160px;
-  }
+  
+  
+  
   .carrossel li::before {
     width: 150px;
     height: 150px;
     top: -75px;
     right: -75px;
   }
-  .projects-modal-content ul li {
-    width: 100%;
-    flex-shrink: 0;
-    height: 100%;
-    justify-content: center;
-  }
-  .projects-modal-content ul li img {
-    width: 350px;
-  }
+  
+  
 }
 
 @media (max-width: 535px) {
-  .carrossel li {
-    flex-shrink: 0.1;
-  }
-  .btn-seta {
-    top: 120px;
-  }
+  
+  
   .carrossel li::before {
     width: 120px;
     height: 120px;
@@ -453,12 +376,8 @@
 }
 
 @media (max-width: 400px) {
-  .carrossel li {
-    flex-shrink: 0.15;
-  }
-  .btn-seta {
-    top: 100px;
-  }
+  
+  
   .carrossel li::before {
     width: 100px;
     height: 100px;

@@ -3,30 +3,62 @@ body {
   --cor-2: #000;
   --cor-p1: #4b6bb7;
   --cor-p2: #111111;
-  --gradiente: linear-gradient(90deg, var(--cor-p1), #00c6ff);
-  --fundo: radial-gradient(circle at 30% 20%, #0a0f1c, #030712);
+  --cor-cinza: #a3a3a3;
+  --sombra-forte: rgba(0, 0, 0, 0.15);
+  --sombra-suave: rgba(0, 0, 0, 0.06);
+  --gradiente: linear-gradient(90deg, var(--cor-p1), var(--azul-ciano));
+  --fundo: #080e1a;
+
+  --vidro-fundo: rgba(255, 255, 255, 0.15);
+  --vidro-borda: rgba(255, 255, 255, 0.25);
+  --vidro-blur: blur(12px) saturate(160%);
+
+  /* ----------------------------------------------------------------
+     Escala de azuis. Antes havia 10 azuis soltos pelos arquivos, vários
+     quase idênticos (#4b6bb7 e #5f7fcb, por exemplo). Todos derivam do
+     matiz 222 da marca, com uma exceção proposital: --azul-ciano, que
+     é o outro extremo do --gradiente.
+     ---------------------------------------------------------------- */
+  --azul-900: #080e1a; /* fundo da página */
+  --azul-800: #0d1526; /* superfícies elevadas */
+  --azul-700: #16203a;
+  --azul-500: #4b6bb7; /* marca (= --cor-p1) */
+  --azul-400: #6d8ad4; /* hover / estados ativos */
+  --azul-300: #9fb4e8;
+  --azul-200: #c7d6f5; /* texto secundário sobre escuro */
+  --azul-100: #eaf1ff; /* texto de destaque */
+  --azul-ciano: #00c6ff; /* só no gradiente */
+
+  /* ----------------------------------------------------------------
+     Raios. Eram 19 valores distintos; viraram 4 degraus mais o pill.
+     ---------------------------------------------------------------- */
+  --raio-sm: 8px; /* tags, chips, elementos pequenos */
+  --raio-md: 12px; /* botões, campos */
+  --raio-lg: 20px; /* cards, modais */
+  --raio-xl: 28px; /* superfícies grandes */
+  --raio-pill: 999px; /* botões-pílula e toggles */
+
+  /* ----------------------------------------------------------------
+     Ritmo vertical. Um único conjunto de medidas para o espaço entre
+     seções e entre título e conteúdo, no lugar dos 100px fixos.
+     ---------------------------------------------------------------- */
+  --espaco-secao: 160px; /* respiro entre seções */
+  --espaco-titulo: 48px; /* do título ao conteúdo da seção */
+  --espaco-bloco: 24px; /* entre blocos irmãos */
+}
+
+@media (max-width: 768px) {
+  body {
+    --espaco-secao: 96px;
+    --espaco-titulo: 32px;
+  }
 }
 
 .cor-1 {
   color: var(--cor-1);
 }
-.cor-2 {
-  color: var(--cor-2);
-}
+
 .cor-p1 {
   color: var(--cor-p1);
 }
-.cor-p2 {
-  color: var(--cor-p2);
-}
 
-.cor-svg-p1 {
-  fill: var(--cor-p1);
-}
-
-.cor-svg-1 {
-  fill: var(--cor-1);
-}
-.cor-svg-2 {
-  fill: var(--cor-2);
-}

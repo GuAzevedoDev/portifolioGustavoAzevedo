@@ -1,26 +1,59 @@
+/* Títulos de seção fluidos: antes eram 4rem fixos, com quebras bruscas em
+   media queries — o tamanho travava em 48px de 1024px até 600px e só então
+   caía. Com clamp o tamanho acompanha a largura de forma contínua, sem
+   degrau, e o mínimo garante legibilidade no celular. */
 .title {
-  font-family: "Poppins", sans-serif;
+  font-family: "Unbounded", sans-serif;
   font-weight: 600;
-  font-size: 4rem;
+  font-size: clamp(2.25rem, 4.6vw, 4rem);
+  line-height: 1.05;
 }
 
-.paragrafo {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 1.5rem;
+/* O respiro só vale quando .title está num heading de verdade: no footer a
+   mesma classe é usada em <div> que são colunas inteiras, e ali a margem
+   empurraria o bloco todo em vez do título. */
+h1.title,
+h2.title {
+  margin-bottom: var(--espaco-titulo);
+}
+
+/* Título principal (hero) */
+/* Título principal (hero) */
+.titulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(2.1rem, 5.4vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cor-p1);
+}
+
+.titulo-sobrenome {
+  color: var(--azul-100);
+}
+
+/* Subtítulo, usado logo abaixo de um título principal */
+.subtitulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: 600;
+  color: var(--cor-cinza);
+  margin-top: 8px;
 }
 
 .logo {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .projects-modal-cima p {
-  font-size: 42px;
+  font-size: 2.6rem;
   line-height: 22px;
 }
 
-.footer-content a {
+/* Tamanho original dos links do footer. O seletor exclui .btn-normal de
+   propósito: como .footer-content a, ele pegava também o botão "Entrar em
+   contato", que saía a 1.6rem/800 enquanto o CTA do hero era 0.85rem/700. */
+.footer-content a:not(.btn-normal) {
   font-size: 1.6rem;
   font-weight: 800;
 }
@@ -29,7 +62,6 @@
   font-size: 0.8rem;
   color: #b4b8b5;
 }
-
 
 @media (max-width: 700px) {
   .footer-titulo {
@@ -51,40 +83,19 @@
 }
 
 @media (max-width: 1150px) {
-  body .main-text h1 {
-    font-size: 2.8rem;
-  }
-  .title {
-    font-size: 3rem;
-  }
-  .main-text .title-full {
-    font-size: 3rem;
-  }
+  /* .title saiu daqui: o clamp em cima já cobre a faixa inteira, sem degrau */
   .projects-modal-content > p {
     font-size: 1rem;
   }
 }
 
 @media (max-width: 850px) {
-  .header-item {
-    font-size: 1rem;
-  }
   .projects-modal-content > p {
     font-size: 0.8rem;
   }
 }
 
-@media (max-width: 500px) {
-  body .main-text h1 {
-    font-size: 2.4rem;
-  }
-  .main-text .title-full {
-    font-size: 2.6rem;
-  }
-  .title {
-    font-size: 2.6rem;
-  }
-}
+/* Citação do footer — o footer voltou à versão original, que usa esta classe */
 .title-footer {
   font-size: 3rem;
   text-transform: uppercase;
@@ -125,6 +136,7 @@
     font-size: 1.6rem;
   }
 }
+
 @media (max-width: 800px) {
   .title-footer {
     font-size: 1.5rem;
@@ -158,14 +170,5 @@
 @media (max-width: 400px) {
   .title-footer {
     font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 400px) {
-  body .main-text h1 {
-    font-size: 2.2rem;
-  }
-  .main-text .title-full {
-    font-size: 2.4rem;
   }
 }

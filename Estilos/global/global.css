@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -21,6 +21,10 @@ body {
 
 img {
   max-width: 100%;
+  /* Sem isto, uma imagem que declare width/height no HTML (o que evita
+     layout shift enquanto carrega) fica esticada: o max-width reduz a
+     largura, mas a altura continua presa ao atributo. */
+  height: auto;
   display: block;
 }
 
