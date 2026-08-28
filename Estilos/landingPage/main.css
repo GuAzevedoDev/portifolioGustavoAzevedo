@@ -165,17 +165,50 @@ main::before {
   outline-offset: 3px;
 }
 
-@media (max-width: 600px) {
+/* No celular a coluna lateral disputava espaço com o cubo. Os contatos
+   sobem para o topo, na mesma faixa do seletor de idioma (que é fixed em
+   top:20px / left:20px), alinhados à direita. Ficam em position:absolute,
+   não fixed: rolam junto com a página em vez de acompanhar a tela. */
+@media (max-width: 900px) {
   .contatos {
-    gap: 8px;
+    top: 20px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    flex-direction: row;
+    gap: 10px;
   }
+
   .contatos a {
     width: 38px;
     height: 38px;
   }
+
   .contatos svg {
     width: 17px;
     height: 17px;
+  }
+
+  /* o deslocamento lateral do hover não faz sentido em linha */
+  .contatos a:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 420px) {
+  .contatos {
+    gap: 8px;
+  }
+
+  .contatos a {
+    width: 34px;
+    height: 34px;
+  }
+
+  .contatos svg {
+    width: 15px;
+    height: 15px;
   }
 }
 
@@ -215,6 +248,20 @@ main::before {
      auréola escura em volta de um retângulo que não existe mais */
   transform-origin: center center;
   animation: cubo-entrada 5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Só entra quando o vídeo em uso é o mp4 opaco (Safari/iOS). O cubo nunca
+   chega a menos de 4,6% da borda em nenhum frame, então o fade de 4% cai
+   apenas sobre o fundo — dissolve a emenda sem tocar no desenho. */
+.main-centro video.cubo-opaco {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-composite: intersect;
 }
 
 @keyframes cubo-entrada {

@@ -53,33 +53,28 @@ h2.title {
 /* Tamanho original dos links do footer. O seletor exclui .btn-normal de
    propósito: como .footer-content a, ele pegava também o botão "Entrar em
    contato", que saía a 1.6rem/800 enquanto o CTA do hero era 0.85rem/700. */
+/* O tamanho era controlado por seis media queries que iam de 1.6rem a
+   0.8rem e voltavam para 1.2rem em 550px — o texto encolhia, crescia de
+   novo e voltava a encolher. Agora são duas faixas fluidas, uma para cada
+   arranjo do grid, e dentro de cada uma o tamanho só diminui. */
 .footer-content a:not(.btn-normal) {
-  font-size: 1.6rem;
+  font-size: clamp(0.9rem, 1.7vw, 1.6rem);
   font-weight: 800;
 }
 
-.footer-titulo {
-  font-size: 0.8rem;
-  color: #b4b8b5;
-}
-
-@media (max-width: 700px) {
-  .footer-titulo {
-    font-size: 0.8rem;
-  }
-}
-
+/* Abaixo de 550px o footer passa a duas colunas. A faixa continua de onde
+   a anterior parou (14,4px) em vez de recomeçar maior: subir de tamanho ao
+   estreitar a tela era justamente o vaivém que existia antes. */
 @media (max-width: 550px) {
-  .footer-titulo {
-    font-size: 1rem;
+  .footer-content a:not(.btn-normal) {
+    font-size: clamp(0.85rem, 2.6vw, 0.9rem);
   }
 }
 
-@media (max-width: 400px) {
-  .footer-titulo {
-    font-size: 0.8rem;
-    color: #b4b8b5;
-  }
+/* Mesmo vaivém do link: 0.8rem, 1rem em 550px, 0.8rem de novo em 400px */
+.footer-titulo {
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  color: #b4b8b5;
 }
 
 @media (max-width: 1150px) {
