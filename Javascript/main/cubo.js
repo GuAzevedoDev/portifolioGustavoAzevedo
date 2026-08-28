@@ -34,6 +34,13 @@ export function initCubo() {
   if (webm && suportaVideoComAlpha()) {
     cuboVideo.querySelectorAll("source").forEach((s) => s.remove());
     cuboVideo.src = webm;
+  } else {
+    // Sem alpha, o que toca é o mp4 opaco, que carrega o próprio fundo
+    // #080E1A. iOS e macOS convertem vídeo (BT.709) e cor CSS (sRGB) por
+    // caminhos diferentes, então esse retângulo não fica exatamente igual
+    // ao fundo da página. A classe liga um fade nas bordas que dissolve a
+    // emenda, qualquer que seja o tamanho da diferença.
+    cuboVideo.classList.add("cubo-opaco");
   }
   cuboVideo.load();
 
