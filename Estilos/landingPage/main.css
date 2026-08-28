@@ -6,17 +6,6 @@
   overflow-x: clip;
 }
 
-main::before {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 153, 255, 0.2), transparent 70%);
-  bottom: -80px;
-  right: 0px;
-  filter: blur(80px);
-  z-index: -1;
-}
 
 @media (max-width: 768px) {
   main::before {

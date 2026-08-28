@@ -27,7 +27,9 @@
   width: 500px;
   height: calc(100% + 40px);
   padding: 10px;
-  background: #111;
+  /* Superfície elevada, um degrau acima de --fundo: com o mesmo token
+     do fundo o card sumiria dentro do bloco que o contém. */
+  background: var(--azul-800);
   border-radius: var(--raio-md);
   position: relative;
   transition: 0.3s;

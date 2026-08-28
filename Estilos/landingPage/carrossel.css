@@ -1,0 +1,337 @@
+
+.carrossel {
+  /* Os cards correm mais para a borda do que o container do site: na
+     referência o ativo começa a ~6% da largura da tela. */
+  --recuo: clamp(48px, 5.8vw, 112px);
+  /* E a seta, mais perto ainda do canto. */
+  --recuo-seta: clamp(12px, 2.1vw, 40px);
+  --gap: 24px;
+
+  /* Card quadrado, medida única. O ativo é o mesmo card em escala. */
+  --lado: clamp(190px, 17vw, 315px);
+  --escala: 1.2;
+
+  /* O ativo cresce para cima: o topo precisa caber, mais a sombra. */
+  --pad-topo: clamp(64px, 7vw, 96px);
+  --pad-base: 235px; /* reserva o espaço da legenda, que é absoluta */
+  --seta: 56px;
+
+  /* Uma sombra só, usada pelo ativo e pelo hover. Precisa de bastante
+     difusão: na referência ela ainda é visível a ~130px do card. */
+  --sombra-card:
+    0 18px 45px -5px rgba(0, 0, 0, 0.95),
+    0 30px 110px 15px rgba(0, 0, 0, 0.7);
+
+  position: relative;
+  /* Parte do respiro já vem do padding do palco */
+  margin-top: calc(var(--espaco-titulo) - 30px);
+}
+
+/* O palco é o próprio contêiner de rolagem: ganha arrasto e swipe de
+   graça, sem precisar reimplementar inércia no JavaScript. */
+.carrossel-palco {
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Anula o `* { scroll-behavior: smooth }` do global: com ele, a
+     rolagem programática entrava em conflito com o scroll-snap e
+     simplesmente não saía do lugar. A suavidade vem do scrollTo. */
+  scroll-behavior: auto;
+  /* Sem scroll-snap de propósito: quem decide a parada é o JS, que
+     conhece a coluna exata de cada card. O snap disputava com ele —
+     perto do fim da lista puxava a rolagem de volta e deixava um
+     pedaço do último card inalcançável. */
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.carrossel-palco::-webkit-scrollbar {
+  display: none;
+}
+
+.carrossel-trilho {
+  display: flex;
+  /* flex-end: o ativo escala a partir da base, então é a linha de
+     baixo que todos compartilham. */
+  align-items: flex-end;
+  gap: var(--gap);
+  /* Alinhado com o container: o card ativo nasce na mesma coluna do
+     título da seção. */
+  padding: var(--pad-topo) var(--recuo) var(--pad-base);
+  list-style: none;
+  width: max-content;
+}
+
+.carrossel-item {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--lado);
+  height: var(--lado);
+}
+
+/* A pilha é resolvida nas capas, não nos <li>: um z-index no item
+   criaria contexto de empilhamento e prenderia a legenda dentro dele,
+   onde a sombra do card vizinho passaria por cima do texto. */
+
+/* ---------------- capa ---------------- */
+
+/* A escala vive na capa, não no <li>: assim a legenda, que é irmã
+   dela, continua no tamanho normal.
+
+   scale e translate como propriedades separadas (não dentro de
+   transform): o deslocamento do hover fica em pixels de tela, sem ser
+   multiplicado pela escala do card ativo. */
+.carrossel-capa {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--raio-lg);
+  background: var(--azul-800);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  /* canto inferior esquerdo: a base fica no lugar e o card avança
+     para cima e para a direita, como na referência */
+  transform-origin: bottom left;
+  transition:
+    scale 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.55s ease;
+}
+
+.carrossel-capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Acima dos vizinhos — é o que permite cobri-los ao crescer. */
+.carrossel-item.ativo-carrossel .carrossel-capa {
+  z-index: 2;
+  scale: var(--escala);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    var(--sombra-card);
+}
+
+/* Hover num card que não é o ativo: ele desce um pouco, passa na
+   frente de todos — inclusive do ativo — e ganha a mesma sombra. O
+   ativo não reage ao hover: já está no seu estado final. */
+.carrossel-item:not(.ativo-carrossel):hover .carrossel-capa {
+  z-index: 3;
+  translate: 0 10px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    var(--sombra-card);
+}
+
+.carrossel-capa:focus-visible {
+  outline: 2px solid var(--azul-400);
+  outline-offset: 4px;
+}
+
+/* ---------------- legenda ---------------- */
+
+/* Absoluta e presa ao item: acompanha o card ativo sem que o JS
+   precise sincronizar posição nenhuma.
+
+   O tamanho não é feito por font-size: uma variável CSS não anima, ela
+   troca de valor de uma vez só, então ao tirar o mouse o texto pulava
+   pro tamanho cheio e só depois sumia no fade. Em vez disso é a caixa
+   inteira que escala — isso sim transiciona de verdade — encolhendo e
+   subindo junto, como se fosse recolhida para dentro do projeto. */
+.carrossel-legenda {
+  position: absolute;
+  z-index: 5; /* nenhuma sombra de card cai sobre o texto */
+  top: calc(100% + 30px);
+  left: 0;
+  width: max(100%, 380px);
+  max-width: 520px;
+  transform-origin: top left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-14px) scale(0.55);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.45s;
+}
+
+/* Ativo: legenda em tamanho cheio. */
+.carrossel-item.ativo-carrossel .carrossel-legenda {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Hover num card que não é o ativo: a mesma legenda, um degrau menor
+   — ela espia por baixo do card sem disputar com a do ativo. */
+.carrossel-item:not(.ativo-carrossel):hover .carrossel-legenda {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(0.72);
+}
+
+/* Com o cursor sobre outro card, a legenda do ativo cede a vez: duas
+   ao mesmo tempo se sobreporiam, já que são mais largas que um card. */
+.carrossel-trilho:has(.carrossel-item:hover)
+  .carrossel-item.ativo-carrossel:not(:hover)
+  .carrossel-legenda {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-14px) scale(0.55);
+}
+
+.carrossel-titulo {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.28;
+  color: var(--cor-1);
+}
+
+.carrossel-cliente {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-cinza);
+}
+
+.carrossel-link {
+  display: inline-block;
+  color: var(--azul-300);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  transition: color 0.25s ease;
+}
+
+.carrossel-link:hover {
+  color: var(--cor-1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Pills vazadas, só o contorno na cor da marca */
+.carrossel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  list-style: none;
+}
+
+.carrossel-tags li {
+  padding: 6px 16px;
+  border: 1px solid var(--cor-p1);
+  border-radius: var(--raio-pill);
+  background: transparent;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--azul-100);
+}
+
+/* ---------------- setas ---------------- */
+
+/* Mesmo idioma do .botao do site: fundo da marca, raio médio, sem
+   borda, e no hover o fundo escurece enquanto o ícone desliza. */
+.carrossel-seta {
+  position: absolute;
+  /* Perto da base do card, não no meio dele — como na referência. */
+  top: calc(var(--pad-topo) + var(--lado) * 0.72);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: var(--seta);
+  height: var(--seta);
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio-md);
+  background: var(--cor-p1);
+  color: var(--cor-1);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.carrossel-seta:hover:not(:disabled) {
+  background: var(--cor-p2);
+}
+
+.carrossel-seta svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.carrossel-seta-anterior:hover:not(:disabled) svg {
+  transform: translateX(-4px);
+}
+
+.carrossel-seta-proxima:hover:not(:disabled) svg {
+  transform: translateX(4px);
+}
+
+.carrossel-seta:focus-visible {
+  outline: 2px solid var(--azul-400);
+  outline-offset: 4px;
+}
+
+.carrossel-seta:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.carrossel-seta-anterior {
+  left: var(--recuo-seta);
+}
+
+.carrossel-seta-proxima {
+  right: var(--recuo-seta);
+}
+
+/* ---------------- responsivo ---------------- */
+
+@media (max-width: 1050px) {
+  .carrossel {
+    --seta: 50px;
+    --pad-base: 215px;
+  }
+
+  .carrossel-seta svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carrossel {
+    --lado: 64vw;
+    --escala: 1.15;
+    --gap: 16px;
+    --seta: 44px;
+    --pad-base: 225px;
+  }
+
+  .carrossel-legenda {
+    top: calc(100% + 24px);
+    width: min(100vw - 40px, 420px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carrossel-capa,
+  .carrossel-legenda,
+  .carrossel-seta,
+  .carrossel-seta svg {
+    transition: none;
+  }
+}

@@ -33,7 +33,7 @@
   <link rel="icon" href="./imagens/favicon.png" type="image/png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./Estilos/style.min.css">
+  <link rel="stylesheet" href="./Estilos/style.css">
 
   <!-- JS -->
   <script type="module" src="./Javascript/script.js"></script>
@@ -181,6 +181,74 @@
     </a>
   </main>
 
+  <article class="projetos-bg" id="projetos" aria-labelledby="projeto-title">
+    <div class="projetos-content">
+      <div class="carrossel" data-carrossel>
+        <div class="carrossel-palco">
+          <ul class="carrossel-trilho">
+            <li class="carrossel-item ativo-carrossel">
+              <a href="projetos/bikcraft.html" class="carrossel-capa">
+                <img src="imagens/projetos/bikcraft.png" alt="Tela inicial do projeto Bikcraft" loading="lazy" />
+                <span class="sr-only">Ver detalhes de Bikcraft</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo">Site institucional para uma linha de bicicletas el&eacute;tricas premium</h3>
+                <p class="carrossel-cliente">
+                  Bikcraft
+                  <a href="https://github.com/GuAzevedoDev/bikcraft" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                  <a href="https://guazevedodev.github.io/bikcraft/" target="_blank" rel="noopener" class="carrossel-link">Site</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Responsivo</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="carrossel-item">
+              <a href="projetos/cia-das-tortas.html" class="carrossel-capa">
+                <img src="imagens/projetos/ciaDasTortasHeader.png" alt="Tela inicial do projeto Cia Das Tortas" loading="lazy" />
+                <span class="sr-only">Ver detalhes de Cia Das Tortas</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo">Vitrine digital para uma confeitaria de doces artesanais</h3>
+                <p class="carrossel-cliente">
+                  Cia Das Tortas
+                  <a href="https://github.com/GuAzevedoDev/CiaDasTortas" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                  <a href="https://guazevedodev.github.io/CiaDasTortas/" target="_blank" rel="noopener" class="carrossel-link">Site</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Responsivo</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" class="carrossel-seta carrossel-seta-anterior" aria-label="Projeto anterior">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M20 12H4m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <button type="button" class="carrossel-seta carrossel-seta-proxima" aria-label="Pr&oacute;ximo projeto">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </article>
+
   <article class="about-bg container" id="sobreMim">
     <div class="about-content  card">
       <div class="content">
@@ -268,67 +336,7 @@
     </div>
   </article>
 
-  <article class="projetos-bg" id="projetos" aria-labelledby="projeto-title">
-    <div class="projetos-content">
-      <h1 class="title cor-1 container" id="projeto-title">projetos<span class="cor-p1">.</span></h1>
 
-      <ul class="projetos-grid container">
-        <li class="projeto-card">
-          <a href="projetos/bikcraft.html" class="projeto-abrir">
-            <span class="sr-only">Ver detalhes de Bikcraft</span>
-          </a>
-
-          <div class="projeto-capa">
-            <img src="imagens/projetos/bikcraft.png" alt="Tela inicial do projeto Bikcraft" loading="lazy" />
-          </div>
-
-          <div class="projeto-info">
-            <h3 class="projeto-nome">Bikcraft</h3>
-            <p class="projeto-resumo">O Bikcraft é um site moderno e responsivo desenvolvido para apresentar uma linha de bicicletas elétricas premium.</p>
-
-            <ul class="projeto-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-            </ul>
-          </div>
-
-          <div class="projeto-rodape">
-            <span class="projeto-detalhes">Ver projeto</span>
-            <a href="https://github.com/GuAzevedoDev/bikcraft" target="_blank" rel="noopener" class="projeto-mini">GitHub</a>
-            <a href="https://guazevedodev.github.io/bikcraft/" target="_blank" rel="noopener" class="projeto-mini">Site</a>
-          </div>
-        </li>
-
-        <li class="projeto-card">
-          <a href="projetos/cia-das-tortas.html" class="projeto-abrir">
-            <span class="sr-only">Ver detalhes de Cia Das Tortas</span>
-          </a>
-
-          <div class="projeto-capa">
-            <img src="imagens/projetos/ciaDasTortasHeader.png" alt="Tela inicial do projeto Cia Das Tortas" loading="lazy" />
-          </div>
-
-          <div class="projeto-info">
-            <h3 class="projeto-nome">Cia Das Tortas</h3>
-            <p class="projeto-resumo">O Cia Das Tortas é um site moderno e responsivo desenvolvido para apresentar uma linha de doces premium.</p>
-
-            <ul class="projeto-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-            </ul>
-          </div>
-
-          <div class="projeto-rodape">
-            <span class="projeto-detalhes">Ver projeto</span>
-            <a href="https://github.com/GuAzevedoDev/CiaDasTortas" target="_blank" rel="noopener" class="projeto-mini">GitHub</a>
-            <a href="https://guazevedodev.github.io/CiaDasTortas/" target="_blank" rel="noopener" class="projeto-mini">Site</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </article>
 
   <article class="tecnologias-bg" id="tecnologias">
     <h1 class="title cor-1 container">Tecnologias<span class="cor-p1">.</span></h1>

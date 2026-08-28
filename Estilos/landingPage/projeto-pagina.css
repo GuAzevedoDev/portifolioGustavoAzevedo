@@ -1,19 +1,26 @@
-/* ============================================================
-   Página individual de projeto (/projetos/*.html).
-   Reaproveita os tokens da landing: mesma paleta, mesmos raios e
-   o mesmo ritmo vertical, para as duas páginas parecerem o mesmo
-   site. Nada aqui redefine cor ou tipografia por conta própria.
-   ============================================================ */
 
 .projeto-pagina {
-  padding-bottom: var(--espaco-secao);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100vh;
 }
 
 /* ---------------- topo ---------------- */
 
-.projeto-topo {
+.projeto-texto {
   padding-top: 48px;
 }
+
+.projeto-explicacao{
+  margin-top: var(--espaco-bloco);
+}
+
+.projeto-explicacao dt{
+  margin-top: var(--espaco-bloco);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
 
 /* Voltar: fica antes do título, é a primeira coisa que a pessoa
    encontra ao chegar por link direto */
@@ -111,28 +118,46 @@
 /* ---------------- galeria ---------------- */
 
 .projeto-galeria {
-  margin-top: var(--espaco-secao);
   display: grid;
-  gap: 72px;
+  height: 100vh;
 }
+
+.projeto-galeria ul {
+  overflow-y: auto;
+}
+
+
 
 /* Captura à esquerda, explicação à direita. A imagem recebe a fração
    maior porque é ela que carrega a informação; o texto acompanha. */
-.projeto-secao {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
 
-.projeto-secao-imagem {
+
+.projeto-galeria {
   margin: 0;
-  overflow: hidden;
+  padding-top: 48px;
+  overflow: auto;
   border-radius: var(--raio-lg);
   background: var(--azul-800);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.08),
     0 18px 40px -20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.projeto-galeria-bg ul li {
+  color: var(--cor-1);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.projeto-galeria-bg ul li img{
+  width: 85%;
 }
 
 /* A imagem manda na própria altura: são capturas de proporções
@@ -143,9 +168,23 @@
   display: block;
 }
 
+
+
 .projeto-secao-texto {
   display: grid;
   gap: 12px;
+  
+}
+
+.projeto-texto-bg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+.projeto-saber-mais{
+  position: absolute;
+  bottom: 20px;
 }
 
 .projeto-secao-titulo {
