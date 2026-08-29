@@ -90,6 +90,10 @@
    multiplicado pela escala do card ativo. */
 .carrossel-capa {
   position: relative;
+  /* Base da pilha. A ordem e sempre a mesma: capa em repouso (1),
+     capa sob o cursor (2), capa do ativo (3). Assim o card ativo nunca
+     e coberto pelos dois vizinhos, aconteca o que acontecer. */
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -113,20 +117,22 @@
   object-position: top center;
 }
 
-/* Acima dos vizinhos — é o que permite cobri-los ao crescer. */
+/* Topo da pilha: é o que permite cobrir os vizinhos ao crescer. */
 .carrossel-item.ativo-carrossel .carrossel-capa {
-  z-index: 2;
+  z-index: 3;
   scale: var(--escala);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.1),
     var(--sombra-card);
 }
 
-/* Hover num card que não é o ativo: ele desce um pouco, passa na
-   frente de todos — inclusive do ativo — e ganha a mesma sombra. O
-   ativo não reage ao hover: já está no seu estado final. */
+/* Hover num card que não é o ativo: ele desce um pouco, sobe na
+   frente dos outros vizinhos e ganha a mesma sombra — mas continua
+   atrás do ativo, que é sempre a camada de cima. Antes ele ia para o
+   topo e cobria o ativo pela metade. O ativo não reage ao hover: já
+   está no seu estado final. */
 .carrossel-item:not(.ativo-carrossel):hover .carrossel-capa {
-  z-index: 3;
+  z-index: 2;
   translate: 0 10px;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.12),

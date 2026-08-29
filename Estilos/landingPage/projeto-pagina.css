@@ -1,7 +1,7 @@
 
 .projeto-pagina {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   height: 100vh;
 }
 
@@ -48,6 +48,7 @@
 
 .projeto-titulo {
   font-family: "Unbounded", sans-serif;
+  /* Fallback para quem não tem container query */
   font-size: clamp(2.2rem, 5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.05;
@@ -72,6 +73,12 @@
 
 .projeto-meta .projeto-tags {
   margin-right: auto;
+}
+
+@container (min-width: 1px) {
+  .projeto-titulo {
+    font-size: clamp(1.9rem, 12cqi, 3.6rem);
+  }
 }
 
 /* ---------------- botões de ação ---------------- */
@@ -184,15 +191,29 @@
   
 }
 
+/* A coluna de texto vira o container de referência do título: com 5vw ele
+   crescia com a tela inteira, mas quem manda no espaço é a coluna (1/4 da
+   grade) — um nome mais comprido que "Bikcraft" vazava por cima da galeria. */
 .projeto-texto-bg{
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Cada coluna rola por conta própria, como a galeria ao lado: projetos
+     com descrição longa não empurram nada para fora da tela. */
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
   }
 
 .projeto-saber-mais{
-  position: absolute;
-  bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  /* empurra para o fim da coluna quando a descrição é curta */
+  margin-top: auto;
+  padding-top: var(--espaco-bloco);
 }
 
 .projeto-secao-titulo {
@@ -256,5 +277,34 @@
   .projeto-acao {
     padding: 11px 16px;
     font-size: 0.75rem;
+  }
+}
+
+/* Abaixo de 900px não há espaço para as duas colunas lado a lado: viram
+   uma pilha e a página inteira volta a rolar de uma vez só, em vez de
+   cada coluna rolar por dentro (que no toque é confuso). */
+@media (max-width: 900px) {
+  .projeto-pagina {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .projeto-texto-bg,
+  .projeto-galeria {
+    height: auto;
+    overflow: visible;
+  }
+
+  .projeto-galeria {
+    padding-bottom: 48px;
+    border-radius: 0;
+  }
+
+  .projeto-galeria-bg ul li img {
+    width: 100%;
+  }
+
+  .projeto-saber-mais {
+    margin-top: var(--espaco-bloco);
   }
 }
