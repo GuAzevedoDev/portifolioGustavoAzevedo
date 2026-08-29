@@ -17,12 +17,10 @@ body {
      Escala de azuis. Antes havia 10 azuis soltos pelos arquivos, vários
      quase idênticos (#4b6bb7 e #5f7fcb, por exemplo). Todos derivam do
      matiz 222 da marca, com uma exceção proposital: --azul-ciano, que
-     é o outro extremo do --gradiente.
+     é o outro extremo do --gradiente. A escala só guarda os degraus
+     que alguma regra usa — 900, 700 e 500 saíram por não ter uso.
      ---------------------------------------------------------------- */
-  --azul-900: #080e1a; /* fundo da página */
   --azul-800: #0d1526; /* superfícies elevadas */
-  --azul-700: #16203a;
-  --azul-500: #4b6bb7; /* marca (= --cor-p1) */
   --azul-400: #6d8ad4; /* hover / estados ativos */
   --azul-300: #9fb4e8;
   --azul-200: #c7d6f5; /* texto secundário sobre escuro */
@@ -30,9 +28,8 @@ body {
   --azul-ciano: #00c6ff; /* só no gradiente */
 
   /* ----------------------------------------------------------------
-     Raios. Eram 19 valores distintos; viraram 4 degraus mais o pill.
+     Raios. Eram 19 valores distintos; viraram 3 degraus mais o pill.
      ---------------------------------------------------------------- */
-  --raio-sm: 8px; /* tags, chips, elementos pequenos */
   --raio-md: 12px; /* botões, campos */
   --raio-lg: 20px; /* cards, modais */
   --raio-xl: 28px; /* superfícies grandes */

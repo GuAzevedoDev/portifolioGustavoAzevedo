@@ -19,9 +19,11 @@
   /* O ativo cresce para cima: o topo precisa caber, mais a sombra. */
   --pad-topo: clamp(64px, 7vw, 96px);
   /* Reserva o espaço da legenda, que é absoluta e fica fora do fluxo. O
-     palco tem overflow-y: hidden, então o que passar daqui é cortado —
-     era o caso da última tag quando as tags quebravam em duas linhas. */
-  --pad-base: 268px;
+     palco tem overflow-y: hidden, então o que passar daqui é cortado.
+     Quem manda no valor real é o initCarrossel, que mede a legenda mais
+     alta e sobrescreve isto inline — estes números são só a rede de
+     segurança para o caso de o JS não rodar, e por isso são folgados. */
+  --pad-base: 300px;
 
   /* Uma sombra só, usada pelo ativo e pelo hover. Precisa de bastante
      difusão: na referência ela ainda é visível a ~130px do card. */
@@ -90,10 +92,6 @@
    multiplicado pela escala do card ativo. */
 .carrossel-capa {
   position: relative;
-  /* Base da pilha. A ordem e sempre a mesma: capa em repouso (1),
-     capa sob o cursor (2), capa do ativo (3). Assim o card ativo nunca
-     e coberto pelos dois vizinhos, aconteca o que acontecer. */
-  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -117,22 +115,20 @@
   object-position: top center;
 }
 
-/* Topo da pilha: é o que permite cobrir os vizinhos ao crescer. */
+/* Acima dos vizinhos — é o que permite cobri-los ao crescer. */
 .carrossel-item.ativo-carrossel .carrossel-capa {
-  z-index: 3;
+  z-index: 2;
   scale: var(--escala);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.1),
     var(--sombra-card);
 }
 
-/* Hover num card que não é o ativo: ele desce um pouco, sobe na
-   frente dos outros vizinhos e ganha a mesma sombra — mas continua
-   atrás do ativo, que é sempre a camada de cima. Antes ele ia para o
-   topo e cobria o ativo pela metade. O ativo não reage ao hover: já
-   está no seu estado final. */
+/* Hover num card que não é o ativo: ele desce um pouco, passa na
+   frente de todos — inclusive do ativo — e ganha a mesma sombra. O
+   ativo não reage ao hover: já está no seu estado final. */
 .carrossel-item:not(.ativo-carrossel):hover .carrossel-capa {
-  z-index: 2;
+  z-index: 3;
   translate: 0 10px;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.12),
@@ -312,7 +308,6 @@
 @media (max-width: 1050px) {
   .carrossel {
     --seta: 50px;
-    --pad-base: 215px;
   }
 
   .carrossel-seta svg {
@@ -327,7 +322,7 @@
     --escala: 1.15;
     --gap: 16px;
     --seta: 44px;
-    --pad-base: 225px;
+    --pad-base: 290px;
   }
 
   .carrossel-legenda {

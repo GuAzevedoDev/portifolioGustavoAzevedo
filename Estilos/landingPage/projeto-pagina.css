@@ -7,8 +7,10 @@
 
 /* ---------------- topo ---------------- */
 
+/* O seletor de idioma é fixo no canto superior esquerdo e vai até 61px.
+   O "Voltar aos projetos" nascia em 48px e ficava por baixo dele. */
 .projeto-texto {
-  padding-top: 48px;
+  padding-top: 80px;
 }
 
 .projeto-explicacao{
@@ -53,14 +55,6 @@
   font-weight: 800;
   line-height: 1.05;
   color: var(--cor-1);
-}
-
-.projeto-subtitulo {
-  max-width: 70ch;
-  margin-top: 16px;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--azul-200);
 }
 
 .projeto-meta {
@@ -129,10 +123,6 @@
   height: 100vh;
 }
 
-.projeto-galeria ul {
-  overflow-y: auto;
-}
-
 
 
 /* Captura à esquerda, explicação à direita. A imagem recebe a fração
@@ -175,25 +165,9 @@
   letter-spacing: 0.01em;
 }
 
-/* A imagem manda na própria altura: são capturas de proporções
-   diferentes, e recortar cortaria o conteúdo do site */
-.projeto-secao-imagem img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
-.projeto-secao-texto {
-  display: grid;
-  gap: 12px;
-  
-}
-
 /* A coluna de texto vira o container de referência do título: com 5vw ele
    crescia com a tela inteira, mas quem manda no espaço é a coluna (1/4 da
-   grade) — um nome mais comprido que "Bikcraft" vazava por cima da galeria. */
+   grade) — um nome de projeto mais comprido vazava por cima da galeria. */
 .projeto-texto-bg{
   container-type: inline-size;
   display: flex;
@@ -216,56 +190,15 @@
   padding-top: var(--espaco-bloco);
 }
 
-.projeto-secao-titulo {
-  font-family: "Unbounded", sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--cor-1);
-}
-
-.projeto-secao-texto p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--azul-200);
-}
-
 /* Abaixo de 860px as duas colunas não cabem: a imagem passa a ocupar a
    largura toda e o texto vai para baixo dela */
 @media (max-width: 860px) {
   .projeto-galeria {
     gap: 48px;
   }
-
-  .projeto-secao {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-/* ---------------- rodapé da página ---------------- */
-
-.projeto-fim {
-  margin-top: var(--espaco-secao);
-  padding-top: var(--espaco-bloco);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.projeto-fim p {
-  color: var(--azul-200);
-  opacity: 0.75;
 }
 
 @media (max-width: 600px) {
-  .projeto-topo {
-    padding-top: 32px;
-  }
-
   .projeto-galeria {
     gap: 28px;
   }

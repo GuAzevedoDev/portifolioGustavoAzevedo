@@ -16,19 +16,12 @@
 /* Base tipográfica de todo botão do site. Antes .botao usava Unbounded a
    0.85rem e .btn-normal herdava Inter a 1.6rem, então o CTA do hero e o do
    footer pareciam de projetos diferentes. */
-.btn,
 .botao,
 .btn-normal {
   font-family: "Unbounded", sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-}
-
-.btn {
-  padding: 15px;
-  background: var(--cor-p1);
-  border-radius: var(--raio-md);
 }
 
 /* Botão primário do hero (main): fundo de destaque, hover assume o
@@ -86,27 +79,6 @@
   color: var(--cor-p1);
 }
 
-@media (max-width: 500px) {
-  
-  
-  
-  .modal-btn-codigo {
-    font-size: 1rem;
-  }
-  .modal-btn-projeto {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .modal-btn-codigo {
-    font-size: 0.7rem;
-  }
-  .modal-btn-projeto {
-    font-size: 0.7rem;
-  }
-}
-
 /* Uiverse */
 
 .card {
@@ -129,7 +101,7 @@
   border-radius: var(--raio-lg);
   color: #000;
   overflow: hidden;
-  background: var(--fundo);
+  background: var(--cor-2);
 }
 
 @media (max-width: 1050px) {

@@ -375,20 +375,6 @@
   }
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto !important;
-  background: none !important;
-  cursor: pointer;
-}
-
-.logo-menu {
-  width: 44px;
-  height: 44px;
-}
-
 /* ---------------- indicador de home ---------------- */
 
 /* O iPad não tem os três botões do Android: tem uma barrinha só. */
@@ -543,11 +529,6 @@
 
   .date .hour {
     font-size: 3.6rem;
-  }
-
-  .logo-menu {
-    width: 38px;
-    height: 38px;
   }
 }
 

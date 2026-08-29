@@ -66,10 +66,6 @@
 
 /* visual em .tag (componentes.css) */
 
-.descricao-projetos h2 {
-  margin-bottom: 10px;
-}
-
 /* Usada também pela seção de cursos (certificados.css depende dela):
    sem o flex, as tags viram blocos empilhados de largura total. */
 .linguagens-lst {
@@ -78,10 +74,3 @@
   flex-wrap: wrap;
 }
 
-
-
-
-
-@media (max-width: 550px) {
-  
-}

@@ -92,6 +92,57 @@ function montar(carrossel) {
   anterior?.addEventListener("click", () => ativar(atual - 1));
   proxima?.addEventListener("click", () => ativar(atual + 1));
 
+  /**
+   * A legenda é absoluta, então não empurra nada: o espaço embaixo do card
+   * precisa ser reservado à mão, no --pad-base. Isso era um número fixo por
+   * breakpoint, e todo projeto novo com título mais longo estourava a
+   * reserva — o palco tem overflow-y: hidden, então a última linha de tags
+   * simplesmente sumia. Agora a medida é tirada da legenda mais alta, e o
+   * carrossel se corrige sozinho quando o conteúdo muda.
+   */
+  function ajustarReserva() {
+    const legendas = itens
+      .map((item) => item.querySelector(".carrossel-legenda"))
+      .filter(Boolean);
+    if (legendas.length === 0) return;
+
+    // offsetHeight ignora o transform de escala das legendas inativas
+    const maisAlta = Math.max(...legendas.map((l) => l.offsetHeight));
+    // distância entre a base do card e o topo da legenda (o top é relativo
+    // ao item, cuja altura é o próprio lado do card)
+    const folga = parseFloat(getComputedStyle(legendas[0]).top) - itens[0].offsetHeight;
+    if (!Number.isFinite(folga)) return;
+
+    carrossel.style.setProperty("--pad-base", `${Math.ceil(folga + maisAlta) + 8}px`);
+  }
+
+  // Medir uma vez só não basta: a Unbounded chega depois do primeiro
+  // layout e muda a quebra de linha dos títulos. document.fonts.ready
+  // resolve cedo demais (a fonte só entra na fila quando é usada), então
+  // a medida é repetida nos marcos em que o texto pode ter mudado de
+  // tamanho. É barato: cada passada é uma leitura de offsetHeight.
+  ajustarReserva();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(ajustarReserva);
+  }
+  window.addEventListener("load", ajustarReserva);
+  // rede de segurança para fonte que chega depois do load
+  setTimeout(ajustarReserva, 1200);
+
+  if (typeof ResizeObserver !== "undefined") {
+    const observador = new ResizeObserver(ajustarReserva);
+    itens.forEach((item) => {
+      const legenda = item.querySelector(".carrossel-legenda");
+      if (legenda) observador.observe(legenda);
+    });
+  }
+
+  let remedida;
+  window.addEventListener("resize", () => {
+    clearTimeout(remedida);
+    remedida = setTimeout(ajustarReserva, 150);
+  });
+
   itens.forEach((item, i) => {
     const capa = item.querySelector(".carrossel-capa");
     if (!capa) return;
@@ -128,8 +179,14 @@ function montar(carrossel) {
     (evento) => {
       if (Math.abs(evento.deltaX) >= Math.abs(evento.deltaY)) return;
       evento.preventDefault();
-      const passo = evento.deltaMode === 1 ? 16 : 1;
-      window.scrollBy(0, evento.deltaY * passo);
+      // deltaMode 1 = linhas, 2 = páginas; 0 = pixels
+      const passo =
+        evento.deltaMode === 1 ? 16 : evento.deltaMode === 2 ? innerHeight : 1;
+      // behavior "instant" é obrigatório aqui: o html tem
+      // scroll-behavior: smooth !important, e sem isso cada evento da roda
+      // reinicia uma animação suave rumo a um alvo novo. Com eventos a cada
+      // ~16ms a animação nunca chega, e a rolagem sai aos trancos.
+      window.scrollBy({ top: evento.deltaY * passo, behavior: "instant" });
     },
     { passive: false }
   );

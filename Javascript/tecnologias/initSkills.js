@@ -1,3 +1,6 @@
+import { en } from "../idioma/textos.js";
+import { emIngles } from "../idioma/idioma.js";
+
 export default function initSkills() {
   const apps = document.querySelectorAll(".app");
   const loadingScreen = document.getElementById("loading-screen");
@@ -105,8 +108,12 @@ export default function initSkills() {
 
         skillIcon.innerHTML = "";
         skillIcon.appendChild(iconSVG);
+        // O idioma é lido no clique, então trocar PT/EN e abrir uma
+        // tecnologia já mostra a descrição no idioma certo.
         skillDescription.textContent =
-          skills[skill]?.description ?? "";
+          (emIngles() ? en[`skill.${skill}`] : null) ??
+          skills[skill]?.description ??
+          "";
         skillScreen.style.display = "flex";
       }, 1000);
     });

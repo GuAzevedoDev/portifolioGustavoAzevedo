@@ -170,10 +170,6 @@ source {
   }
 }
 
-.footer-centro span {
-  justify-self: right;
-}
-
 .footer-centro .btn-normal {
   align-self: end;
   position: absolute;
@@ -221,12 +217,6 @@ source {
   display: grid;
   justify-items: center;
   gap: 3px;
-}
-
-@keyframes teste {
-  100% {
-    transform: translateX(-50%) rotate(360deg);
-  }
 }
 
 .footer-esquerda a,
