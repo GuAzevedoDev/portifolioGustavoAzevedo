@@ -10,7 +10,7 @@ export const en = {
   // ---------------- documento ----------------
   "doc.titulo": "Gustavo Azevedo | Back-end & Mobile Developer",
   "doc.descricao":
-    "Portfolio of Gustavo Azevedo, a back-end and mobile developer focused on modern interfaces and automation in Python.",
+    "Portfolio of Gustavo Azevedo, back-end and mobile developer. Projects in production with Python, Flask and automation — from AgendaPY, a real scheduling system, to scripts that solve everyday problems.",
 
   // ---------------- cabeçalho ----------------
   "nav.inicio": "Home",

@@ -1,5 +1,4 @@
-import { en } from "../idioma/textos.js";
-import { emIngles } from "../idioma/idioma.js";
+import { emIngles, carregarTextos } from "../idioma/idioma.js";
 
 export default function initSkills() {
   const apps = document.querySelectorAll(".app");
@@ -108,12 +107,15 @@ export default function initSkills() {
 
         skillIcon.innerHTML = "";
         skillIcon.appendChild(iconSVG);
-        // O idioma é lido no clique, então trocar PT/EN e abrir uma
-        // tecnologia já mostra a descrição no idioma certo.
-        skillDescription.textContent =
-          (emIngles() ? en[`skill.${skill}`] : null) ??
-          skills[skill]?.description ??
-          "";
+        // Mostra o português na hora; se o visitante está em inglês, o
+        // dicionário é buscado sob demanda e o texto é substituído.
+        skillDescription.textContent = skills[skill]?.description ?? "";
+        if (emIngles()) {
+          carregarTextos().then((en) => {
+            const traduzido = en[`skill.${skill}`];
+            if (traduzido) skillDescription.textContent = traduzido;
+          });
+        }
         skillScreen.style.display = "flex";
       }, 1000);
     });
