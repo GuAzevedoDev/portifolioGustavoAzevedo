@@ -1,19 +1,28 @@
-/* ============================================================
-   Página individual de projeto (/projetos/*.html).
-   Reaproveita os tokens da landing: mesma paleta, mesmos raios e
-   o mesmo ritmo vertical, para as duas páginas parecerem o mesmo
-   site. Nada aqui redefine cor ou tipografia por conta própria.
-   ============================================================ */
 
 .projeto-pagina {
-  padding-bottom: var(--espaco-secao);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
 }
 
 /* ---------------- topo ---------------- */
 
-.projeto-topo {
-  padding-top: 48px;
+/* O seletor de idioma é fixo no canto superior esquerdo e vai até 61px.
+   O "Voltar aos projetos" nascia em 48px e ficava por baixo dele. */
+.projeto-texto {
+  padding-top: 80px;
 }
+
+.projeto-explicacao{
+  margin-top: var(--espaco-bloco);
+}
+
+.projeto-explicacao dt{
+  margin-top: var(--espaco-bloco);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
 
 /* Voltar: fica antes do título, é a primeira coisa que a pessoa
    encontra ao chegar por link direto */
@@ -41,18 +50,11 @@
 
 .projeto-titulo {
   font-family: "Unbounded", sans-serif;
+  /* Fallback para quem não tem container query */
   font-size: clamp(2.2rem, 5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.05;
   color: var(--cor-1);
-}
-
-.projeto-subtitulo {
-  max-width: 70ch;
-  margin-top: 16px;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--azul-200);
 }
 
 .projeto-meta {
@@ -65,6 +67,12 @@
 
 .projeto-meta .projeto-tags {
   margin-right: auto;
+}
+
+@container (min-width: 1px) {
+  .projeto-titulo {
+    font-size: clamp(1.9rem, 12cqi, 3.6rem);
+  }
 }
 
 /* ---------------- botões de ação ---------------- */
@@ -111,55 +119,75 @@
 /* ---------------- galeria ---------------- */
 
 .projeto-galeria {
-  margin-top: var(--espaco-secao);
   display: grid;
-  gap: 72px;
+  height: 100vh;
 }
+
+
 
 /* Captura à esquerda, explicação à direita. A imagem recebe a fração
    maior porque é ela que carrega a informação; o texto acompanha. */
-.projeto-secao {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
 
-.projeto-secao-imagem {
+
+.projeto-galeria {
   margin: 0;
-  overflow: hidden;
+  padding-top: 48px;
+  overflow: auto;
   border-radius: var(--raio-lg);
   background: var(--azul-800);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.08),
     0 18px 40px -20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* A imagem manda na própria altura: são capturas de proporções
-   diferentes, e recortar cortaria o conteúdo do site */
-.projeto-secao-imagem img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.projeto-secao-texto {
-  display: grid;
-  gap: 12px;
-}
-
-.projeto-secao-titulo {
-  font-family: "Unbounded", sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.3;
+.projeto-galeria-bg ul li {
   color: var(--cor-1);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.projeto-secao-texto p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--azul-200);
+.projeto-galeria-bg ul li img{
+  width: 85%;
+}
+
+/* Legenda de cada captura */
+.projeto-galeria-bg ul li span {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* A coluna de texto vira o container de referência do título: com 5vw ele
+   crescia com a tela inteira, mas quem manda no espaço é a coluna (1/4 da
+   grade) — um nome de projeto mais comprido vazava por cima da galeria. */
+.projeto-texto-bg{
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Cada coluna rola por conta própria, como a galeria ao lado: projetos
+     com descrição longa não empurram nada para fora da tela. */
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  }
+
+.projeto-saber-mais{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  /* empurra para o fim da coluna quando a descrição é curta */
+  margin-top: auto;
+  padding-top: var(--espaco-bloco);
 }
 
 /* Abaixo de 860px as duas colunas não cabem: a imagem passa a ocupar a
@@ -168,36 +196,9 @@
   .projeto-galeria {
     gap: 48px;
   }
-
-  .projeto-secao {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-/* ---------------- rodapé da página ---------------- */
-
-.projeto-fim {
-  margin-top: var(--espaco-secao);
-  padding-top: var(--espaco-bloco);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.projeto-fim p {
-  color: var(--azul-200);
-  opacity: 0.75;
 }
 
 @media (max-width: 600px) {
-  .projeto-topo {
-    padding-top: 32px;
-  }
-
   .projeto-galeria {
     gap: 28px;
   }
@@ -209,5 +210,34 @@
   .projeto-acao {
     padding: 11px 16px;
     font-size: 0.75rem;
+  }
+}
+
+/* Abaixo de 900px não há espaço para as duas colunas lado a lado: viram
+   uma pilha e a página inteira volta a rolar de uma vez só, em vez de
+   cada coluna rolar por dentro (que no toque é confuso). */
+@media (max-width: 900px) {
+  .projeto-pagina {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .projeto-texto-bg,
+  .projeto-galeria {
+    height: auto;
+    overflow: visible;
+  }
+
+  .projeto-galeria {
+    padding-bottom: 48px;
+    border-radius: 0;
+  }
+
+  .projeto-galeria-bg ul li img {
+    width: 100%;
+  }
+
+  .projeto-saber-mais {
+    margin-top: var(--espaco-bloco);
   }
 }

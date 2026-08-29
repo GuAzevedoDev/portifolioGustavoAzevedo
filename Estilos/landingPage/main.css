@@ -6,17 +6,6 @@
   overflow-x: clip;
 }
 
-main::before {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 153, 255, 0.2), transparent 70%);
-  bottom: -80px;
-  right: 0px;
-  filter: blur(80px);
-  z-index: -1;
-}
 
 @media (max-width: 768px) {
   main::before {
@@ -284,25 +273,18 @@ main::before {
   position: relative;
 }
 
+/* Aparência em .tag / .tag--ponto (componentes.css). Aqui fica apenas o
+   que é específico do hero: as tags são posicionadas sobre o cubo e só
+   aparecem quando o vídeo entra. */
 .main-direita li {
   position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px 14px 18px;
-  background: var(--cor-1);
-  border: none;
-  border-radius: var(--raio-md);
-  box-shadow:
-    0 12px 28px var(--sombra-forte),
-    0 2px 8px var(--sombra-suave);
-  color: var(--cor-p1);
   z-index: 2;
   opacity: 0;
   transition: opacity 0.6s ease;
-  font-family: "Unbounded", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
+  /* No hero as tags são o elemento em destaque, não um rótulo de apoio:
+     respiram mais que as demais */
+  padding: 13px 22px;
+  gap: 10px;
 }
 
 /* Python: encostada na quina superior do cubo, levemente torta pra fugir do rigor do grid */
@@ -319,14 +301,7 @@ main::before {
   transform: rotate(3deg);
 }
 
-.main-direita li::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--cor-p1);
-  flex-shrink: 0;
-}
+
 
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
   /* --vidro-fundo (branco a 15%) foi pensado para vidro sobre conteúdo
@@ -341,9 +316,7 @@ main::before {
     color: var(--cor-1);
   }
 
-  .main-direita li::before {
-    background: var(--azul-400);
-  }
+  
 }
 
 .main-direita li.ativo {

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industria PY | Gustavo Azevedo</title>
+  <meta name="description" content="Sistema de controle de estoque de pe&ccedil;as automotivas em Python, com login, permiss&otilde;es por cargo, hist&oacute;rico de movimenta&ccedil;&otilde;es e alerta de estoque baixo.">
+
+  <link rel="icon" type="image/png" href="../imagens/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Code:wght@400&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Estilos/style.css">
+</head>
+
+<body>
+  <div class="idioma-switch" role="group" aria-label="Selecionar idioma" data-i18n-aria="aria.idioma">
+    <span class="idioma-indicador" aria-hidden="true"></span>
+    <button type="button" class="idioma-opcao ativo" data-idioma="pt" aria-pressed="true">PT</button>
+    <button type="button" class="idioma-opcao" data-idioma="en" aria-pressed="false">EN</button>
+  </div>
+
+  <main class="projeto-pagina">
+    <div class="projeto-texto-bg cor-1">
+      <div class="projeto-texto container">
+        <a href="../index.html#projetos" class="projeto-voltar" data-i18n="p.industria.volta1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="m12 19-7-7 7-7" />
+          </svg>
+          Voltar aos projetos
+        </a>
+
+        <h1 class="projeto-titulo" data-i18n="p.industria.tit2">Industria PY</h1>
+
+        <div class="projeto-meta">
+          <ul class="projeto-tags">
+            <li class="tag">Python</li>
+            <li class="tag">Pandas</li>
+            <li class="tag">Tabulate</li>
+            <li class="tag">JSON</li>
+          </ul>
+        </div>
+
+        <div class="projeto-explicacao">
+          <h3 data-i18n="p.industria.h33">Controle de estoque de pe&ccedil;as automotivas, inteiro no terminal</h3>
+          <dl>
+            <dt data-i18n="p.industria.dt4">O que &eacute;</dt>
+            <dd data-i18n="p.industria.dd11">Um sistema de estoque para uma distribuidora de pe&ccedil;as: cadastro, entrada e sa&iacute;da de produto, consulta e hist&oacute;rico &mdash; com login e permiss&otilde;es diferentes por cargo. A base de teste tem 100 pe&ccedil;as catalogadas por tipo, parte, ve&iacute;culos compat&iacute;veis e fabricante.</dd>
+
+            <dt data-i18n="p.industria.dt5">Permiss&atilde;o por cargo, em duas camadas</dt>
+            <dd data-i18n="p.industria.dd12">Cada cargo tem seu pr&oacute;prio dicion&aacute;rio de op&ccedil;&otilde;es, ent&atilde;o o menu j&aacute; nasce diferente: o gerente v&ecirc; seis a&ccedil;&otilde;es, o vendedor tr&ecirc;s, o estoquista tr&ecirc;s outras. Quem n&atilde;o pode retirar pe&ccedil;a nem enxerga a op&ccedil;&atilde;o. Al&eacute;m disso cada fun&ccedil;&atilde;o revalida o cargo por dentro &mdash; esconder a op&ccedil;&atilde;o &eacute; conveni&ecirc;ncia, a checagem &eacute; que &eacute; a regra.</dd>
+
+            <dt data-i18n="p.industria.dt6">Busca por nome, desempate por ID</dt>
+            <dd data-i18n="p.industria.dd13">A pesquisa &eacute; por trecho do nome e sem diferenciar mai&uacute;sculas. Quando mais de uma pe&ccedil;a casa, o sistema lista as candidatas e pede o ID &mdash; em vez de escolher sozinho e mexer no item errado.</dd>
+
+            <dt data-i18n="p.industria.dt7">Sa&iacute;da nunca deixa o estoque negativo</dt>
+            <dd data-i18n="p.industria.dd14">Antes de baixar a quantidade, a retirada confere se h&aacute; saldo suficiente e recusa a opera&ccedil;&atilde;o se n&atilde;o houver.</dd>
+
+            <dt data-i18n="p.industria.dt8">Hist&oacute;rico de movimenta&ccedil;&otilde;es</dt>
+            <dd data-i18n="p.industria.dd15">Toda entrada e sa&iacute;da grava um registro com a pe&ccedil;a, a quantidade, quem fez e a data e hora. O hist&oacute;rico completo fica vis&iacute;vel s&oacute; para o gerente.</dd>
+
+            <dt data-i18n="p.industria.dt9">Alerta de estoque baixo</dt>
+            <dd data-i18n="p.industria.dd16">A lista de pe&ccedil;as vira um DataFrame do pandas e um filtro devolve o que est&aacute; abaixo do limite informado, formatado com tabulate. &Eacute; a consulta que responde "o que preciso comprar esta semana".</dd>
+
+            <dt data-i18n="p.industria.dt10">Persist&ecirc;ncia</dt>
+            <dd data-i18n="p.industria.dd17">Tudo mora num JSON &uacute;nico com tr&ecirc;s cole&ccedil;&otilde;es &mdash; pe&ccedil;as, funcion&aacute;rios e movimenta&ccedil;&otilde;es &mdash; lido e regravado a cada opera&ccedil;&atilde;o. Sem banco para instalar: clonar e rodar basta.</dd>
+          </dl>
+        </div>
+
+      </div>
+      <div class="projeto-saber-mais">
+        <a href="https://github.com/GuAzevedoDev/industriasPY" target="_blank" rel="noopener" class="projeto-acao" data-i18n="projeto.codigo">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.4 1.24-3.24-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.66.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.49 5.95.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z" />
+          </svg>
+          C&oacute;digo
+        </a>
+      </div>
+    </div>
+
+    <div class="projeto-galeria-bg">
+      <ul class="projeto-galeria container">
+        <li>
+          <img src="../imagens/projetos/industriaPyCargos.png" alt="Os tr&ecirc;s menus do sistema, um por cargo" loading="lazy">
+          <span data-i18n="p.industria.leg18">Um menu por cargo</span>
+        </li>
+        <li>
+          <img src="../imagens/projetos/industriaPyAlerta.png" alt="Tabela com as pe&ccedil;as abaixo do limite de estoque" loading="lazy">
+          <span data-i18n="p.industria.leg19">Alerta de estoque baixo</span>
+        </li>
+        <li>
+          <img src="../imagens/projetos/industriaPyMovimentacoes.png" alt="Hist&oacute;rico de movimenta&ccedil;&otilde;es do estoque" loading="lazy">
+          <span data-i18n="p.industria.leg20">Hist&oacute;rico de movimenta&ccedil;&otilde;es</span>
+        </li>
+      </ul>
+
+    </div>
+
+  </main>
+  <script type="module" src="../Javascript/idioma-pagina.js"></script>
+</body>
+
+</html>

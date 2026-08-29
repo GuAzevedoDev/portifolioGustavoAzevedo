@@ -12,8 +12,7 @@
 /* O respiro só vale quando .title está num heading de verdade: no footer a
    mesma classe é usada em <div> que são colunas inteiras, e ali a margem
    empurraria o bloco todo em vez do título. */
-h1.title,
-h2.title {
+h1.title {
   margin-bottom: var(--espaco-titulo);
 }
 
@@ -27,10 +26,6 @@ h2.title {
   color: var(--cor-p1);
 }
 
-.titulo-sobrenome {
-  color: var(--azul-100);
-}
-
 /* Subtítulo, usado logo abaixo de um título principal */
 .subtitulo {
   font-family: "Unbounded", sans-serif;
@@ -38,16 +33,6 @@ h2.title {
   font-weight: 600;
   color: var(--cor-cinza);
   margin-top: 8px;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.projects-modal-cima p {
-  font-size: 2.6rem;
-  line-height: 22px;
 }
 
 /* Tamanho original dos links do footer. O seletor exclui .btn-normal de
@@ -75,19 +60,6 @@ h2.title {
 .footer-titulo {
   font-size: clamp(0.8rem, 1.5vw, 0.95rem);
   color: #b4b8b5;
-}
-
-@media (max-width: 1150px) {
-  /* .title saiu daqui: o clamp em cima já cobre a faixa inteira, sem degrau */
-  .projects-modal-content > p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 850px) {
-  .projects-modal-content > p {
-    font-size: 0.8rem;
-  }
 }
 
 /* Citação do footer — o footer voltou à versão original, que usa esta classe */

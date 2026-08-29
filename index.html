@@ -5,8 +5,8 @@
   <!-- Básico -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gustavo Azevedo | Desenvolvedor Back-end e Mobile</title>
-  <meta name="description" content="Portfólio de Gustavo Azevedo, desenvolvedor back-end e mobile focado em interfaces modernas, performance e experiências interativas.">
+  <title data-i18n="doc.titulo">Gustavo Azevedo | Desenvolvedor Back-end e Mobile</title>
+  <meta name="description" data-i18n-conteudo="doc.descricao" content="Portfólio de Gustavo Azevedo, desenvolvedor back-end e mobile focado em interfaces modernas, performance e experiências interativas.">
 
   <!-- SEO extra -->
   <meta name="author" content="Gustavo Azevedo">
@@ -33,7 +33,7 @@
   <link rel="icon" href="./imagens/favicon.png" type="image/png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./Estilos/style.min.css">
+  <link rel="stylesheet" href="./Estilos/style.css">
 
   <!-- JS -->
   <script type="module" src="./Javascript/script.js"></script>
@@ -41,10 +41,10 @@
 </head>
 
 <body>
-  <div class="idioma-switch" role="group" aria-label="Selecionar idioma">
+  <div class="idioma-switch" role="group" aria-label="Selecionar idioma" data-i18n-aria="aria.idioma">
     <span class="idioma-indicador" aria-hidden="true"></span>
-    <button type="button" class="idioma-opcao ativo">PT</button>
-    <button type="button" class="idioma-opcao">EN</button>
+    <button type="button" class="idioma-opcao ativo" data-idioma="pt" aria-pressed="true">PT</button>
+    <button type="button" class="idioma-opcao" data-idioma="en" aria-pressed="false">EN</button>
   </div>
 
   <header class="header-bg">
@@ -57,10 +57,10 @@
         </svg>
       </label>
 
-      <nav aria-label="Navegacao-principal">
+      <nav aria-label="Navegacao-principal" data-i18n-aria="aria.nav">
         <ul>
           <li>
-            <a href="#main">
+            <a href="#main" data-i18n="nav.inicio">
               Inicio
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -68,7 +68,7 @@
             </a>
           </li>
           <li>
-            <a href="#sobreMim">
+            <a href="#sobreMim" data-i18n="nav.sobre">
               Sobre mim
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -76,7 +76,7 @@
             </a>
           </li>
           <li>
-            <a href="#projetos">
+            <a href="#projetos" data-i18n="nav.projetos">
               Projetos
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -84,7 +84,7 @@
             </a>
           </li>
           <li>
-            <a href="#tecnologias">
+            <a href="#tecnologias" data-i18n="nav.tecnologias">
               Tecnologias
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -92,7 +92,7 @@
             </a>
           </li>
           <li>
-            <a href="#contato">
+            <a href="#contato" data-i18n="nav.contato">
               Contato
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -129,7 +129,7 @@
         </a>
       </li>
       <li>
-        <a href="https://docs.google.com/document/d/1_A87k8-lewarmQRAxq1hybaR0dCT-CZQKW2A2z6M_L0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" download aria-label="Currículo">
+        <a href="https://docs.google.com/document/d/1_A87k8-lewarmQRAxq1hybaR0dCT-CZQKW2A2z6M_L0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" download aria-label="Currículo" data-i18n-aria="aria.curriculo">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M6 2.5h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-17a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
             <path d="M14 2.5V7a1 1 0 0 0 1 1h4.3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
@@ -143,11 +143,11 @@
       <div class="main-esquerda">
         <div class="main-introducao">
           <h1 class="titulo">Gustavo</h1>
-          <h2 class="subtitulo">Back-end & Mobile</h2>
+          <h2 class="subtitulo" data-i18n="hero.cargo">Back-end & Mobile</h2>
         </div>
 
         <div class="main-sobre">
-          <a href="#projetos" class="botao">
+          <a href="#projetos" class="botao" data-i18n="hero.botao">
             Ver projetos
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -166,12 +166,12 @@
         </video>
       </div>
       <ul class="main-direita">
-        <li>Python</li>
-        <li>Flutter</li>
+        <li class="tag tag--ponto">Python</li>
+        <li class="tag tag--ponto">Flutter</li>
       </ul>
     </div>
 
-    <a href="#sobreMim" class="scroll-indicador" aria-label="Rolar para a próxima seção">
+    <a href="#sobreMim" class="scroll-indicador" aria-label="Rolar para a próxima seção" data-i18n-aria="aria.rolar">
       <span class="scroll-indicador-mouse">
         <span class="scroll-indicador-roda"></span>
       </span>
@@ -181,39 +181,170 @@
     </a>
   </main>
 
+  <article class="projetos-bg" id="projetos" aria-labelledby="projeto-title">
+    <div class="projetos-content">
+      <div class="carrossel" data-carrossel>
+        <div class="carrossel-palco">
+          <ul class="carrossel-trilho">
+            <li class="carrossel-item ativo-carrossel">
+              <a href="projetos/agendapy.html" class="carrossel-capa">
+                <img src="imagens/projetos/agendapyCapa.png" alt="Agenda do dia no sistema AgendaPY" data-i18n-alt="proj.agendapy.alt" loading="lazy" />
+                <span class="sr-only" data-i18n="proj.agendapy.ver">Ver detalhes de AgendaPY</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo" data-i18n="proj.agendapy.titulo">Sistema de agendamento e gest&atilde;o para um est&uacute;dio de beleza</h3>
+                <p class="carrossel-cliente">
+                  AgendaPY
+                  <a href="https://github.com/GuAzevedoDev/AgendaPY" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                  <a href="https://studiomaliazevedo.com.br" target="_blank" rel="noopener" class="carrossel-link">Site</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li class="tag">Python</li>
+                  <li class="tag">Flask</li>
+                  <li class="tag">PostgreSQL</li>
+                  <li class="tag">Docker</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="carrossel-item">
+              <a href="projetos/drive-evidence-sync.html" class="carrossel-capa">
+                <img src="imagens/projetos/driveSyncCapa.png" alt="Diagrama do Drive Evidence Sync" data-i18n-alt="proj.drive.alt" loading="lazy" />
+                <span class="sr-only" data-i18n="proj.drive.ver">Ver detalhes de Drive Evidence Sync</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo" data-i18n="proj.drive.titulo">Automa&ccedil;&atilde;o que casa documentos do Drive com as linhas de uma planilha</h3>
+                <p class="carrossel-cliente">
+                  Drive Evidence Sync
+                  <a href="https://github.com/GuAzevedoDev/DriveEvidenceSync" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li class="tag">Python</li>
+                  <li class="tag">Google Drive API</li>
+                  <li class="tag">Win32 COM</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="carrossel-item">
+              <a href="projetos/gmail-organizer.html" class="carrossel-capa">
+                <img src="imagens/projetos/gmailorganizerCapa.png" alt="Sa&iacute;da do Gmail Organizer no terminal" data-i18n-alt="proj.gmail.alt" loading="lazy" />
+                <span class="sr-only" data-i18n="proj.gmail.ver">Ver detalhes de Gmail Organizer</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo" data-i18n="proj.gmail.titulo">Automa&ccedil;&atilde;o que classifica e etiqueta a caixa de entrada sozinha</h3>
+                <p class="carrossel-cliente">
+                  Gmail Organizer
+                  <a href="https://github.com/GuAzevedoDev/GmailOrganizer" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li class="tag">Python</li>
+                  <li class="tag">Gmail API</li>
+                  <li class="tag">OAuth 2.0</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="carrossel-item">
+              <a href="projetos/industria-py.html" class="carrossel-capa">
+                <img src="imagens/projetos/industriaPyCapa.png" alt="Menu do sistema Industria PY no terminal" data-i18n-alt="proj.industria.alt" loading="lazy" />
+                <span class="sr-only" data-i18n="proj.industria.ver">Ver detalhes de Industria PY</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo" data-i18n="proj.industria.titulo">Controle de estoque de pe&ccedil;as automotivas com permiss&atilde;o por cargo</h3>
+                <p class="carrossel-cliente">
+                  Industria PY
+                  <a href="https://github.com/GuAzevedoDev/industriasPY" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li class="tag">Python</li>
+                  <li class="tag">Pandas</li>
+                  <li class="tag">JSON</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="carrossel-item">
+              <a href="projetos/cia-das-tortas.html" class="carrossel-capa">
+                <img src="imagens/projetos/ciaDasTortasHeader.png" alt="Tela inicial do projeto Cia Das Tortas" data-i18n-alt="proj.tortas.alt" loading="lazy" />
+                <span class="sr-only" data-i18n="proj.tortas.ver">Ver detalhes de Cia Das Tortas</span>
+              </a>
+
+              <div class="carrossel-legenda">
+                <h3 class="carrossel-titulo" data-i18n="proj.tortas.titulo">Vitrine digital para uma confeitaria de doces artesanais</h3>
+                <p class="carrossel-cliente">
+                  Cia Das Tortas
+                  <a href="https://github.com/GuAzevedoDev/CiaDasTortas" target="_blank" rel="noopener" class="carrossel-link">GitHub</a>
+                  <a href="https://guazevedodev.github.io/CiaDasTortas/" target="_blank" rel="noopener" class="carrossel-link">Site</a>
+                </p>
+
+                <ul class="carrossel-tags">
+                  <li class="tag">HTML</li>
+                  <li class="tag">CSS</li>
+                  <li class="tag">JavaScript</li>
+                  <li class="tag" data-i18n="tag.responsivo">Responsivo</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" class="carrossel-seta carrossel-seta-anterior" aria-label="Projeto anterior" data-i18n-aria="aria.projetoAnterior">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M20 12H4m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <button type="button" class="carrossel-seta carrossel-seta-proxima" aria-label="Pr&oacute;ximo projeto" data-i18n-aria="aria.projetoProximo">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </article>
+
   <article class="about-bg container" id="sobreMim">
     <div class="about-content  card">
       <div class="content">
-        <h1 class="title cor-1 ">sobre mim<span class="cor-p1">.</span></h1>
+        <h1 class="title cor-1 " data-i18n="sobre.titulo">sobre mim<span class="cor-p1">.</span></h1>
         <div class="about-esquerda">
-          <img src="imagens/about/MePhoto.jpeg" alt="">
+          <img src="imagens/about/MePhoto.jpeg" alt="" data-i18n-alt="sobre.foto">
         </div>
         <div class="about-direita">
-          <p>Sou o Gustavo, tenho 18 anos e sou desenvolvedor back-end e mobile. Comecei a programar no Cotemig, onde curso Técnico em Informática, e hoje aplico isso na prática: na Transuple, trabalho com automação de dados e planilhas em Python.</p>
+          <p data-i18n="sobre.p1">Sou o Gustavo, tenho 18 anos e sou desenvolvedor back-end e mobile. Comecei a programar no Cotemig, onde curso Técnico em Informática, e hoje aplico isso na prática: na Transuple, trabalho com automação de dados e planilhas em Python.</p>
 
-          <p>Fora do estágio, construo produtos do zero — o AgendaPY está em produção atendendo um salão real, e o BOOSTio usa scraping e IA pra recomendar componentes de PC.</p>
+          <p data-i18n="sobre.p2">Fora do estágio, construo produtos do zero — o AgendaPY está em produção atendendo um salão real, e o BOOSTio usa scraping e IA pra recomendar componentes de PC.</p>
 
-          <p> Complemento minha formação com a Origamid em desenvolvimento web e compito na OBI em nível sênior, onde lógica e algoritmos são meu ponto forte.</p>
+          <p data-i18n="sobre.p3"> Complemento minha formação com a Origamid em desenvolvimento web e compito na OBI em nível sênior, onde lógica e algoritmos são meu ponto forte.</p>
         </div>
         <div class="experiencia-about" id="cursos">
-          <h1 class="title cor-1 ">cursos<span class="cor-p1">.</span></h1>
+          <h1 class="title cor-1 " data-i18n="cursos.titulo">cursos<span class="cor-p1">.</span></h1>
           <div class="cursos-content">
             <div class="esquerda-cursos">
               <div class="curso-card cor-1">
-                <span>2023-Andamento</span>
-                <h2>Tecnico de Informatica</h2>
-                <p>Durante o curso técnico, desenvolvi bases sólidas em lógica de programação, desenvolvimento Back-end e Front-end.
+                <span data-i18n="curso1.periodo">2023-Andamento</span>
+                <h2 data-i18n="curso1.nome">Tecnico de Informatica</h2>
+                <p data-i18n="curso1.texto">Durante o curso técnico, desenvolvi bases sólidas em lógica de programação, desenvolvimento Back-end e Front-end.
                 </p>
-                <h3>Tecnologias</h3>
+                <h3 data-i18n="curso.tecnologias">Tecnologias</h3>
                 <ul class="linguagens-lst cor-1">
-                  <li class="linguagem-item">HTML</li>
-                  <li class="linguagem-item">CSS</li>
-                  <li class="linguagem-item">JS</li>
-                  <li class="linguagem-item">Kotlin</li>
-                  <li class="linguagem-item">Flutter</li>
-                  <li class="linguagem-item">Swift</li>
-                  <li class="linguagem-item">Python</li>
-                  <li class="linguagem-item">MySQL</li>
+                  <li class="linguagem-item tag">HTML</li>
+                  <li class="linguagem-item tag">CSS</li>
+                  <li class="linguagem-item tag">JS</li>
+                  <li class="linguagem-item tag">Kotlin</li>
+                  <li class="linguagem-item tag">Flutter</li>
+                  <li class="linguagem-item tag">Swift</li>
+                  <li class="linguagem-item tag">Python</li>
+                  <li class="linguagem-item tag">MySQL</li>
                 </ul>
                 <span><svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -233,16 +364,16 @@
             </span>
             <div class="direita-cursos">
               <div class="curso-card cor-1">
-                <span>2025-Andamento</span>
+                <span data-i18n="curso2.periodo">2025-Andamento</span>
                 <h2>Origamid</h2>
-                <p>Aprimorei minhas habilidades em desenvolvimento de interfaces e boas práticas de design, com foco na criação de sites modernos e responsivos.
+                <p data-i18n="curso2.texto">Aprimorei minhas habilidades em desenvolvimento de interfaces e boas práticas de design, com foco na criação de sites modernos e responsivos.
                 </p>
-                <h3>Tecnologias</h3>
+                <h3 data-i18n="curso.tecnologias">Tecnologias</h3>
                 <ul class="linguagens-lst cor-1">
-                  <li class="linguagem-item">HTML</li>
-                  <li class="linguagem-item">CSS</li>
-                  <li class="linguagem-item">JS</li>
-                  <li class="linguagem-item">SQLITE</li>
+                  <li class="linguagem-item tag">HTML</li>
+                  <li class="linguagem-item tag">CSS</li>
+                  <li class="linguagem-item tag">JS</li>
+                  <li class="linguagem-item tag">SQLITE</li>
                 </ul>
                 <span><svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -268,70 +399,10 @@
     </div>
   </article>
 
-  <article class="projetos-bg" id="projetos" aria-labelledby="projeto-title">
-    <div class="projetos-content">
-      <h1 class="title cor-1 container" id="projeto-title">projetos<span class="cor-p1">.</span></h1>
 
-      <ul class="projetos-grid container">
-        <li class="projeto-card">
-          <a href="projetos/bikcraft.html" class="projeto-abrir">
-            <span class="sr-only">Ver detalhes de Bikcraft</span>
-          </a>
-
-          <div class="projeto-capa">
-            <img src="imagens/projetos/bikcraft.png" alt="Tela inicial do projeto Bikcraft" loading="lazy" />
-          </div>
-
-          <div class="projeto-info">
-            <h3 class="projeto-nome">Bikcraft</h3>
-            <p class="projeto-resumo">O Bikcraft é um site moderno e responsivo desenvolvido para apresentar uma linha de bicicletas elétricas premium.</p>
-
-            <ul class="projeto-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-            </ul>
-          </div>
-
-          <div class="projeto-rodape">
-            <span class="projeto-detalhes">Ver projeto</span>
-            <a href="https://github.com/GuAzevedoDev/bikcraft" target="_blank" rel="noopener" class="projeto-mini">GitHub</a>
-            <a href="https://guazevedodev.github.io/bikcraft/" target="_blank" rel="noopener" class="projeto-mini">Site</a>
-          </div>
-        </li>
-
-        <li class="projeto-card">
-          <a href="projetos/cia-das-tortas.html" class="projeto-abrir">
-            <span class="sr-only">Ver detalhes de Cia Das Tortas</span>
-          </a>
-
-          <div class="projeto-capa">
-            <img src="imagens/projetos/ciaDasTortasHeader.png" alt="Tela inicial do projeto Cia Das Tortas" loading="lazy" />
-          </div>
-
-          <div class="projeto-info">
-            <h3 class="projeto-nome">Cia Das Tortas</h3>
-            <p class="projeto-resumo">O Cia Das Tortas é um site moderno e responsivo desenvolvido para apresentar uma linha de doces premium.</p>
-
-            <ul class="projeto-tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-            </ul>
-          </div>
-
-          <div class="projeto-rodape">
-            <span class="projeto-detalhes">Ver projeto</span>
-            <a href="https://github.com/GuAzevedoDev/CiaDasTortas" target="_blank" rel="noopener" class="projeto-mini">GitHub</a>
-            <a href="https://guazevedodev.github.io/CiaDasTortas/" target="_blank" rel="noopener" class="projeto-mini">Site</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </article>
 
   <article class="tecnologias-bg" id="tecnologias">
-    <h1 class="title cor-1 container">Tecnologias<span class="cor-p1">.</span></h1>
+    <h1 class="title cor-1 container" data-i18n="tec.titulo">Tecnologias<span class="cor-p1">.</span></h1>
     <div class="tecnologias-content container">
       <div class="cardTablet">
         <div class="phone">
@@ -598,29 +669,29 @@
             <div id="skill-screen">
               <div id="skill-icon"></div>
               <p id="skill-description"></p>
-              <button id="close-btn">Voltar</button>
+              <button id="close-btn" data-i18n="tablet.voltar">Voltar</button>
             </div>
 
-            <div class="home home2" role="tablist" aria-label="Categorias de tecnologia">
+            <div class="home home2" role="tablist" aria-label="Categorias de tecnologia" data-i18n-aria="aria.categorias">
               <button class="dock-aba ativo" type="button" role="tab" aria-selected="true" data-cat="backend">
-                <span class="dock-aba-longo">Back-end</span>
-                <span class="dock-aba-curto">Back</span>
+                <span class="dock-aba-longo" data-i18n="dock.backend.longo">Back-end</span>
+                <span class="dock-aba-curto" data-i18n="dock.backend.curto">Back</span>
               </button>
               <button class="dock-aba" type="button" role="tab" aria-selected="false" data-cat="frontend">
-                <span class="dock-aba-longo">Front-end</span>
-                <span class="dock-aba-curto">Front</span>
+                <span class="dock-aba-longo" data-i18n="dock.frontend.longo">Front-end</span>
+                <span class="dock-aba-curto" data-i18n="dock.frontend.curto">Front</span>
               </button>
               <button class="dock-aba" type="button" role="tab" aria-selected="false" data-cat="mobile">
-                <span class="dock-aba-longo">Mobile</span>
-                <span class="dock-aba-curto">Mobile</span>
+                <span class="dock-aba-longo" data-i18n="dock.mobile.longo">Mobile</span>
+                <span class="dock-aba-curto" data-i18n="dock.mobile.curto">Mobile</span>
               </button>
               <button class="dock-aba" type="button" role="tab" aria-selected="false" data-cat="dados">
-                <span class="dock-aba-longo">Banco de dados</span>
-                <span class="dock-aba-curto">Dados</span>
+                <span class="dock-aba-longo" data-i18n="dock.dados.longo">Banco de dados</span>
+                <span class="dock-aba-curto" data-i18n="dock.dados.curto">Dados</span>
               </button>
               <button class="dock-aba" type="button" role="tab" aria-selected="false" data-cat="producao">
-                <span class="dock-aba-longo">Produção</span>
-                <span class="dock-aba-curto">Deploy</span>
+                <span class="dock-aba-longo" data-i18n="dock.producao.longo">Produção</span>
+                <span class="dock-aba-curto" data-i18n="dock.producao.curto">Deploy</span>
               </button>
             </div>
             <div class="navigation">
@@ -656,33 +727,33 @@
         <img src="./imagens/footer/pastaMobile.svg" class="fundo-footer" alt="">
       </picture>
       <div class="footer-esquerda title">
-        <h1 class="titulo footer-titulo">Paginas</h1>
+        <h1 class="titulo footer-titulo" data-i18n="footer.paginas">Paginas</h1>
         <nav>
           <ul class="footer-list cor-1">
-            <li class="footer-item"><a href="#main">Inicio</a></li>
-            <li class="footer-item"><a href="#sobreMim">Sobre Mim</a></li>
-            <li class="footer-item"><a href="#projetos">Projetos</a></li>
-            <li class="footer-item"><a href="#tecnologias">Tecnologias</a></li>
+            <li class="footer-item"><a href="#main" data-i18n="footer.inicio">Inicio</a></li>
+            <li class="footer-item"><a href="#sobreMim" data-i18n="footer.sobre">Sobre Mim</a></li>
+            <li class="footer-item"><a href="#projetos" data-i18n="footer.projetos">Projetos</a></li>
+            <li class="footer-item"><a href="#tecnologias" data-i18n="footer.tecnologias">Tecnologias</a></li>
           </ul>
         </nav>
       </div>
 
       <div class="footer-centro">
         <div class="cor-1">
-          <h1 class="title-footer">"A imaginação é mais importante que o conhecimento"</h1>
+          <h1 class="title-footer" data-i18n="footer.frase">"A imaginação é mais importante que o conhecimento"</h1>
           <picture>
             <source srcset="./imagens/main/meDesenhoMobile.webp" media="(max-width: 768px)" type="image/webp">
             <source srcset="./imagens/main/meDesenho.webp" type="image/webp">
             <source srcset="./imagens/main/meDesenhoMobile.png" media="(max-width: 768px)">
 
-            <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo" loading="lazy">
+            <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo" data-i18n-alt="footer.ilustracao" loading="lazy">
           </picture>
-          <a href="mailto:gustavoAzevedo.code@gmail.com" aria-label="link-gmail" class="btn-normal">Entrar em contato</a>
+          <a href="mailto:gustavoAzevedo.code@gmail.com" aria-label="link-gmail" class="btn-normal" data-i18n="footer.contato">Entrar em contato</a>
         </div>
       </div>
 
       <div class="footer-direita title">
-        <h1 class="titulo footer-titulo">Redes sociais</h1>
+        <h1 class="titulo footer-titulo" data-i18n="footer.redes">Redes sociais</h1>
         <nav>
           <ul class="footer-list cor-1">
             <li class="footer-item"><a href="https://www.linkedin.com/in/gustavo-azevedo-8b938736a/" aria-label="link-linkedin" target="_blank">Linkedin</a></li>

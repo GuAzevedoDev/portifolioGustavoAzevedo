@@ -16,19 +16,12 @@
 /* Base tipográfica de todo botão do site. Antes .botao usava Unbounded a
    0.85rem e .btn-normal herdava Inter a 1.6rem, então o CTA do hero e o do
    footer pareciam de projetos diferentes. */
-.btn,
 .botao,
 .btn-normal {
   font-family: "Unbounded", sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-}
-
-.btn {
-  padding: 15px;
-  background: var(--cor-p1);
-  border-radius: var(--raio-md);
 }
 
 /* Botão primário do hero (main): fundo de destaque, hover assume o
@@ -86,27 +79,6 @@
   color: var(--cor-p1);
 }
 
-@media (max-width: 500px) {
-  
-  
-  
-  .modal-btn-codigo {
-    font-size: 1rem;
-  }
-  .modal-btn-projeto {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .modal-btn-codigo {
-    font-size: 0.7rem;
-  }
-  .modal-btn-projeto {
-    font-size: 0.7rem;
-  }
-}
-
 /* Uiverse */
 
 .card {
@@ -129,7 +101,7 @@
   border-radius: var(--raio-lg);
   color: #000;
   overflow: hidden;
-  background: #000;
+  background: var(--cor-2);
 }
 
 @media (max-width: 1050px) {
@@ -268,3 +240,43 @@
   }
 }
 
+/* ============================================================
+   .tag — etiqueta de tecnologia, usada no hero, no carrossel de
+   projetos, nas páginas internas e na lista de cursos. O visual é o
+   das tags do hero (vidro escuro, borda clara, Unbounded); antes cada
+   seção repetia o próprio conjunto de regras, com três aparências
+   diferentes para a mesma coisa.
+   ============================================================ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--raio-md);
+  background: rgba(20, 28, 48, 0.72);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cor-1);
+  white-space: nowrap;
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .tag {
+    backdrop-filter: var(--vidro-blur);
+    -webkit-backdrop-filter: var(--vidro-blur);
+  }
+}
+
+/* Variante com o ponto indicador, como no hero */
+.tag--ponto::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--azul-400);
+  flex-shrink: 0;
+}
