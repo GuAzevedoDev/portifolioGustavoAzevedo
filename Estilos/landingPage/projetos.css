@@ -64,16 +64,7 @@
   list-style: none;
 }
 
-.projeto-tags li {
-padding: 6px 16px;
-    border: 1px solid var(--cor-p1);
-    border-radius: var(--raio-pill);
-    background: transparent;
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1.4;
-    color: var(--azul-100);
-}
+/* visual em .tag (componentes.css) */
 
 .descricao-projetos h2 {
   margin-bottom: 10px;
@@ -87,20 +78,10 @@ padding: 6px 16px;
   flex-wrap: wrap;
 }
 
-.linguagens-lst li {
-  background: var(--cor-p1);
-  padding: 5px 10px;
-  border-radius: var(--raio-sm);
-}
 
-.linguagens-lst div {
-  background: var(--cor-p1);
-  padding: 5px 10px;
-  border-radius: var(--raio-sm);
-}
+
+
 
 @media (max-width: 550px) {
-  .linguagens-lst div {
-    font-size: 0.8rem;
-  }
+  
 }

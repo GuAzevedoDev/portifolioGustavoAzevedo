@@ -160,6 +160,14 @@
   width: 85%;
 }
 
+/* Legenda de cada captura */
+.projeto-galeria-bg ul li span {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 /* A imagem manda na própria altura: são capturas de proporções
    diferentes, e recortar cortaria o conteúdo do site */
 .projeto-secao-imagem img {

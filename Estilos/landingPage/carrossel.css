@@ -1,20 +1,27 @@
 
 .carrossel {
-  /* Os cards correm mais para a borda do que o container do site: na
-     referência o ativo começa a ~6% da largura da tela. */
-  --recuo: clamp(48px, 5.8vw, 112px);
-  /* E a seta, mais perto ainda do canto. */
+  /* A seta fica mais perto do canto e o card começa depois dela. */
+  --seta: 56px;
   --recuo-seta: clamp(12px, 2.1vw, 40px);
+  /* Folga entre a seta e o primeiro card. */
+  --folga-seta: clamp(20px, 2.2vw, 34px);
+  /* O recuo do card é derivado da seta em vez de ser um valor solto: com
+     dois clamps independentes, os dois cresciam em ritmos diferentes e o
+     card acabava por cima da seta — a sobreposição ia de 3px em 1440 a
+     18px em 768. Assim a folga é a mesma em qualquer largura. */
+  --recuo: calc(var(--recuo-seta) + var(--seta) + var(--folga-seta));
   --gap: 24px;
 
   /* Card quadrado, medida única. O ativo é o mesmo card em escala. */
-  --lado: clamp(190px, 17vw, 315px);
+  --lado: clamp(215px, 19.5vw, 360px);
   --escala: 1.2;
 
   /* O ativo cresce para cima: o topo precisa caber, mais a sombra. */
   --pad-topo: clamp(64px, 7vw, 96px);
-  --pad-base: 235px; /* reserva o espaço da legenda, que é absoluta */
-  --seta: 56px;
+  /* Reserva o espaço da legenda, que é absoluta e fica fora do fluxo. O
+     palco tem overflow-y: hidden, então o que passar daqui é cortado —
+     era o caso da última tag quando as tags quebravam em duas linhas. */
+  --pad-base: 268px;
 
   /* Uma sombra só, usada pelo ativo e pelo hover. Precisa de bastante
      difusão: na referência ela ainda é visível a ~130px do card. */
@@ -146,8 +153,12 @@
   z-index: 5; /* nenhuma sombra de card cai sobre o texto */
   top: calc(100% + 30px);
   left: 0;
-  width: max(100%, 380px);
-  max-width: 520px;
+  /* A legenda acompanha exatamente a largura da imagem visível. Antes era
+     max(100%, 380px): num card de 190px no celular, o texto forçava 380px
+     e transbordava para fora da imagem. O card ativo aparece em escala, e
+     é essa largura escalada que o texto precisa respeitar. */
+  width: calc(var(--lado) * var(--escala));
+  max-width: 100vw;
   transform-origin: top left;
   opacity: 0;
   visibility: hidden;
@@ -226,16 +237,8 @@
   list-style: none;
 }
 
-.carrossel-tags li {
-  padding: 6px 16px;
-  border: 1px solid var(--cor-p1);
-  border-radius: var(--raio-pill);
-  background: transparent;
-  font-size: 0.78rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--azul-100);
-}
+/* O visual vem de .tag (componentes.css). Aqui fica só o que é do
+   carrossel: como as tags se distribuem na legenda. */
 
 /* ---------------- setas ---------------- */
 
@@ -323,7 +326,10 @@
 
   .carrossel-legenda {
     top: calc(100% + 24px);
-    width: min(100vw - 40px, 420px);
+    /* mesma regra do desktop: o texto não passa da imagem. Aqui a largura
+       vinha de min(100vw - 40px, 420px), que em 390px dava 350px contra
+       287px de imagem. */
+    width: calc(var(--lado) * var(--escala));
   }
 }
 

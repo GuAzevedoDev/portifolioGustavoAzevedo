@@ -268,3 +268,43 @@
   }
 }
 
+/* ============================================================
+   .tag — etiqueta de tecnologia, usada no hero, no carrossel de
+   projetos, nas páginas internas e na lista de cursos. O visual é o
+   das tags do hero (vidro escuro, borda clara, Unbounded); antes cada
+   seção repetia o próprio conjunto de regras, com três aparências
+   diferentes para a mesma coisa.
+   ============================================================ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--raio-md);
+  background: rgba(20, 28, 48, 0.72);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cor-1);
+  white-space: nowrap;
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .tag {
+    backdrop-filter: var(--vidro-blur);
+    -webkit-backdrop-filter: var(--vidro-blur);
+  }
+}
+
+/* Variante com o ponto indicador, como no hero */
+.tag--ponto::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--azul-400);
+  flex-shrink: 0;
+}
