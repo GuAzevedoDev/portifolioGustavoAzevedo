@@ -1,7 +1,15 @@
 import { idiomaIndicador, botoesIdioma } from "./ui.js";
-import { en } from "./textos.js";
 
 const CHAVE = "idioma";
+
+/* O dicionário de inglês tem 19 KB e não serve para nada em português, que
+   é o padrão. Import estático punia todo visitante com esse peso no
+   caminho crítico; dinâmico, ele só é buscado por quem escolheu EN. */
+let en = null;
+export async function carregarTextos() {
+  if (!en) ({ en } = await import("./textos.js"));
+  return en;
+}
 
 /** O idioma escolhido vale para o site todo, inclusive nas páginas de projeto. */
 export function emIngles() {
@@ -50,7 +58,8 @@ const ATRIBUTOS = [
 ];
 
 /** Caminho único: só traduz para o inglês. Voltar ao português é recarregar. */
-function traduzir() {
+async function traduzir() {
+  const en = await carregarTextos();
   document.documentElement.lang = "en";
 
   document.querySelectorAll("[data-i18n]").forEach((el) => {

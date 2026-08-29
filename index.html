@@ -6,15 +6,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="doc.titulo">Gustavo Azevedo | Desenvolvedor Back-end e Mobile</title>
-  <meta name="description" data-i18n-conteudo="doc.descricao" content="Portfólio de Gustavo Azevedo, desenvolvedor back-end e mobile focado em interfaces modernas, performance e experiências interativas.">
+  <meta name="description" data-i18n-conteudo="doc.descricao" content="Portfólio de Gustavo Azevedo, desenvolvedor back-end e mobile. Projetos em produção com Python, Flask e automações — do AgendaPY, sistema de agendamento real, a scripts que resolvem problemas do dia a dia.">
 
   <!-- SEO extra -->
   <meta name="author" content="Gustavo Azevedo">
-  <meta name="theme-color" content="#0f0f0f">
+  <meta name="theme-color" content="#080e1a">
 
   <!-- Open Graph (para redes sociais) -->
   <meta property="og:title" content="Gustavo Azevedo | Desenvolvedor Back-end e Mobile">
-  <meta property="og:description" content="Conheça meus projetos, tecnologias e experiências em desenvolvimento web.">
+  <meta property="og:description" content="Desenvolvedor back-end e mobile. Conheça o AgendaPY, o BOOSTio e outros projetos em Python, Flask e Flutter.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gustavoazevedodev.vercel.app">
   <meta property="og:image" content="https://gustavoazevedodev.vercel.app/imagens/preview.png">
@@ -33,10 +33,28 @@
   <link rel="icon" href="./imagens/favicon.png" type="image/png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./Estilos/style.css">
+  <link rel="stylesheet" href="./Estilos/style.min.css">
 
   <!-- JS -->
   <script type="module" src="./Javascript/script.js"></script>
+
+  <!-- O script.js importa estes módulos em cascata: sem o preload o
+       navegador só descobre cada um depois de baixar o anterior, e a
+       cadeia crítica vira uma escada. O textos.js fica de fora de
+       propósito — ele só é buscado se o visitante escolher inglês. -->
+  <link rel="modulepreload" href="./Javascript/header/menu.js">
+  <link rel="modulepreload" href="./Javascript/header/navegacao-atual.js">
+  <link rel="modulepreload" href="./Javascript/header/ui.js">
+  <link rel="modulepreload" href="./Javascript/idioma/idioma.js">
+  <link rel="modulepreload" href="./Javascript/idioma/ui.js">
+  <link rel="modulepreload" href="./Javascript/main/cubo.js">
+  <link rel="modulepreload" href="./Javascript/main/ui.js">
+  <link rel="modulepreload" href="./Javascript/sobreMim/initTagHover.js">
+  <link rel="modulepreload" href="./Javascript/projetos/initCarrossel.js">
+  <link rel="modulepreload" href="./Javascript/tecnologias/initCategorias.js">
+  <link rel="modulepreload" href="./Javascript/tecnologias/initSkills.js">
+  <link rel="modulepreload" href="./Javascript/tecnologias/initTabletCard.js">
+  <link rel="modulepreload" href="./Javascript/tecnologias/initTime.js">
 
 </head>
 
@@ -188,7 +206,7 @@
           <ul class="carrossel-trilho">
             <li class="carrossel-item ativo-carrossel">
               <a href="projetos/agendapy.html" class="carrossel-capa">
-                <img src="imagens/projetos/agendapyCapa.png" alt="Agenda do dia no sistema AgendaPY" data-i18n-alt="proj.agendapy.alt" loading="lazy" />
+                <img src="imagens/projetos/agendapyCapa.webp" alt="Agenda do dia no sistema AgendaPY" data-i18n-alt="proj.agendapy.alt" loading="lazy" / width="538" height="522">
                 <span class="sr-only" data-i18n="proj.agendapy.ver">Ver detalhes de AgendaPY</span>
               </a>
 
@@ -211,7 +229,7 @@
 
             <li class="carrossel-item">
               <a href="projetos/drive-evidence-sync.html" class="carrossel-capa">
-                <img src="imagens/projetos/driveSyncCapa.png" alt="Diagrama do Drive Evidence Sync" data-i18n-alt="proj.drive.alt" loading="lazy" />
+                <img src="imagens/projetos/driveSyncCapa.webp" alt="Diagrama do Drive Evidence Sync" data-i18n-alt="proj.drive.alt" loading="lazy" / width="820" height="820">
                 <span class="sr-only" data-i18n="proj.drive.ver">Ver detalhes de Drive Evidence Sync</span>
               </a>
 
@@ -232,7 +250,7 @@
 
             <li class="carrossel-item">
               <a href="projetos/gmail-organizer.html" class="carrossel-capa">
-                <img src="imagens/projetos/gmailorganizerCapa.png" alt="Sa&iacute;da do Gmail Organizer no terminal" data-i18n-alt="proj.gmail.alt" loading="lazy" />
+                <img src="imagens/projetos/gmailorganizerCapa.webp" alt="Sa&iacute;da do Gmail Organizer no terminal" data-i18n-alt="proj.gmail.alt" loading="lazy" / width="820" height="820">
                 <span class="sr-only" data-i18n="proj.gmail.ver">Ver detalhes de Gmail Organizer</span>
               </a>
 
@@ -253,7 +271,7 @@
 
             <li class="carrossel-item">
               <a href="projetos/industria-py.html" class="carrossel-capa">
-                <img src="imagens/projetos/industriaPyCapa.png" alt="Menu do sistema Industria PY no terminal" data-i18n-alt="proj.industria.alt" loading="lazy" />
+                <img src="imagens/projetos/industriaPyCapa.webp" alt="Menu do sistema Industria PY no terminal" data-i18n-alt="proj.industria.alt" loading="lazy" / width="820" height="820">
                 <span class="sr-only" data-i18n="proj.industria.ver">Ver detalhes de Industria PY</span>
               </a>
 
@@ -274,7 +292,7 @@
 
             <li class="carrossel-item">
               <a href="projetos/cia-das-tortas.html" class="carrossel-capa">
-                <img src="imagens/projetos/ciaDasTortasHeader.png" alt="Tela inicial do projeto Cia Das Tortas" data-i18n-alt="proj.tortas.alt" loading="lazy" />
+                <img src="imagens/projetos/ciaDasTortasHeader.webp" alt="Tela inicial do projeto Cia Das Tortas" data-i18n-alt="proj.tortas.alt" loading="lazy" / width="605" height="399">
                 <span class="sr-only" data-i18n="proj.tortas.ver">Ver detalhes de Cia Das Tortas</span>
               </a>
 
@@ -317,7 +335,7 @@
       <div class="content">
         <h1 class="title cor-1 " data-i18n="sobre.titulo">sobre mim<span class="cor-p1">.</span></h1>
         <div class="about-esquerda">
-          <img src="imagens/about/MePhoto.jpeg" alt="" data-i18n-alt="sobre.foto">
+          <img src="imagens/about/MePhoto.webp" alt="" data-i18n-alt="sobre.foto" width="1100" height="592">
         </div>
         <div class="about-direita">
           <p data-i18n="sobre.p1">Sou o Gustavo, tenho 18 anos e sou desenvolvedor back-end e mobile. Comecei a programar no Cotemig, onde curso Técnico em Informática, e hoje aplico isso na prática: na Transuple, trabalho com automação de dados e planilhas em Python.</p>
@@ -724,6 +742,10 @@
     <div class="footer-content">
       <picture>
         <source media="(min-width: 550px)" srcset="./imagens/footer/pasta.svg">
+        <!-- sem width/height de propósito: o <picture> troca entre pasta.svg
+           (1688x896) e pastaMobile.svg (382x628), que têm proporções
+           diferentes. Um único par de atributos serviria a um e deformaria
+           o outro. É fundo decorativo e absoluto, não empurra layout. -->
         <img src="./imagens/footer/pastaMobile.svg" class="fundo-footer" alt="">
       </picture>
       <div class="footer-esquerda title">
@@ -746,7 +768,7 @@
             <source srcset="./imagens/main/meDesenho.webp" type="image/webp">
             <source srcset="./imagens/main/meDesenhoMobile.png" media="(max-width: 768px)">
 
-            <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo" data-i18n-alt="footer.ilustracao" loading="lazy">
+            <img src="./imagens/main/meDesenho.png" alt="illustracao de Gustavo Azevedo" data-i18n-alt="footer.ilustracao" loading="lazy" width="1000" height="1340">
           </picture>
           <a href="mailto:gustavoAzevedo.code@gmail.com" aria-label="link-gmail" class="btn-normal" data-i18n="footer.contato">Entrar em contato</a>
         </div>
